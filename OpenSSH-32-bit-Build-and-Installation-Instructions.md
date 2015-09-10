@@ -86,7 +86,7 @@ Run:
 
 ##### 5. Build 32-bit ssh-lsa for native RSA/DSA key authorization
 
-Move to <openssh_directory>contrib/win32/win32compat/lsa directory and run:
+Move to [openssh_directory]/contrib/win32/win32compat/lsa directory and run:
 
     $export LIBSSL_PATH="<OPENSSL_DIR>"
     
