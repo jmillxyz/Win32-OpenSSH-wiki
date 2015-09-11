@@ -88,6 +88,10 @@ Run:
        ssh.exe
        sshd.exe
 
+       --to run any of these binaries, you need zlib1.dll that was generated in step 3 above. Copy it to
+       --the current directory or a directory that is in PATH environment variable.
+       ./ssh -V  is a good client test to run
+
 ##### 5. Build 32-bit ssh-lsa for native RSA/DSA key authorization
 
 Move to [openssh_directory]/contrib/win32/win32compat/lsa directory and run:
