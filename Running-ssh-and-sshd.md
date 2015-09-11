@@ -1,3 +1,5 @@
+copy zlib1.dll from zlib source direcotry to openssh directory
+
 #### Running SSH server:
 
 1. Download Service Manager tool NSSM 
