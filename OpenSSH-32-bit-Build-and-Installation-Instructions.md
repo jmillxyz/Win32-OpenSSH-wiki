@@ -36,6 +36,8 @@
 
      Version used as reference build is openssl-1.0.1e.
 
+   - tar -xvf openssl-1.0.1e.tar.gz       // do it in Cygwin shell with its tar command
+
    - Compile sources by running:
 
      $./Configure mingw
@@ -47,6 +49,8 @@
    - Download ZLIB sources from http://www.zlib.net
 
      Version used as reference build is 1.2.8.
+
+   - tar -xvf zlib.1.2.8.tar.gz       // do it in Cygwin shell with its tar command
      
    - Compile sources by running:
    
@@ -64,7 +68,7 @@ Run the following commands under a Cygwin shell in the openssh directory:
                     --with-zlib=<ZLIB_DIR>
                     --with-kerberos5
                   
-where <OPENSSL_DIR> is a directory where openssl sources are extracted and <ZLIB_DIR> is a directory where zlib sources are extracted
+where OPENSSL_DIR is a directory where openssl sources are extracted and ZLIB_DIR is a directory where zlib sources are extracted
     
      $cat config.h.tail >> config.h   
 
