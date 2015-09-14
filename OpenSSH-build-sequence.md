@@ -1,0 +1,1 @@
+![OpenSSH build sequence ](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/openssh-build-sequence.png)
