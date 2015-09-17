@@ -12,12 +12,12 @@ Editing UNIX files on Windows changes the EOL fron UNIX to DOS, which might make
 
 _// to covert all file_
 
-`**for /R %G in (*.*) do dos2unix "%G"**`
+`for /R %G in (*.*) do dos2unix "%G"`
 
 _// to covert all .h files_
 
-`**for /R %G in (*.h) do dos2unix "%G"**`
+`for /R %G in (*.h) do dos2unix "%G"`
 
 _// to covert all .c file_
 
-`**for /R %G in (*.c) do dos2unix "%G"**`
+`for /R %G in (*.c) do dos2unix "%G"`
