@@ -10,20 +10,24 @@ Launch eclpise.exe
 
 ![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-1.png)
 
-![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-1.png)
+![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-2.png)
 
-![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-1.png)
+![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-3.png)
 
-![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-1.png)
+![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-4.png)
 
-![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-1.png)
+![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-5.png)
 
-![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-1.png)
+![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-6.png)
 
-![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-1.png)
+![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-7.png)
 
-![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-1.png)
+![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-8.png)
 
-![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-1.png)
+Debugging has started from the first line in main(). use the button from toolbar to step through the code
 
-![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-1.png)
+![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-9.png)
+
+To launch a new debugging session
+
+![](https://github.com/PowerShell/Win32-OpenSSH/blob/master/images/eclipse-debug/eclipse-10.png)
