@@ -30,8 +30,10 @@ There are 2 ways to run SSH server
 
 ##### Running sshd.exe standalone
 At this point, sshd.exe needs to run as Local System. Download SysInternals tools and run the following to launch a cmd.exe running under System context
+
 PSExec.exe -i -s cmd.exe
 In cmd.exe that appears run
+
 sshd.exe -r
 
 ##### Running sshd in NSSM
