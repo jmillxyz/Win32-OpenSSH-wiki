@@ -1,4 +1,27 @@
-copy zlib1.dll from zlib source direcotry to openssh directory
+- copy zlib1.dll from zlib source directory to openssh directory
+
+### generate ssh.exe client keys if note done before
+ssh-keygen.exe -t rsa -f id_rsa
+
+ssh-keygen.exe -t dsa -f id_dsa
+
+ssh-keygen.exe -t ecdsa -f id_ecdsa
+
+### generate sshd.exe server keys if not done before
+ssh-keygen.exe -t rsa -f ssh_host_rsa_key
+
+ssh-keygen.exe -t dsa -f ssh_host_dsa_key
+
+ssh-keygen.exe -t ecdsa -f ssh_host_ecdsa_key
+
+### generate empty sshd_config file if there is no sshd_config file before
+echo #sshd_config file > sshd_config
+
+### test sshd.exe can run
+./sshd.exe -r
+
+### test ssh.exe client can run
+./ssh.exe -V
 
 #### Running SSH server:
 
