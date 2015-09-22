@@ -25,7 +25,11 @@
    
    To do that, create symbolic links:
 
-   run the [openssh_dir]/scripts/set-mingw32.sh script  from the Cygwin /bin directory
+   run the [openssh_dir]/scripts/set-mingw32.sh script  from the Cygwin /bin directory. Below 2 are examples.
+   
+   cd c:/cygwin32/bin
+   
+   c:/win32openssh/Win32-OpenSSH/scripts/set-mingw32.sh
   
 
 ##### 2. Prepare the 32-bit libssl.a and libcrypto.a libraries and the openssl headers.
@@ -34,9 +38,9 @@
 
    - Download OpenSSL sources from http://www.openssl.org/source/.
 
-     Version used as reference build is openssl-1.0.1e.
+     Version used as reference build is openssl-1.0.2d.
 
-   - tar -xvf openssl-1.0.1e.tar.gz       // do it in Cygwin shell with its tar command
+   - tar -xvf openssl-1.0.2d.tar.gz       // do it in Cygwin shell with its tar command
 
    - Compile sources by running:
 
