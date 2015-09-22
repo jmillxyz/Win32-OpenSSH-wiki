@@ -188,7 +188,7 @@ Move to [openssh_directory]/contrib/win32/win32compat/lsa directory and run:
 
 ##### OpenSSL
 
-openssl-1.0.1e
+openssl-1.0.2d
 
  
 ##### ZLIB 
