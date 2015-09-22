@@ -14,6 +14,8 @@ ssh-keygen.exe -t dsa -f ssh_host_dsa_key
 
 ssh-keygen.exe -t ecdsa -f ssh_host_ecdsa_key
 
+ssh-keygen.exe -t ed25519 -f ssh_host_ed25519_key
+
 ### generate empty sshd_config file if there is no sshd_config file before
 echo #sshd_config file > sshd_config
 
