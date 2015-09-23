@@ -119,7 +119,8 @@ Move to [openssh_directory]/contrib/win32/win32compat/lsa directory and run:
  
 - Reboot the machine.
 
-- .ssh/authorized_keys file in a user's home directory should contain the public keys allowed to logon without password for the user. Typically it is in c:/users/myusername/.ssh/authorized_keys in a Windows system.
+- .ssh/authorized_keys file in a user's home directory should contain the public keys allowed to logon without password for the user. Typically it is in c:/users/myusername/.ssh/authorized_keys in a Windows system. One adds a key by appending a public key to the end of this file. For example: "type id_rsa.pub >> .ssh/authorized_keys"
+
 
 ### REFERENCE VERSIONS 
 
