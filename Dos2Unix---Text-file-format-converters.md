@@ -9,6 +9,8 @@ Using PowerShell
 Get-ChildItem -File -Recurse | % { $x = get-content -raw -path $_.fullname; $x -replace "`r`n","`n" | set-content -path $_.fullname }
 ```
 
+or
+
 * Download _**dos2unix.exe**_ program from [http://sourceforge.net/projects/dos2unix/?source=typ_redirect](http://sourceforge.net/projects/dos2unix/?source=typ_redirect) 
 * Uncompress the compressed file (lets say, dos2unix-7.3-win32.zip)
 * Put the bin directory of the uncompressed file (that has dos2unix.exe and other prorgrams) in system path
