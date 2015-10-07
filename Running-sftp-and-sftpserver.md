@@ -3,11 +3,13 @@
 
 
 ## # Setup sftp-server
-1. stop the sshd server by doing steps like "net stop openssh"
-2. Add location of sftp-server.exe binary as a subsystem in sshd_config file by adding entries like below:
-`Subsystem       sftp    /win32openssh/bin/sftp-server.exe`
-3. start the sshd server by doing steps like "net start openssh"
-4. sftp-server will now be started automatically by sshd server when a sftp client connects to this computer
+* stop the sshd server by doing steps like "net stop openssh"
+* Add location of sftp-server.exe binary as a subsystem in sshd_config file by adding an entry like below:
+
+ `Subsystem       sftp    /win32openssh/bin/sftp-server.exe`
+
+* start the sshd server by doing steps like "net start openssh"
+* sftp-server will now be started automatically by sshd server when a sftp client connects to this computer
 
 ## # run Sftp client
 `sftp test1@localhost          //login to local machine using test1 username`
