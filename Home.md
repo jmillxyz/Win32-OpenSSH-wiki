@@ -6,4 +6,4 @@ Welcome to the Win32-OpenSSH wiki!
 
 [Running SSH and SSHD](https://github.com/PowerShell/Win32-OpenSSH/wiki/Running-ssh-and-sshd)
 
-[Running SFTP and SFTP SERVER](https://github.com/PowerShell/Win32-OpenSSH/wiki/Running-sftp-and-sftpserver)
+[Running SFTP CLIENT and SFTP SERVER](https://github.com/PowerShell/Win32-OpenSSH/wiki/Running-sftp-and-sftpserver)
