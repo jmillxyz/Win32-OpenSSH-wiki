@@ -1,8 +1,8 @@
 
-• _SFTP client needs ssh client and SFTP server uses sshd server. So first setup ssh client and server using the wiki instructions._
+• _SFTP client needs ssh client and SFTP server uses sshd server. So first setup ssh client and server using the wiki instructions "Running SSH and SSHD"._
 
 
-## # Setup sftp-server
+## Setup sftp-server
 * stop the sshd server by doing steps like "net stop openssh"
 * Add location of sftp-server.exe binary as a subsystem in sshd_config file by adding an entry like below:
 
@@ -11,7 +11,7 @@
 * start the sshd server by doing steps like "net start openssh"
 * sftp-server will now be started automatically by sshd server when a sftp client connects to this computer
 
-## # run Sftp client
+## run Sftp client
 `sftp test1@localhost          //login to local machine using test1 username`
 
 `sftp -i .ssh/id_rsa test1@remotehost       //login using .ssh/id_rsa public key pair`
