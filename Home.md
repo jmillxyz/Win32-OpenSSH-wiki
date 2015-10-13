@@ -1,9 +1,11 @@
-Welcome to the Win32-OpenSSH wiki!
+##### Welcome to the Win32-OpenSSH wiki!
 
-[OpenSSH 32 bit Build and Installation Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/OpenSSH-32-bit-Build-and-Installation-Instructions)
+[Deployment Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/Deploy-Win32-OpenSSH)
 
-[OpenSSH 64 bit Build and Installation Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/OpenSSH-64-bit-Build-and-Installation-Instructions)
+[SSH Usage Examples](https://github.com/PowerShell/Win32-OpenSSH/wiki/Running-ssh-and-sshd)
 
-[Running SSH and SSHD](https://github.com/PowerShell/Win32-OpenSSH/wiki/Running-ssh-and-sshd)
+[SFTP Usage Examples](https://github.com/PowerShell/Win32-OpenSSH/wiki/Running-sftp-and-sftpserver)
 
-[Running SFTP CLIENT and SFTP SERVER](https://github.com/PowerShell/Win32-OpenSSH/wiki/Running-sftp-and-sftpserver)
+[32 bit Build Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/OpenSSH-32-bit-Build-and-Installation-Instructions)
+
+[64 bit Build Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/OpenSSH-64-bit-Build-and-Installation-Instructions)
