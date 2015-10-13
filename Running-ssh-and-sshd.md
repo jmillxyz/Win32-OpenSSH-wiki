@@ -1,93 +1,15 @@
-- copy zlib1.dll from zlib source directory to openssh directory
 
-### generate ssh.exe client keys if note done before
-ssh-keygen.exe -t rsa -f id_rsa
-
-ssh-keygen.exe -t dsa -f id_dsa
-
-ssh-keygen.exe -t ecdsa -f id_ecdsa
-
-### generate sshd.exe server keys if not done before
-ssh-keygen.exe -t rsa -f ssh_host_rsa_key
-
-ssh-keygen.exe -t dsa -f ssh_host_dsa_key
-
-ssh-keygen.exe -t ecdsa -f ssh_host_ecdsa_key
-
-ssh-keygen.exe -t ed25519 -f ssh_host_ed25519_key
-
-### generate empty sshd_config file if there is no sshd_config file before
-echo #sshd_config file > sshd_config
-
-### test sshd.exe can run
-./sshd.exe -r
-
-### test ssh.exe client can run
-./ssh.exe -V
-
-#### Running SSH server:
-There are 2 ways to run SSH server
-
-##### Running sshd.exe standalone
-At this point, sshd.exe needs to run as Local System. Download SysInternals tools and run the following to launch a cmd.exe running under System context
-
-PSExec.exe -i -s cmd.exe
-
-In cmd.exe that appears run
-
-sshd.exe -r
-
-##### Running sshd in NSSM
-1. Download Service Manager tool NSSM 
-
-[https://nssm.cc/download](https://nssm.cc/download)
-
-2. Unzip the download and run the follwoing command as Administrator form the uncompressed directory,
-
-	nssm.exe install
-
-3. In the NSSM UI set the following values to install the service
-	
-set service name 'openssh' 
-
-set Path to the location of sshd.exe
-
-set Startup directory to the directory where sshd.exe exists
-
-set arguments -r
-
-Install service
-
-3. run the follwoing command as Administrator,
-
-	net start openssh
-	
-	
-	
-#### Running ssh.exe:
 ##### Login With Password:
+1. Work Group Users:
+     * ssh.exe user@host
+2. Domain Users:
+     * ssh.exe -l user@domain host
 
-Launch a cmd shell and go to the directory where ssh.exe exists.
-
-for local users:
-
-./ssh.exe user@host
-
-for domain user:
-
-./ssh.exe -l user@domain host
-
-##### Login with Certificate:
-Launch a cmd shell and go to the directory where ssh.exe exists. Run
-
-./ssh-keygen -t rsa
-
-to generate rsa certificate, lets say with the file names are id_rsa and id_rsa.pub, located in the same directory as ssh.exe 
-
-append the contents of id_rsa.pub file to authorized_keys file located in the .ssh directory under remote user's home direcotry in the reomote host. Then run:
-
-./ssh.exe -i ./id_rsa user@host
-
-for domain users:
-
-./ssh.exe -i ./id_rsa -l user@domain host
+##### Login With Client Keys (key-based authentication)
+1. Generate client authentication key
+     * ssh-keygen.exe -t rsa -f id_rsa
+2. Copy id_rsa.pub (client's public key) to corresponding user's directory on ssh HOST
+     * as %windir%\users\user\\.ssh\authorized_keys
+3. Login using private key
+     * ./ssh.exe -i ./id_rsa user@host (work group user)
+     * ./ssh.exe -i ./id_rsa -l user@domain host (domain user)
