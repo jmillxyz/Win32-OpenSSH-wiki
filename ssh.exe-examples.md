@@ -27,14 +27,11 @@ Powershell can be launched over remote ssh session as follows:
 
 `user@DEV-10566-829 C:\Users\user>powershell -File -`
 
-`powershell -File -`
-
-`powershell -File -`
 
 `PS C:\Users\user> get-module`
 
-`get-module`
-
 `ModuleType Version    Name                                ExportedCommands`
+
 `---------- -------    ----                                ----------------`
+
 `Manifest   3.1.0.0    Microsoft.PowerShell.Management     {Add-Computer, Add-Content, Checkpo...`
