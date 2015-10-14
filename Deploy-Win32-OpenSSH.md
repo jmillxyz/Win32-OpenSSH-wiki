@@ -1,6 +1,6 @@
 1. Download Zip file - 
 * Extract contents
-* Setup SSH host keys (with no paraphrase)
+* Setup SSH host keys (with no passphrase)
      * ssh-keygen.exe -t rsa -f ssh_host_rsa_key
      * ssh-keygen.exe -t dsa -f ssh_host_dsa_key
      * ssh-keygen.exe -t ecdsa -f ssh_host_ecdsa_key
