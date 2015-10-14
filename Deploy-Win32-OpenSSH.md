@@ -5,6 +5,8 @@
      * ssh-keygen.exe -t dsa -f ssh_host_dsa_key
      * ssh-keygen.exe -t ecdsa -f ssh_host_ecdsa_key
      * ssh-keygen.exe -t ed25519 -f ssh_host_ed25519_key
+* Open Firewall
+     * netsh advfirewall firewall add rule name="ssh" dir=in action=allow protocol=TCP localport=22 
 * Install key-auth package if you need key-based authentication
      * run setup-ssh-lsa.cmd
      * reboot
