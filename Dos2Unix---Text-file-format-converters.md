@@ -25,6 +25,6 @@ _// to convert all .h files_
 
 `for /R %G in (*.h) do dos2unix "%G"`
 
-_// to convert all .c file_
+_// to convert all .c files_
 
 `for /R %G in (*.c) do dos2unix "%G"`
