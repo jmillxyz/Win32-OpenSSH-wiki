@@ -103,7 +103,7 @@ Or:
 
 4.7.3-1        Devel/mingw-gcc-g++
 
-4.7.3-1        Devel/mingw-gcc-obj
+4.7.3-1        Devel/mingw-gcc-objc
                
 20110507-2     Devel/mingw-pthreads: Libpthread for MinGW.org
 
@@ -123,15 +123,13 @@ Or:
 
 3.0.0-1        Devel/mingw64-i686-runtime
 
-3.0b_svn5935-1 Devel/mingw64-winpthreads
+3.0b_svn5935-1 Devel/mingw64-i686-winpthreads
 
 2.22.52-1      Devel/mingw64-x86_64-binutils
 
-4.7.3-1        Devel/mingw64-x86_64-gcc
+4.7.3-1        Devel/mingw64-x86_64-gcc-core
 
-4.7.3-1        Devel/mingw64-x86_64-core
-
-4.7.3-1        Devel/mingw64-x86_64-g++
+4.7.3-1        Devel/mingw64-x86_64-gcc-g++
 
 3.0.0-1        Devel/mingw64-x86_64-headers
 
