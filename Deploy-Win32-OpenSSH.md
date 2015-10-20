@@ -7,7 +7,7 @@
      * `ssh-keygen.exe -t ed25519 -f ssh_host_ed25519_key`
 * Open Firewall
      * start PowerShell
-     * `new-netfirewallrule -Protocol TCP -LocalPort 22 -Direction Inbound -Action Allow -DisplayName SSH`
+     * `New-NetFirewallRule -Protocol TCP -LocalPort 22 -Direction Inbound -Action Allow -DisplayName SSH`
 * If you need key-based authentication:
      * Install key-auth package
           * run setup-ssh-lsa.cmd
