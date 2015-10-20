@@ -17,21 +17,12 @@
 ##### Remote Powershell over ssh
 Powershell can be launched over remote ssh session as follows:
 
-`C:\Master>ssh.exe -l user@127.0.0.1`
-
-`user@127.0.0.1's password: **********`
-
-`Microsoft Windows [Version 10.0.10566]`
-
-`(c) 2016 Microsoft Corporation. All rights reserved.`
-
-`user@DEV-10566-829 C:\Users\user>powershell -File -`
-
-
-`PS C:\Users\user> get-module`
-
-`ModuleType Version    Name                                ExportedCommands`
-
-`---------- -------    ----                                ----------------`
-
-`Manifest   3.1.0.0    Microsoft.PowerShell.Management     {Add-Computer, Add-Content, Checkpo...`
+    C:\Master>ssh.exe -l user@127.0.0.1
+    user@127.0.0.1's password: **********
+    Microsoft Windows [Version 10.0.10566]
+    (c) 2016 Microsoft Corporation. All rights reserved.
+    user@DEV-10566-829 C:\Users\user>powershell -File -
+    PS C:\Users\user> get-module
+    ModuleType Version    Name                                ExportedCommands
+    ---------- -------    ----                                ----------------
+    Manifest   3.1.0.0    Microsoft.PowerShell.Management     {Add-Computer, Add-Content, Checkpo...
