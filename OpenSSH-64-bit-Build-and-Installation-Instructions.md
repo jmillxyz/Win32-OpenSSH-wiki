@@ -6,6 +6,8 @@
 
 ##### 2. Launch the Cygwin installer, and ensure that packages listed below are selected as  'install':
 
+   devel/nasm
+
    devel/mingw-*
 
    devel/mingw64-*
@@ -79,6 +81,8 @@ Or:
 #### REFERENCE VERSIONS 
 
 ##### CYGWIN PACKAGES
+
+2.10.07-1      Devel/nasm: The Netwide Assembler
 
 13-1           Devel/autoconf: Wrapper for autoconf command
 
