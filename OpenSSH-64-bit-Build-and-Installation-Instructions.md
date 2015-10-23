@@ -127,7 +127,11 @@ Or:
 
 2.22.52-1      Devel/mingw64-x86_64-binutils
 
+4.7.3-1        Devel/mingw64-x86_64-gcc-ada
+
 4.7.3-1        Devel/mingw64-x86_64-gcc-core
+
+4.7.3-1        Devel/mingw64-x86_64-gcc-fortran
 
 4.7.3-1        Devel/mingw64-x86_64-gcc-g++
 
