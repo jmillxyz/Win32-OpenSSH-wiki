@@ -25,12 +25,12 @@
    
    To do that, create symbolic links:
 
-   run the [openssh_dir]/scripts/set-mingw32.sh script  from the Cygwin /bin directory. Below 2 are examples.
+   run the `[openssh_dir]/scripts/set-mingw32.sh` script  from the Cygwin `/bin` directory. Below 2 are examples.
    
-   cd c:/cygwin32/bin
+   `cd c:/cygwin32/bin`
    
-   c:/win32openssh/Win32-OpenSSH/scripts/set-mingw32.sh
-  
+   `c:/win32openssh/Win32-OpenSSH/scripts/set-mingw32.sh`
+   (will emit `rm: cannot remove` warnings on first run)
 
 ##### 2. Prepare the 32-bit libssl.a and libcrypto.a libraries and the openssl headers.
 
@@ -40,13 +40,13 @@
 
      Version used as reference build is openssl-1.0.2d.
 
-   - tar -xvf openssl-1.0.2d.tar.gz       // do it in Cygwin shell with its tar command
+   - `tar -xvf openssl-1.0.2d.tar.gz`       // do it in Cygwin shell with its tar command
 
    - Compile sources by running:
 
-     $./Configure mingw
+     `$./Configure mingw`
 
-     $make
+     `$make`
      
 ##### 3. Prepare 32-bit libz.a and zlib.dll.
      
@@ -54,33 +54,33 @@
 
      Version used as reference build is 1.2.8.
 
-   - tar -xvf zlib.1.2.8.tar.gz       // do it in Cygwin shell with its tar command
+   - `tar -xvf zlib.1.2.8.tar.gz`       // do it in Cygwin shell with its tar command
      
    - Compile sources by running:
    
-     make -f win32/Makefile.gcc
+     `make -f win32/Makefile.gcc`
      
 ##### 4. Build 32-bit OpenSSH:
 
 Run the following commands under a Cygwin shell in the openssh directory:
       
-     $autoreconf
+     `$autoreconf`
 
-     $./configure --build=i686-pc-mingw32
+     `$./configure --build=i686-pc-mingw32
                     --host=i686-pc-mingw32
                     --with-ssl-dir=<OPENSSL_DIR>
                     --with-zlib=<ZLIB_DIR>
-                    --with-kerberos5
+                    --with-kerberos5`
                   
 where OPENSSL_DIR is a directory where openssl sources are extracted and ZLIB_DIR is a directory where zlib sources are extracted
     
-     $cat config.h.tail >> config.h   
+     `$cat config.h.tail >> config.h`   
 
 Build one of SSH family tool:
 
 Run:
     
-      $make <program>
+      `$make <program>`
       
        where <program> is any of the OpenSSH tools ported to Win32.
    
@@ -94,32 +94,32 @@ Run:
 
        --to run any of these binaries, you need zlib1.dll that was generated in step 3 above. Copy it to
        --the current directory or a directory that is in PATH environment variable.
-       ./ssh -V  is a good client test to run
+       `./ssh -V`  is a good client test to run
 
 ##### 5. Build 32-bit ssh-lsa for native RSA/DSA key authorization
 
-Move to [openssh_directory]/contrib/win32/win32compat/lsa directory and run:
+Move to `[openssh_directory]/contrib/win32/win32compat/lsa` directory and run:
 
-    $export LIBSSL_PATH="<OPENSSL_DIR>"
+    `$export LIBSSL_PATH="<OPENSSL_DIR>"`
     
-    $make -f Makefile.mingw32
+    `$make -f Makefile.mingw32`
 
     where <OPENSSL_DIR> is a directory where openssl sources are extracted
            
-  - This command should produce the 32-bit ssh-lsa.dll file.
+  - This command should produce the 32-bit `ssh-lsa.dll` file.
 
 
 ### STEP 3 - Install ssh-lsa on system where sshd server is running
 
-- Copy the ssh-lsa.dll to the %WINDIR%/System32 directory.
+- Copy the `ssh-lsa.dll` to the `%WINDIR%/System32` directory.
 
 - Then, by using the regedit tool, add 'ssh-lsa.dll' string to the end of the registry key below:
 
-    HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/Lsa/Authentication Packages
+    `HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/Lsa/Authentication Packages`
  
 - Reboot the machine.
 
-- .ssh/authorized_keys file in a user's home directory should contain the public keys allowed to logon without password for the user. Typically it is in c:/users/myusername/.ssh/authorized_keys in a Windows system. One adds a key by appending a public key to the end of this file. For example: "type id_rsa.pub >> .ssh/authorized_keys"
+- `.ssh/authorized_keys` file in a user's home directory should contain the public keys allowed to logon without password for the user. Typically it is in `c:/users/myusername/.ssh/authorized_keys` in a Windows system. One adds a key by appending a public key to the end of this file. For example: "`type id_rsa.pub >> .ssh/authorized_keys`"
 
 
 ### REFERENCE VERSIONS 
