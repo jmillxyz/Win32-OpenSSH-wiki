@@ -144,11 +144,15 @@ Move to [openssh_directory]/contrib/win32/win32compat/lsa directory and run:
 
 2.23.1-1       Devel/mingw-binutils: Bintutils for MinGW.org win32 toolchain (util)
 
+4.7.3-1        Devel/mingw-gcc-ada
+
 4.7.3-1        Devel/mingw-gcc-core
+
+4.7.3-1        Devel/mingw-gcc-fortran
 
 4.7.3-1        Devel/mingw-gcc-g++
 
-4.7.3-1        Devel/mingw-gcc-obj
+4.7.3-1        Devel/mingw-gcc-objc
                
 20110507-2     Devel/mingw-pthreads: Libpthread for MinGW.org
 
