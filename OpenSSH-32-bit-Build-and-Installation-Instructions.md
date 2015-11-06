@@ -64,17 +64,7 @@
 
 Run the following commands under a Cygwin shell in the openssh directory:
       
-     `$autoreconf`
-
-     `$./configure --build=i686-pc-mingw32
-                    --host=i686-pc-mingw32
-                    --with-ssl-dir=<OPENSSL_DIR>
-                    --with-zlib=<ZLIB_DIR>
-                    --with-kerberos5`
-                  
-where OPENSSL_DIR is a directory where openssl sources are extracted and ZLIB_DIR is a directory where zlib sources are extracted
-    
-     `$cat config.h.tail >> config.h`   
+     `./win32_build`  
 
 Build one of SSH family tool:
 
