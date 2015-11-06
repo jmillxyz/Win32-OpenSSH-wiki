@@ -64,7 +64,7 @@
 
 Run the following commands under a Cygwin shell in the openssh directory:
       
-     `./win32_build`  
+     ./win32_build  
 
 Build one of SSH family tool:
 
