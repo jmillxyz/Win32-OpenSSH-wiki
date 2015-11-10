@@ -1,4 +1,4 @@
-1. Download [Zip file](https://github.com/PowerShell/Win32-OpenSSH/releases/download/10_13_2015/OpenSSH-Win32.zip)
+1. Download [Zip file](https://github.com/PowerShell/Win32-OpenSSH/releases/download/11_09_2015/OpenSSH-Win32.zip)
 * Extract contents
 * Setup SSH host keys (**with no passphrase**)
      * `ssh-keygen.exe -t rsa -f ssh_host_rsa_key`
@@ -12,13 +12,7 @@
      * Install key-auth package
           * run setup-ssh-lsa.cmd
           * reboot
-     * Run SSH daemon as System (See below for alternative options)
-          * Download PSTools from [SysInternals](https://technet.microsoft.com/en-us/sysinternals/bb897553)
-          * `psexec.exe -i -s cmd.exe`
-          * Within cmd.exe - launch sshd.exe
-* Running SSH daemon as Admin user (Note - SSH daemon needs to run as System to support key-based authentication)
-     * Give Admin user SE_ASSIGNPRIMARYTOKEN_NAME
-          * secpol.msc -> Local Policies -> UserRightsAssessment  
-          * Add the Admin user to "Replace a process level token"
-          * Log off and Log in.
-     * In elevated cmd.exe, start sshd.exe
+* Install and run daemon as NT Service running as Local System
+     * `sshd.exe install`
+     * `net start sshd`
+     * To uninstall - `net stop sshd` ; `sshd.exe uninstall`
