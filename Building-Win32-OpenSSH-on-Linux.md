@@ -4,6 +4,10 @@
 
 `Linux teledebian 3.2.0-4-amd64 #1 SMP Debian 3.2.54-2 x86_64 GNU/Linux`
 
+**The build-essential package will install all the necessary tools for compilation**
+
+`# apt-get install build-essential`
+
 **Lets make a dir win32openssh**
 
 `# mkdir win32openssh`
