@@ -1,12 +1,12 @@
-**For this build we used 64 bit Debian Linux.**
+**For this build we used 64 bit Debian Linux. (Works on a Ubuntu 15.10 as well)**
 
 `# uname -a`
 
 `Linux teledebian 3.2.0-4-amd64 #1 SMP Debian 3.2.54-2 x86_64 GNU/Linux`
 
-**The build-essential package will install all the necessary tools for compilation**
+**These are some prerequisites**
 
-`# apt-get install build-essential`
+`# apt-get install build-essential unzip libssl-dev`
 
 **Lets make a dir win32openssh**
 
@@ -36,19 +36,19 @@
 
 **Download OpenSSL**
 
-`# wget https://www.openssl.org/source/openssl-1.0.2d.tar.gz`
+`# wget https://www.openssl.org/source/openssl-1.0.2e.tar.gz`
 
 **Unzip OpenSSL**
 
-`# tar -zxvf openssl-1.0.2d.tar.gz`
+`# tar -zxvf openssl-1.0.2e.tar.gz`
 
 **Build and Install OpenSSL**
 
-`# cd openssl-1.0.2d `
+`# cd openssl-1.0.2e`
 
-`# ./config ` 
+`# ./config`
                       
-`# make `
+`# make`
 
 `# make test `
 
@@ -66,7 +66,7 @@
 
 **Build Win32-OpenSSH**
 
-`# cd Win32-OpenSSH-L1 `
+`# cd Win32-OpenSSH-L1`
 
 `# chmod 744 configure`
 
