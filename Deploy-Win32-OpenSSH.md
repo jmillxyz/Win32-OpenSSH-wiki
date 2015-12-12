@@ -13,4 +13,4 @@
      * `sshd.exe install`
      * `net start sshd`
      * To uninstall - `net stop sshd` ; `sshd.exe uninstall`
-     * If you want the service to run on every reboot, you must set the service to start automatically in Service Control Manager. `sshd.exe install` sets the service to manual start, not automatic startup.
+     * Make the service start on boot (PowerShell): `Set-Service sshd -StartupType Automatic`
