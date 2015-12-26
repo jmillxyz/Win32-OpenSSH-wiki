@@ -26,3 +26,7 @@ Powershell can be launched over remote ssh session as follows:
     ModuleType Version    Name                                ExportedCommands
     ---------- -------    ----                                ----------------
     Manifest   3.1.0.0    Microsoft.PowerShell.Management     {Add-Computer, Add-Content, Checkpo...
+
+##### For Unix and Linux users
+
+The [Modern Unix Rosetta Stone](https://certsimple.com/rosetta-stone) includes Powershell examples of common Unix and Linux commands. 
