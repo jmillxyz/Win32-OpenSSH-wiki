@@ -1,6 +1,6 @@
 ##### Welcome to the Win32-OpenSSH wiki!
 
-[Deployment Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/Deploy-Win32-OpenSSH)
+[Install Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
 [SSH Usage Examples](https://github.com/PowerShell/Win32-OpenSSH/wiki/ssh.exe-examples)
 
