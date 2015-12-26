@@ -19,5 +19,8 @@
 
 ## Uninstall Win32 OpenSSH
 
-`net stop sshd`
-`./sshd.exe uninstall`
+* Start Powershell as Administrator
+* Stop the service
+     * `net stop sshd`
+* Uninstall
+     * `./sshd.exe uninstall`
