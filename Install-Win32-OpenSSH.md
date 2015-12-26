@@ -5,7 +5,7 @@
 * Start Powershell as Administrator
      * `cd 'C:\Program Files\OpenSSH-Win32'`
 * Setup SSH host keys (this will generate all the 'host' keys that sshd expects when its starts)
-     * `./ssh-keygen.exe -A`
+     * `.\ssh-keygen.exe -A`
 * Open Firewall
      * `New-NetFirewallRule -Protocol TCP -LocalPort 22 -Direction Inbound -Action Allow -DisplayName SSH`
 * If you need key-based authentication:
@@ -13,7 +13,7 @@
           * run setup-ssh-lsa.cmd
           * reboot
 * Install and run daemon as NT Service running as Local System
-     * `./sshd.exe install`
+     * `.\sshd.exe install`
      * `net start sshd`
      * Make the service start on boot (PowerShell): `Set-Service sshd -StartupType Automatic`
 
@@ -23,4 +23,4 @@
 * Stop the service
      * `net stop sshd`
 * Uninstall
-     * `./sshd.exe uninstall`
+     * `.\sshd.exe uninstall`
