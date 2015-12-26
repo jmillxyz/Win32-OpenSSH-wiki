@@ -1,7 +1,7 @@
 1. Download [Zip file](https://github.com/PowerShell/Win32-OpenSSH/releases/download/11_09_2015/OpenSSH-Win32.zip)
 * Extract contents to `C:\Program Files\OpenSSH-Win32`
 * Start Powershell as Administrator
-     * `cd C:\Program Files\OpenSSH-Win32`
+     * `cd 'C:\Program Files\OpenSSH-Win32'`
 * Setup SSH host keys (this will generate all the 'host' keys that sshd expects when its starts)
      * `./ssh-keygen.exe -A`
 * Open Firewall
