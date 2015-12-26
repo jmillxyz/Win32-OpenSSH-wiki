@@ -1,1 +1,1 @@
-Moved to [Install-Win32-OpenSSH]
+Moved to [[Install Win32 OpenSSH|Install-Win32-OpenSSH]]
