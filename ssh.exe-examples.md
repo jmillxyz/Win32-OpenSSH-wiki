@@ -5,8 +5,9 @@
 2. Domain Users:
      * `ssh.exe -l user@domain host`
 
-##### Login With Client Keys (key-based authentication)
-1. Generate client authentication key
+##### Login With SSH Keys
+
+1. Generate a key pair on the client:
      * `ssh-keygen.exe -t rsa -f id_rsa`
 2. Copy `id_rsa.pub` (client's public key) to corresponding user's directory on ssh HOST
      * as `%systemdrive%\users\user\\.ssh\authorized_keys`
