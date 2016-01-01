@@ -1,4 +1,4 @@
-## Install Win32 OpenSSH
+## Install Win32 OpenSSH (test release)
 
 1. Download [the 2015-11-09 release](https://github.com/PowerShell/Win32-OpenSSH/releases/download/11_09_2015/OpenSSH-Win32.zip)
 * Extract contents to `C:\Program Files\OpenSSH-Win32`
