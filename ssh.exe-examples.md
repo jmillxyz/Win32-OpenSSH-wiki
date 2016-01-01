@@ -14,8 +14,9 @@
      * `ssh.exe -i .\id_rsa user@host` (work group user)
      * `ssh.exe -i .\id_rsa -l user@domain host` (domain user)
 
-##### Remote Powershell over ssh
-Powershell can be launched over remote ssh session as follows:
+##### Running Powershell
+
+Powershell can be launched over SSH by running the command `powershell -File -` as follows:
 
     C:\Master>ssh.exe -l user@127.0.0.1
     user@127.0.0.1's password: **********
