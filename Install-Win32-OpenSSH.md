@@ -14,13 +14,13 @@
           * reboot
 * Install and run daemon as NT Service running as Local System
      * `.\sshd.exe install`
-     * `net start sshd`
+     * `Start-Service sshd`
      * Make the service start on boot (PowerShell): `Set-Service sshd -StartupType Automatic`
 
 ## Uninstall Win32 OpenSSH
 
 * Start Powershell as Administrator
 * Stop the service
-     * `net stop sshd`
+     * `Stop-Service sshd`
 * Uninstall
      * `.\sshd.exe uninstall`
