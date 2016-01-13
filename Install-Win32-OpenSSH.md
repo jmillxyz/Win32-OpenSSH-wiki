@@ -10,8 +10,10 @@
      * `New-NetFirewallRule -Protocol TCP -LocalPort 22 -Direction Inbound -Action Allow -DisplayName SSH`
 * If you need key-based authentication:
      * Install key-auth package
-          * run setup-ssh-lsa.cmd
-          * reboot
+          
+          * cmd /k setup-ssh-lsa.cmd
+          * Restart-Computer
+
 * Install and run daemon as NT Service running as Local System
      * `.\sshd.exe install`
      * `Start-Service sshd`
