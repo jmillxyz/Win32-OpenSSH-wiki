@@ -8,11 +8,9 @@
      * `.\ssh-keygen.exe -A`
 * Open Firewall
      * `New-NetFirewallRule -Protocol TCP -LocalPort 22 -Direction Inbound -Action Allow -DisplayName SSH`
-* If you need key-based authentication:
-     * Install key-auth package
-          
-          * cmd /k setup-ssh-lsa.cmd
-          * Restart-Computer
+* If you need key-based authentication, run the following to setup the key-auth package
+          * `cmd /k setup-ssh-lsa.cmd`
+          * `Restart-Computer`
 
 * Install and run daemon as NT Service running as Local System
      * `.\sshd.exe install`
