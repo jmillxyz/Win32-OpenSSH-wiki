@@ -18,6 +18,12 @@
      * `Start-Service sshd`
      * Make the service start on boot (PowerShell): `Set-Service sshd -StartupType Automatic`
 
+`New-NetFirewallRule` is for servers only. If you're on a workstation try:
+
+```
+netsh advfirewall firewall add rule name='SSH Port' dir=in action=allow protocol=TCP localport=22
+```
+
 ## Uninstall Win32 OpenSSH
 
 * Start Powershell as Administrator
