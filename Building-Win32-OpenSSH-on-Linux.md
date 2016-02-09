@@ -36,15 +36,15 @@
 
 **Download OpenSSL**
 
-`# wget https://www.openssl.org/source/openssl-1.0.2e.tar.gz`
+`# wget https://www.openssl.org/source/openssl-1.0.2f.tar.gz`
 
 **Unzip OpenSSL**
 
-`# tar -zxvf openssl-1.0.2e.tar.gz`
+`# tar -zxvf openssl-1.0.2f.tar.gz`
 
 **Build and Install OpenSSL**
 
-`# cd openssl-1.0.2e`
+`# cd openssl-1.0.2f`
 
 `# ./config`
                       
