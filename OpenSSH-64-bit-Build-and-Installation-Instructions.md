@@ -169,12 +169,21 @@ Follow OpenSSL instructons to build OpenSSL.  This is my take on them:
 
     cd D:\programming\OpenSSL\openssl-1.0.2f
     perl Configure debug-VC-WIN64A --prefix=d:\programming\OpenSSL\OpenSSLInstallx64_vs2015-debug
-ms\do_win64a
-nmake -f ms\nt.mak install
+    ms\do_win64a
+    nmake -f ms\nt.mak install
 
-perl Configure VC-WIN64A --prefix=d:\programming\OpenSSL\OpenSSLInstallx64_vs2015
-ms\do_win64a
-nmake -f ms\nt.mak install
+    perl Configure VC-WIN64A --prefix=d:\programming\OpenSSL\OpenSSLInstallx64_vs2015
+    ms\do_win64a
+    nmake -f ms\nt.mak install
 
 
 At this point you should have OpenSSL built.
+
+Now open up "contrib\win32\openssh\paths.targets" in your OpenSSH folder.
+Set the paths, something like so:
+
+    <OpenSSL-Path>D:\programming\OpenSSL\OpenSSLInstallx64_vs2015-debug\</OpenSSL-Path>
+    <OpenSSL-Win32-Release-Path>D:\programming\OpenSSL\OpenSSLInstallx86_vs2015\</OpenSSL-Win32-Release-Path>
+    <OpenSSL-Win32-Debug-Path>D:\programming\OpenSSL\OpenSSLInstallx86_vs2015-debug\</OpenSSL-Win32-Debug-Path>
+    <OpenSSL-x64-Release-Path>D:\programming\OpenSSL\OpenSSLInstallx64_vs2015\</OpenSSL-x64-Release-Path>
+    <OpenSSL-x64-Debug-Path>D:\programming\OpenSSL\OpenSSLInstallx64_vs2015-debug\</OpenSSL-x64-Debug-Path>
