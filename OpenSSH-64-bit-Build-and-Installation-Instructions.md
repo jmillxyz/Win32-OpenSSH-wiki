@@ -167,8 +167,8 @@ Open 'VS2015 x64 Native Tools Command Prompt'
 
 Follow OpenSSL instructons to build OpenSSL.  This is my take on them:
 
-cd D:\programming\OpenSSL\openssl-1.0.2f
-perl Configure debug-VC-WIN64A --prefix=d:\programming\OpenSSL\OpenSSLInstallx64_vs2015-debug
+    cd D:\programming\OpenSSL\openssl-1.0.2f
+    perl Configure debug-VC-WIN64A --prefix=d:\programming\OpenSSL\OpenSSLInstallx64_vs2015-debug
 ms\do_win64a
 nmake -f ms\nt.mak install
 
