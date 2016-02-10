@@ -165,7 +165,7 @@ Install Strawberry perl (You need a Perl install for building OpenSSL)
 
 Open 'VS2015 x64 Native Tools Command Prompt'
 
-Follow OpenSSL instructons to build OpenSSL.  This is my take on them:
+Follow OpenSSL instructons to build OpenSSL.  This is my take on them:  (Substitute with your own build dirs of course)
 
     cd D:\programming\OpenSSL\openssl-1.0.2f
     perl Configure debug-VC-WIN64A --prefix=d:\programming\OpenSSL\OpenSSLInstallx64_vs2015-debug
