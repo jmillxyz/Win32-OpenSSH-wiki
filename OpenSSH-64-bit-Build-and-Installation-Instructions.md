@@ -159,3 +159,22 @@ openssl-1.0.1e
 
 #### Building without Cygwin
 
+You will need to have Visual Studio 2015 installed.  Community edition will do.
+
+Install Strawberry perl (You need a Perl install for building OpenSSL)
+
+Open 'VS2015 x64 Native Tools Command Prompt'
+
+Follow OpenSSL instructons to build OpenSSL.  This is my take on them:
+
+cd D:\programming\OpenSSL\openssl-1.0.2f
+perl Configure debug-VC-WIN64A --prefix=d:\programming\OpenSSL\OpenSSLInstallx64_vs2015-debug
+ms\do_win64a
+nmake -f ms\nt.mak install
+
+perl Configure VC-WIN64A --prefix=d:\programming\OpenSSL\OpenSSLInstallx64_vs2015
+ms\do_win64a
+nmake -f ms\nt.mak install
+
+
+At this point you should have OpenSSL built.
