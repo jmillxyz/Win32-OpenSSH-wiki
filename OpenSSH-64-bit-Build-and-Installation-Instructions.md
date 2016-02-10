@@ -153,3 +153,9 @@ Or:
 ##### OpenSSL
 
 openssl-1.0.1e
+
+
+
+
+#### Building without Cygwin
+
