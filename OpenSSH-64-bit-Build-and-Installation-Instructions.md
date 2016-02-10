@@ -187,3 +187,5 @@ Set the paths, something like so:
     <OpenSSL-Win32-Debug-Path>D:\programming\OpenSSL\OpenSSLInstallx86_vs2015-debug\</OpenSSL-Win32-Debug-Path>
     <OpenSSL-x64-Release-Path>D:\programming\OpenSSL\OpenSSLInstallx64_vs2015\</OpenSSL-x64-Release-Path>
     <OpenSSL-x64-Debug-Path>D:\programming\OpenSSL\OpenSSLInstallx64_vs2015-debug\</OpenSSL-x64-Debug-Path>
+
+Now open "contrib\win32\openssh\Win32-OpenSSH.sln" in Visual Studio and build it.  Hopefully it will build without errors!
