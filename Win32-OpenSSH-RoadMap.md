@@ -11,7 +11,7 @@ Current implementation requires SSH daemon to run as Local System with high priv
 Goal of this port is to ultimately converge in OpenSSH's main repo. Over the next couple of months, we will progressively seek OpenSSH's community's feedback, prepare and refactor code as needed, and plan on main repo's integration around mid year 2016.
 
 
-### Rough timeline on when the key tasks would be accomplished:
+#### Rough timeline on when the key tasks would be accomplished:
 
 | Date          | Task                   | Comments  |
 | ---           |---                     | ---       |
