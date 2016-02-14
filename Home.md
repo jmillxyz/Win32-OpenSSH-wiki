@@ -1,5 +1,7 @@
 ##### Welcome to the Win32-OpenSSH wiki!
 
+[Project RoadMap](https://github.com/PowerShell/Win32-OpenSSH/wiki/Win32-OpenSSH-RoadMap)
+
 [Install Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
 [SSH Usage Examples](https://github.com/PowerShell/Win32-OpenSSH/wiki/ssh.exe-examples)
