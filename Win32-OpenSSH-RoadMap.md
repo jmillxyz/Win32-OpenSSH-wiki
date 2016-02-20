@@ -4,11 +4,11 @@ Side by side comparison of OpenSSH 7.1 and the current Windows port features is 
 
 The primary focus over the next 3-4 months is three fold:
 #### Reliability
-The current implementation of POSIX IO wrapper ("select" and "fd" IO) for Windows has limitations. Specifically, since it spawns numerous threads (one for each set fd in fd_sets passed to select), it does not scale. The overhead of synchronization between these threads impacts performance and reliability. We are currently working on replacing this with a one that takes advantage of the native asynchronous IO support available in Windows (Overlapped IO) - hoping that many of the random IO related issues being reported will be resolved with this change. 
+The current implementation of the POSIX IO wrapper ("select" and "fd" IO) for Windows has some limitations. Specifically, since it spawns numerous threads (one for each set fd in fd_sets passed to select), it does not scale. The overhead of synchronization between these threads impacts performance and reliability. We are currently working on replacing this with one that takes advantage of the native asynchronous IO support available in Windows (Overlapped IO) - hoping that many of the random IO related issues being reported will be resolved with this change. 
 #### Security
-Current implementation requires SSH daemon to run as Local System with high privileges. We are working on moving to a more secure model that runs the daemon with the least privileges required (and most likely as Network Service). We will also address other Windows relevant security aspects including key-based authentication and secure credential/passphrase management.
+Our current implementation requires the SSH daemon to run as Local System with high privileges. We are working on moving to a more secure model that runs the daemon with the least privileges required (and most likely as Network Service). We will also address other Windows relevant security aspects including key-based authentication and secure credential/passphrase management.
 #### Code Prep
-Goal of this port is to ultimately converge in OpenSSH's main repo. Over the next couple of months, we will progressively seek OpenSSH's community's feedback, prepare and refactor code as needed, and plan on main repo's integration around mid year 2016.
+The goal of this port is to ultimately converge in OpenSSH's main repo. Over the next couple of months, we will progressively seek feedback from the the OpenSSH community, prepare and refactor code as needed, with a plan to integrate into the main repo around the middle of 2016.
 
 
 #### Rough timeline on when the key tasks would be accomplished:
