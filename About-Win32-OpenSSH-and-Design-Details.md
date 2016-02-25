@@ -72,7 +72,7 @@ Design summary of POSIX wrapper
 | socketpair | CreateNamedPipe | A bi directional named pipe with an internal name is created, CreateFile called to connect from other end. This does not support AF_UNIX ancilliary messages. More details later |
 | setitimer | CreateWaitableTimer |
 
-A fully functional prototype (for socket, file and pipe IO) of this wrapper is available [here](https://github.com/PowerShell/Win32-OpenSSH/tree/L2-Win32Posix-Prototype/contrib/win32/w32-posix-prototype/win32posix.)
+A fully functional prototype (for socket, file and pipe IO) of this wrapper is available [here](https://github.com/PowerShell/Win32-OpenSSH/tree/L2-Win32Posix-Prototype/contrib/win32/w32-posix-prototype/win32posix/win32posix)
 
 #### fork()
 There is no easy fork() equivalent in Windows. fork() is used in OpenSSH in multiple places, of those - 3 are worth mentioning 
