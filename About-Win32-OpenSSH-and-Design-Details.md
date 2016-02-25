@@ -100,7 +100,7 @@ SSHD host public keys and configuration files will be [ACL](https://msdn.microso
 As detailed earlier, session isolation in Windows will be done using CreateProcess based custom logic (in place of fork based logic in Unix). Spawned child process will run as NT Service\SSHD too.
 
 Authentication logic will be different between Windows and Unix. Password authentication is done using [LogonUser](https://msdn.microsoft.com/en-us/library/windows/desktop/aa378184(v=vs.85).aspx) while 
-Key-based authentication will be implemented in a custom [SSP](https://msdn.microsoft.com/en-us/library/windows/desktop/aa380497(v=vs.85).aspx) that is executed in [lsass](https://msdn.microsoft.com/en-us/library/aa939478(v=winembedded.5).aspx). 
+Key-based authentication will be implemented in a custom [SSP](https://msdn.microsoft.com/en-us/library/windows/desktop/aa380497(v=vs.85).aspx) that is executed in [lsass](https://msdn.microsoft.com/en-us/library/aa939478(v=winembedded.5).aspx) (a privileged process). 
 
 End result of authentication in Windows is a Windows user token (if authentication succeeds). SSH sessions that need client user capabilities are hosted in processes running under the context of client user (launched using CreateProcess(user_token)). Ex. cmd.exe for terminal session, sftp_server.exe for sftp session and scp.exe for scp session.
 
