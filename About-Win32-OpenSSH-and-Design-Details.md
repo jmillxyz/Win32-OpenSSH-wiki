@@ -41,6 +41,7 @@ Design summary of POSIX wrapper
 + Maintains internal buffers to accommodate a fundamental underlying difference between POSIX and Win32 IO async models - IOReady Vs IOComplete (Ex for a Read operation, POSIX APIs signal when IO is ready - data will be subsequently explicitly read, Win32 APIs signal when IO has completed - data is already copied to a user provided buffer. Though the internal buffer and additional copy may seem to be a performance hit, a validation exercise did not show any major impact. It in fact proved beneficial in reducing kernel calls during "read"s (ex. reading a header, would fetch the entire packet in a single call). 
 + Maintains Interrupt queue and interrupt handler mapping table. Queue is maintained to temporarily hold interrupts that are otherwise supported in Windows but handled in a different approach typically in a different thread. Ex SIGINT, SIGWINCH. These are processed inside of "wait_for_any" in the main thread. On processing any queued interrupt, this function will return SIGINT.
 + Details on different interrupts handled by OPENSSH code and how they will be handled in Windows
+
 | Signal | Detail |
 |:-------|:-------|
 |SIGINT  |Windows invokes its Ctrl+C handler on a different thread, that handler queues the interrupt in the internal queue and handled by any of the blocking calls (select, etc) |
