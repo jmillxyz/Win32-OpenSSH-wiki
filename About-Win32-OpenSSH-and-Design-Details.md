@@ -24,7 +24,7 @@ POSIX IO calls are a significant part of OpenSSH code. A POSIX IO wrapper will b
 + operations on a single file descriptor - fd_set, FD_* macros, fcntl, read, write, recv, send, fstat, fdopen, close, dup and dup2
 + operations on multiple file descriptors - select
 + signal semantics on these operations - ex. select (or any blocking IO call) returning EINTR
-+ SIGABRT, SIGTERM, SIGCHLD, SIGINT, SIGPIPE and SIGALRM
++ Apart from these, the wrapper also bridges the gap on POSIX signal(). Details below.
 
 Design summary of POSIX wrapper
 + Single threaded (not thread safe based on current needs but can be made so if needed going forward). 
@@ -39,6 +39,19 @@ Design summary of POSIX wrapper
 + FD_CLOEXEC is supported, setting this flag denies inheritance of underlying Windows handle. 
 + Uses [APCs](https://msdn.microsoft.com/en-us/library/windows/desktop/ms681951(v=vs.85).aspx) wherever available and minimzing use of [events](https://msdn.microsoft.com/en-us/library/windows/desktop/ms682655(v=vs.85).aspx). This simplifies code and has performance benefits.
 + Maintains internal buffers to accommodate a fundamental underlying difference between POSIX and Win32 IO async models - IOReady Vs IOComplete (Ex for a Read operation, POSIX APIs signal when IO is ready - data will be subsequently explicitly read, Win32 APIs signal when IO has completed - data is already copied to a user provided buffer. Though the internal buffer and additional copy may seem to be a performance hit, a validation exercise did not show any major impact. It in fact proved beneficial in reducing kernel calls during "read"s (ex. reading a header, would fetch the entire packet in a single call). 
++ Maintains Interrupt queue and interrupt handler mapping table. Queue is maintained to temporarily hold interrupts that are otherwise supported in Windows but handled in a different approach typically in a different thread. Ex SIGINT, SIGWINCH. These are processed inside of "wait_for_any" in the main thread. On processing any queued interrupt, this function will return SIGINT.
++ Details on different interrupts handled by OPENSSH code and how they will be handled in Windows
+| Signal | Detail |
+|:-------|:-------|
+|SIGINT  |Windows invokes its Ctrl+C handler on a different thread, that handler queues the interrupt in the internal queue and handled by any of the blocking calls (select, etc) |
+|SIGWINCH|Like Ctrl+C, a console windows size change event is captured in a native handled, queued and processed in one of the blocking calls |
+| SIGILL, SIGTERM, SIGQUIT, WJSIGNAL,SIGTTIN, SIGTTOU | Not generated in Windows, these may be defined by handlers will never be invoked |
+| SIGHUP | TBD |
+| SIGCHLD | TBD |
+|SIGTSTP | TBD |
+|SIGPIPE | only accepts SIG_IGN handler (that's all OpenSSH uses) |
+|SIGALARM | implemented internally inside the wrapper. handler automatically called when native timer set by CreateWaitableTimer expires |
+
 + Additional details on underlying Win32 calls used
 
 | POSIX IO call  |  Underlying Win32 IO call(s) | Additional details |
@@ -56,6 +69,7 @@ Design summary of POSIX wrapper
 | fstat |  TBD |     |
 | dup, dup2 | SetStdHandle | only supported on standard IO file descriptors (used for IO redirection) |
 | socketpair | CreateNamedPipe | A bi directional named pipe with an internal name is created, CreateFile called to connect from other end. This does not support AF_UNIX ancilliary messages. More details later |
+| setitimer | CreateWaitableTimer |
 
 A fully functional prototype (for socket, file and pipe IO) of this wrapper is available [here](https://github.com/PowerShell/Win32-OpenSSH/tree/L2-Win32Posix-Prototype/contrib/win32/w32-posix-prototype/win32posix.)
 
