@@ -24,7 +24,7 @@ POSIX IO calls are a significant part of OpenSSH code. A POSIX IO wrapper will b
 + operations on a single file descriptor - fd_set, FD_* macros, fcntl, read, write, recv, send, fstat, fdopen, close, dup and dup2
 + operations on multiple file descriptors - select
 + signal semantics on these operations - ex. select (or any blocking IO call) returning EINTR
-+ Apart from these, the wrapper also bridges the gap on POSIX signal(). Details below.
++ Apart from these, the wrapper also bridges the gap in using POSIX signal. Details below.
 
 Design summary of POSIX wrapper
 + Single threaded (not thread safe based on current needs but can be made so if needed going forward). 
