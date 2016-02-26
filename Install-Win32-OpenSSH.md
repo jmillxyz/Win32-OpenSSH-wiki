@@ -10,7 +10,7 @@
      * `New-NetFirewallRule -Protocol TCP -LocalPort 22 -Direction Inbound -Action Allow -DisplayName SSH`
 * If you need key-based authentication, run the following to setup the key-auth package
           
-    * `cmd /c setup-ssh-lsa.cmd`
+    * `powershell.exe .\install-sshlsa.ps1`
     * `Restart-Computer`
 
 * Install and run daemon as NT Service running as Local System
@@ -31,3 +31,5 @@ netsh advfirewall firewall add rule name='SSH Port' dir=in action=allow protocol
      * `Stop-Service sshd`
 * Uninstall
      * `.\sshd.exe uninstall`
+     * `powershell .\uninstall-sshlsa.ps1`
+     * Reboot if you need to install a newer version of Win32-OpenSSH
