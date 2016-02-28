@@ -1,6 +1,6 @@
 ## Install Win32 OpenSSH (test release)
 
-1. Download the latest [64-bit](https://github.com/PowerShell/Win32-OpenSSH/releases/download/latest/OpenSSH-Win64.zip) or [32-bit](https://github.com/PowerShell/Win32-OpenSSH/releases/download/latest/OpenSSH-Win32.zip) release
+1. Download the [latest](https://github.com/PowerShell/Win32-OpenSSH/releases/latest/) build 
 * Extract contents to `C:\Program Files\OpenSSH-Win32`
 * Start Powershell as Administrator
      * `cd 'C:\Program Files\OpenSSH-Win32'`
