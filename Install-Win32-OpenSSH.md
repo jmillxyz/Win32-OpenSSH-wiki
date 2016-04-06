@@ -14,7 +14,7 @@
     * `Restart-Computer`
 
 * Install and run daemon as NT Service running as Local System
-     * `.\sshd.exe install`
+     * `powershell.exe .\install-sshd.ps1`
      * `Start-Service sshd`
      * Make the service start on boot (PowerShell): `Set-Service sshd -StartupType Automatic`
 
@@ -30,6 +30,6 @@ netsh advfirewall firewall add rule name='SSH Port' dir=in action=allow protocol
 * Stop the service
      * `Stop-Service sshd`
 * Uninstall
-     * `.\sshd.exe uninstall`
+     * `powershell.exe .\uninstall-sshd.ps1`
      * `powershell .\uninstall-sshlsa.ps1`
      * Reboot if you need to install a newer version of Win32-OpenSSH
