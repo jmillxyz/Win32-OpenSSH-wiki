@@ -85,7 +85,7 @@ There is no easy fork() equivalent in Windows. fork() is used in OpenSSH in mult
 #### AF_UNIX domain sockets
 Unix domain sockets are used for IPC communication between processes on the same host. Apart from providing stream/datagram modes, they also support a secure way to transmit ancillary data (like file descriptors). The only place ancillary data is used in OpenSSH is in "ProxyUseFDPass" feature where a proxy command is issued by ssh client to create a connected socket, and its FD is transmitted back over IPC. This feature will be disabled on Windows. The rest of the places AF_UNIX sockets are used:
 + ControlMaster - used to multiplex multiple sessions over a single SSH connection. 
-+ SSHAgent - used to managed store keys and crypto validation based on those. Current plan is to replace its client side usage with Windows Credential manager. We will discuss its relevance on server side later in this page.
++ SSHAgent - used to managed store keys and crypto validation based on those. SSH agent and key management for Windows are discussed later in this document.
 + Local Socket Forwarding - This is forwarding traffic to AF_UNIX sockets and this feature is not applicable in Windows
 + SSHD rexec - Not applicable for Windows. SSHD will be implemented as Windows service, that can be configured for auto restart.
 + SSHD from inetd - Not applicable for Windows. 
@@ -93,9 +93,22 @@ Unix domain sockets are used for IPC communication between processes on the same
 AF_UNIX channel will be implemented using secure bidirectional named pipes in Windows. This does not support ancillary data but is sufficient for above listed features relevant in Windows. 
 
 #### Privilege Separation and Security model in Windows (tentative design)
-SSHD will be implemented as a Windows service, running in its [virtual account](https://technet.microsoft.com/en-us/library/dd548356.aspx) context - NT Service\SSHD - this is a restricted account that will only be granted the following needed privileges - to be added. 
+SSHD will be implemented as a Windows service, running in its [virtual account](https://technet.microsoft.com/en-us/library/dd548356.aspx) context - NT Service\SSHD - this is a restricted account that will only be granted the following needed privileges (primarily needed to spawn off processes as client user): 
++ SE_ASSIGNPRIMARYTOKEN_NAME
++ SE_INCREASE_QUOTA_NAME 
 
-SSHD host public keys and configuration files will be [ACL](https://msdn.microsoft.com/en-us/library/windows/desktop/aa374872(v=vs.85).aspx)ed to allow READ by NT Service\SSHD. SSHD host private keys are ACLed to admin-only access - mandating that relying signature generation happens in a privileged process. We will be leveraging ssh-agent for this purpose, adding additional logic to launch it automatically on demand  (most likely using COM). ssh-agent will serve all signature requests irrespective of whether the private key is password protected/not.
+ssh-agent will be reimplemented for Windows as a Windows service, running as LocalSystem with TCB privileges (equivalent to root on Linux). It will serve as an executive process serving the following "privileged" ssh operations:
+Each of the following operations will require explicit user interaction to safeguard against phishing attacks. 
++ Create(or import) a host key - All host keys, to be used by ssh for host authentication will need to be registered with ssh-agent.  The registration process will be similar to ssh-add usage in Unix. Host keys will be internally encrypted using DPAPI - protection level is equivalent to that of user accounts stored in Windows security database.
++ Export a host key - A new tool (calls ssh-get ?) will be implemented for the Windows version of OpenSSH to retrieve registered host keys. This operation is admin-only.
++ Create (or import) a user key. All user keys, to be used by ssh for the purpose of key-based authentication will have to be registered with ssh-agent (just like host keys). User keys are DPAI double encrypted both using machine context and user context.
++ Export a user key - similar to exporting a host key, except that a user can only retrieve his/her keys - even an admin cannot retrieve other user's keys (since they are encrypted using user's context)
++ Delete a host or a user key
++ Create (query and delete) a public key mapping - maps a public key to a local user account. This is the Windows equivalent of authorized_keys in Unix. A restricted user can only create his/her mappings while an admin can manage any mapping. 
+
+ssh-agent will also serve the following executive operations:
++ signature generation - using a registered key. 
++ key authentication - ensuring validity of public key mapping, validating a signed payload as part of client key based authentication and generating a Windows user token.
 
 As detailed earlier, session isolation in Windows will be done using CreateProcess based custom logic (in place of fork based logic in Unix). Spawned child process will run as NT Service\SSHD too.
 
