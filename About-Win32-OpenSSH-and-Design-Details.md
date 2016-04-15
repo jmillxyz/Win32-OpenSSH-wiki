@@ -99,10 +99,10 @@ SSHD will be implemented as a Windows service, running in its [virtual account](
 
 ssh-agent will be reimplemented for Windows as a Windows service, running as LocalSystem with TCB privileges (equivalent to root on Linux). It will serve as an executive process serving the following "privileged" ssh operations:
 Each of the following operations will require explicit user interaction to safeguard against phishing attacks. 
-+ Create(or import) a host key - All host keys, to be used by ssh for host authentication will need to be registered with ssh-agent.  The registration process will be similar to ssh-add usage in Unix. Host keys will be internally encrypted using DPAPI - protection level is equivalent to that of user accounts stored in Windows security database.
-+ Export a host key - A new tool (calls ssh-get ?) will be implemented for the Windows version of OpenSSH to retrieve registered host keys. This operation is admin-only.
-+ Create (or import) a user key. All user keys, to be used by ssh for the purpose of key-based authentication will have to be registered with ssh-agent (just like host keys). User keys are DPAI double encrypted both using machine context and user context.
-+ Export a user key - similar to exporting a host key, except that a user can only retrieve his/her keys - even an admin cannot retrieve other user's keys (since they are encrypted using user's context)
++ Create(or import) a host key - All host keys, to be used by ssh deamon for host authentication will need to be registered with ssh-agent.  The registration process will be similar to ssh-add usage in Unix. Host keys will be internally encrypted using DPAPI - protection level is equivalent to that of user accounts stored in Windows security database.
++ Export a host key - A new tool (called ssh-get ?) will be implemented for the Windows version of OpenSSH to retrieve registered host keys. This operation is admin-only.
++ Create (or import) a user key. All user keys, to be used by ssh for the purpose of key-based authentication will have to be registered with ssh-agent (just like host keys). User keys are DPAI double encrypted using machine context and user context.
++ Export a user key - similar to exporting a host key, except that a user can only retrieve his/her keys - even an admin cannot retrieve other user's keys (since they are encrypted using user's context).
 + Delete a host or a user key
 + Create (query and delete) a public key mapping - maps a public key to a local user account. This is the Windows equivalent of authorized_keys in Unix. A restricted user can only create his/her mappings while an admin can manage any mapping. 
 
