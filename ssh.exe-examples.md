@@ -9,9 +9,12 @@
 
 1. Generate a key pair on the client:
      * `ssh-keygen.exe -t rsa -f id_rsa`
-2. Copy `id_rsa.pub` (client's public key) to corresponding user's directory on ssh HOST
+2. Register private key with ssh-agent (for single sign-on experience)
+     * `net start ssh-agent`
+     * `ssh-add id_rsa` 
+3. Copy `id_rsa.pub` (client's public key) to corresponding user's directory on ssh HOST
      * as `%systemdrive%\users\user\\.ssh\authorized_keys`
-3. Login using private key
+4. Login using private key
      * `ssh.exe -i .\id_rsa user@host` (work group user)
      * `ssh.exe -i .\id_rsa -l user@domain host` (domain user)
 
