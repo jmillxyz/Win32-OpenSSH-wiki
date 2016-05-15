@@ -6,6 +6,16 @@
      * `cd 'C:\Program Files\OpenSSH-Win32'`
 * Setup SSH host keys (this will generate all the 'host' keys that sshd expects when its starts)
      * `.\ssh-keygen.exe -A`
+* Secure SSH host keys
+     * `net start ssh-agent`
+     * download psexec from [here](https://technet.microsoft.com/en-us/sysinternals/psexec.aspx)
+     * launch cmd.exe as SYSTEM - `psexec.exe -i -s cmd.exe`
+     * register host keys in above cmd.exe
+     * `ssh-add ssh_host_dsa_key`
+     * `ssh-add ssh_host_rsa_key`
+     * `ssh-add ssh_host_ecdsa_key`
+     * `ssh-add ssh_host_ed25519_key`
+     * host private keys are now securely stored by ssh-agent, private key files can be removed at this point.
 * Open Firewall
      * `New-NetFirewallRule -Protocol TCP -LocalPort 22 -Direction Inbound -Action Allow -DisplayName SSH`
 * If you need key-based authentication, run the following to setup the key-auth package
