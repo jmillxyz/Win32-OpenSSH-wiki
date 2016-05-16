@@ -6,6 +6,8 @@
 
 [Install Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
+[Troubleshooting](Troubleshooting Steps)
+
 [SSH Usage Examples](https://github.com/PowerShell/Win32-OpenSSH/wiki/ssh.exe-examples)
 
 [SFTP Usage Examples](https://github.com/PowerShell/Win32-OpenSSH/wiki/sftp.exe-examples)
