@@ -1,3 +1,7 @@
+If sshd cannot start
+  * Check that sshd_config is in place
+  * Check that host keys are generated
+
 Trouble shooting steps for typical connection issues:
 - Server side - run sshd in debug mode
    * `net stop sshd`
