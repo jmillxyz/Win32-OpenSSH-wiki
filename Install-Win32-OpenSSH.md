@@ -9,7 +9,7 @@
 * Setup SSH host keys (this will generate all the 'host' keys that sshd expects when its starts)
      * `.\ssh-keygen.exe -A`
 * Secure SSH host keys (optional)
-     * `net start ssh-agent`
+     * `Start-Service ssh-agent`
      * download psexec from [here](https://technet.microsoft.com/en-us/sysinternals/psexec.aspx)
      * launch cmd.exe as SYSTEM - `psexec.exe -i -s cmd.exe`
      * register host keys in above cmd.exe
@@ -24,8 +24,7 @@
           
     * `powershell.exe .\install-sshlsa.ps1` (for Win7 and Server 2008, see [here](https://github.com/PowerShell/Win32-OpenSSH/issues/189))
     * `Restart-Computer`
-* Install sshd and ssh-agent services. 
-     * `powershell.exe .\install-sshd.ps1`
+* Set sshd in auto-start mode and open up firewall (optional)
      * `Start-Service sshd`
      * Make the service start on boot (PowerShell): `Set-Service sshd -StartupType Automatic`
 
