@@ -25,7 +25,8 @@
     * `powershell.exe .\install-sshlsa.ps1` (for Win7 and Server 2008, see [here](https://github.com/PowerShell/Win32-OpenSSH/issues/189))
     * `Restart-Computer`
 * Set sshd in auto-start mode and open up firewall (optional)
-     * `Start-Service sshd`
+     * `Set-Service sshd -StartupType Automatic`
+     * `Set-Service ssh-agent -StartupType Automatic`
      * Make the service start on boot (PowerShell): `Set-Service sshd -StartupType Automatic`
 
 `New-NetFirewallRule` is for servers only. If you're on a workstation try:
