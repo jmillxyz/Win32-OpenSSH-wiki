@@ -6,6 +6,7 @@
      * `cd 'C:\Program Files\OpenSSH-Win32'`
 * Install sshd and ssh-agent services. 
      * `powershell.exe .\install-sshd.ps1`
+     * `ntrights.exe -u "NT SERVICE\SSHD" +r SeAssignPrimaryTokenPrivilege`
 * Setup SSH host keys (this will generate all the 'host' keys that sshd expects when its starts)
      * `.\ssh-keygen.exe -A`
 * Secure SSH host keys (optional)
