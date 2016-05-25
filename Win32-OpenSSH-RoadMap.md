@@ -20,7 +20,7 @@ The goal of this port is to ultimately converge in OpenSSH's main repo. Over the
 
 
 
-The intention is to be close in feature parity with OpenSSH 7/15, following OpenSSH features will however will NOT be ready by this deadline:
+The intention is to be close in feature parity with OpenSSH by 7/15, following OpenSSH features will however will NOT be ready by this deadline:
 - VerifyHostKeyDNS
 - Client ControlMaster
 - Background ssh execution mode
