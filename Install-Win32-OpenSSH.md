@@ -1,9 +1,9 @@
 ## Install Win32 OpenSSH (test release)
 
 1. Download the [latest](https://github.com/PowerShell/Win32-OpenSSH/releases/latest/) build. To get links to latest downloads - see [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/How-to-retrieve-links-to-latest-packages). A [Chocolatey package](https://github.com/PowerShell/Win32-OpenSSH/wiki/Win32-OpenSSH-Automated-Install-and-Upgrade-using-Chocolatey) is also available if you prefer. 
-* Extract contents to `C:\Program Files\OpenSSH-Win32`
+* Extract contents to `C:\Program Files\OpenSSH`
 * Start Powershell as Administrator
-     * `cd 'C:\Program Files\OpenSSH-Win32'`
+     * `cd 'C:\Program Files\OpenSSH'`
 * Install sshd and ssh-agent services. 
      * `powershell.exe .\install-sshd.ps1`
 * Setup SSH host keys (this will generate all the 'host' keys that sshd expects when its starts)
