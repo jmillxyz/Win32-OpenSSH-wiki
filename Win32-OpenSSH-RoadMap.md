@@ -1,11 +1,11 @@
 _This is a living document_
 
 The primary focus over the next 3-4 months is three fold:
-#### Reliability (March)
+#### Reliability (March) - Status - done
 The current implementation of the POSIX IO wrapper ("select" and "fd" IO) for Windows has some limitations. Specifically, since it spawns numerous threads (one for each set fd in fd_sets passed to select), it does not scale. The overhead of synchronization between these threads impacts performance and reliability. We are currently working on replacing this with one that takes advantage of the native asynchronous IO support available in Windows (Overlapped IO) - hoping that many of the random IO related issues being reported will be resolved with this change. 
-#### Security (April, May)
+#### Security (April, May) - Status - done
 Our current implementation requires the SSH daemon to run as Local System with high privileges. We are working on moving to a more secure model that runs the daemon with the least privileges required (and most likely as Network Service). We will also address other Windows relevant security aspects including key-based authentication and secure credential/passphrase management.
-#### Code Prep (June, July)
+#### Code Prep - Status - In progress
 The goal of this port is to ultimately converge in OpenSSH's main repo. Over the next couple of months, we will progressively seek feedback from the the OpenSSH community, prepare and refactor code as needed, with a plan to integrate into the main repo around the middle of 2016.
 
 
@@ -15,12 +15,12 @@ The goal of this port is to ultimately converge in OpenSSH's main repo. Over the
 | ---           |---                     | ---       |
 | 3/31/2016     | Reliability Enhancements |           |
 | 5/15/2016     | Security Enhancements     |        |
-| 6/15/2015     | Code Prep for integration |        |
+| 8/15/2015     | Code Prep for integration |        |
 | 9/15/2015     | Integration in main repo  |        |
 
 
 
-The intention is to be close in feature parity with OpenSSH by 7/15, following OpenSSH features will however will NOT be ready by this deadline:
+The intention is to be close in feature parity with OpenSSH by 9/15, following OpenSSH features will however will NOT be ready by this deadline:
 - VerifyHostKeyDNS
 - Client ControlMaster
 - Background ssh execution mode
