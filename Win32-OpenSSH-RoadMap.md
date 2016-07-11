@@ -16,7 +16,7 @@ The goal of this port is to ultimately converge in OpenSSH's main repo. Over the
 | 3/31/2016     | Reliability Enhancements |           |
 | 5/15/2016     | Security Enhancements     |        |
 | 6/15/2015     | Code Prep for integration |        |
-| 7/15/2015     | Integration in main repo  |        |
+| 9/15/2015     | Integration in main repo  |        |
 
 
 
