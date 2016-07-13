@@ -97,13 +97,10 @@ SSHD will be implemented as a Windows service, running in its [virtual account](
 + SE_ASSIGNPRIMARYTOKEN_NAME
 + SE_INCREASE_QUOTA_NAME 
 
-ssh-agent will be reimplemented for Windows as a Windows service, running as LocalSystem with TCB privileges (equivalent to root on Linux). It will serve as an executive process serving the following "privileged" ssh operations:
-Each of the following operations will require explicit user interaction to safeguard against phishing attacks. 
-+ Create(or import) a host key - All host keys, to be used by ssh deamon for host authentication will need to be registered with ssh-agent.  The registration process will be similar to ssh-add usage in Unix. Host keys will be internally encrypted using DPAPI - protection level is equivalent to that of user accounts stored in Windows security database.
-+ Export a host key - A new tool (called ssh-get ?) will be implemented for the Windows version of OpenSSH to retrieve registered host keys. This operation is admin-only.
-+ Create (or import) a user key. All user keys, to be used by ssh for the purpose of key-based authentication will have to be registered with ssh-agent (just like host keys). User keys are DPAI double encrypted using machine context and user context.
-+ Export a user key - similar to exporting a host key, except that a user can only retrieve his/her keys - even an admin cannot retrieve other user's keys (since they are encrypted using user's context).
-+ Delete a host or a user key
+ssh-agent will be reimplemented for Windows as a Windows service, running as LocalSystem with TCB privileges (equivalent to root on Linux). It will serve the role of the deamon's executive broker. Unlike in Unix, ssh-agent will listen on a known static IPC port, serving the following requests:
++ Register a host key - All host keys, to be used by ssh deamon for host authentication can be securely registered with ssh-agent.  The registration process will be similar to ssh-add usage in Unix. Host keys will be internally encrypted using DPAPI using OS System account.
++ Register a user key - User keys, can be securely one-time registered with ssh-agent for a single sign-on experience. These keys are DPAI encrypted using user's password and ACL'ed as SYSTEM only. This ensures that malware running under user's context can never steal key material.
++ Delete a host or a user key - Similar to ssh-add usage in Unix. 
 + Create (query and delete) a public key mapping - maps a public key to a local user account. This is the Windows equivalent of authorized_keys in Unix. A restricted user can only create his/her mappings while an admin can manage any mapping. 
 
 ssh-agent will also serve the following executive operations:
