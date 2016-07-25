@@ -5,7 +5,7 @@ The current implementation of the POSIX IO wrapper ("select" and "fd" IO) for Wi
 #### Security (April, May) - Status - done
 Our current implementation requires the SSH daemon to run as Local System with high privileges. We are working on moving to a more secure model that runs the daemon with the least privileges required (and most likely as Network Service). We will also address other Windows relevant security aspects including key-based authentication and secure credential/passphrase management.
 #### Code Prep - Status - In progress
-The goal of this port is to ultimately converge in OpenSSH's main repo. Over the next couple of months, we will progressively seek feedback from the the OpenSSH community, prepare and refactor code as needed, with a plan to integrate into the main repo around the middle of 2016.
+The goal of this port is to ultimately converge in OpenSSH's main repo. Over the next couple of months, we will progressively seek feedback from the the OpenSSH community, prepare and refactor code as needed, with a plan to integrate into the main repo around Oct 2016.
 
 
 #### Rough timeline on when the key tasks would be accomplished:
@@ -14,8 +14,8 @@ The goal of this port is to ultimately converge in OpenSSH's main repo. Over the
 | ---           |---                     | ---       |
 | 3/31/2016     | Reliability Enhancements |           |
 | 5/15/2016     | Security Enhancements     |        |
-| 8/15/2016     | Code Prep for integration |        |
-| 9/15/2016     | Integration in main repo  |        |
+| 8/30/2016     | Code Prep for integration |        |
+| 9/30/2016     | Integration in main repo  |        |
 
 
 
