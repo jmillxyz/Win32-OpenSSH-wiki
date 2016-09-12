@@ -16,5 +16,8 @@ Refer to project scope [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/P
 #### Work in pipeline
  - Unicode support in Windows: Windows APIs are typically UTF-16 based while on Unix, its UTF-8. Need to figure out a workable solution that would support both models.  
  - POSIX File API support in Windows: Currently SFTP and SCP have significant Windows differentiated code. This enables effective Unix based code usage on Windows.  
-- Code cleanup and refactoring: In entire project specific logic has been ifdef'ed and spread out at various places in the project in an attempt to achieve a workable solution on Windows. These need to be cleaned up and refactored as per OpenBSD's coding guidelines in order to get to an acceptable state. 
+ - Code cleanup and refactoring: In entire project specific logic has been ifdef'ed and spread out at various places in the project in an attempt to achieve a workable solution on Windows. These need to be cleaned up and refactored as per OpenBSD's coding guidelines in order to get to an acceptable state. 
+ - Syncing Win32 fork with the latest changes from OpenSSH main repo.
+ - SAL annotate Win32 specific code. Run static analysis.
  - Fix bugs to be addressed for this [milestone](https://github.com/PowerShell/Win32-OpenSSH/milestone/1). 
+
