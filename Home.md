@@ -1,6 +1,6 @@
 ##### Welcome to the Win32-OpenSSH wiki!
 
-[Project RoadMap](https://github.com/PowerShell/Win32-OpenSSH/wiki/Win32-OpenSSH-RoadMap)
+[Project Status](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Status)
 
 [Design Details](About Win32 OpenSSH and Design Details)
 
