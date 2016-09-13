@@ -10,7 +10,7 @@
      * `.\ssh-keygen.exe -A`
 * Secure SSH host keys (optional)
      * `Start-Service ssh-agent`
-     * download psexec from [here](https://technet.microsoft.com/en-us/sysinternals/psexec.aspx)
+     * download psexec from [here](https://technet.microsoft.com/en-us/sysinternals/pxexec.aspx)
      * launch cmd.exe as SYSTEM - `psexec.exe -i -s cmd.exe`
      * register host keys in above cmd.exe
      * `ssh-add ssh_host_dsa_key`
