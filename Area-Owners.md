@@ -6,3 +6,4 @@
 |Area-SFTP| Bingbing8 |
 |Area-ssh-agent| ManojAmpalam |
 |Area-Terminal experience| RayHayes |
+|Area-Core | ManojAmpalam |
