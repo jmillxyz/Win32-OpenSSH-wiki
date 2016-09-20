@@ -8,7 +8,7 @@ Refer to project scope [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/P
  - Secure ssh-agent: A different version of agent is authored for Windows to fit Windows security model and enable a Single Sign-On experience. 
 
 #### Work in progress (ETA - 9/23)
- - Improving Terminal experience: Interactive remote shell experience in the current version of this project is impacted by a bunch of [issues](https://github.com/PowerShell/Win32-OpenSSH/issues?q=is%3Aopen+is%3Aissue+label%3A%22Terminal+experience%22). Following is being done to address these:
+ - Improving Terminal experience: Interactive remote shell experience in the current version of this project is impacted by a bunch of [issues](https://github.com/PowerShell/Win32-OpenSSH/labels/Area-Terminal%20experience). Following is being done to address these:
     - Rewriting client side ANSI parser to enable ssh client to accurately interpret and render VT100 (mapping VT100 to Windows console calls). 
     - Enable ssh server to support rich Windows console application over remote sessions (mapping Windows console calls to VT100)
     - Validating the following key strokes behavior on multiple SSH targets - CR+LF, BS, Tab and Arrow Keys. 
