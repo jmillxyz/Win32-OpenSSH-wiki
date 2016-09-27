@@ -5,7 +5,7 @@
 * Start Powershell as Administrator
      * `cd 'C:\Program Files\OpenSSH'`
 * Install sshd and ssh-agent services. 
-     * `powershell.exe .\install-sshd.ps1`
+     * `powershell -executionpolicy bypass -file install-sshd.ps1`
 * Setup SSH host keys (this will generate all the 'host' keys that sshd expects when its starts)
      * `.\ssh-keygen.exe -A`
 * Secure SSH host keys (optional)
@@ -22,7 +22,7 @@
      * `New-NetFirewallRule -Protocol TCP -LocalPort 22 -Direction Inbound -Action Allow -DisplayName SSH`
 * If you need key-based authentication, run the following to setup the key-auth package
           
-    * `powershell -executionpolicy bypass -file install-sshd.ps1` (for Win7 and Server 2008, see [here](https://github.com/PowerShell/Win32-OpenSSH/issues/189))
+    * `powershell -executionpolicy bypass -file install-sshlsa.ps1` (for Win7 and Server 2008, see [here](https://github.com/PowerShell/Win32-OpenSSH/issues/189))
     * `Restart-Computer`
 * Set sshd in auto-start mode and open up firewall (optional)
      * `Set-Service sshd -StartupType Automatic`
