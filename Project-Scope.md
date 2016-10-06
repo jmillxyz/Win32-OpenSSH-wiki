@@ -8,6 +8,7 @@ Intent of this project is to get to a state that can converge to and integrate i
 - Host based authentication
 - Authentication forwarding
 - Compression
+- ProxyCommand
 (Windows specific feature/work items)
 - MINGW build support
 - Use MS CNG (instead of OpenSSL)
