@@ -1,4 +1,4 @@
-Win32-OpenSSH's Chocolatey package can be found [here](https://chocolatey.org/packages/win32-openssh). The package is authored and being maintained by [@DarwinJS](https://github.com/DarwinJS). It is typically updated within a couple of days of a new release on GitHub. 
+Win32-OpenSSH's Chocolatey package can be found [here](https://chocolatey.org/packages/openssh). The package is authored and being maintained by [@DarwinJS](https://github.com/DarwinJS). It is typically updated within a couple of days of a new release on GitHub. 
 
 The package automates the install steps listed in [wiki](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH). The package is also engineered to use 'Choco upgrade win32-openssh' to update to the latest release.
 Be sure to look over the installation instructions on Chocolatey as the package takes special switches to install, upgrade and uninstall the sshd service and a special switch to completely clean up server keys on an uninstall.
@@ -16,7 +16,7 @@ These differences are mainly due to assuming you are deploying this automaticall
 - Gives next steps advice - for instance if you install the sshd server to use key based authentication the package *does not start the sshd service* and advises that you need to reboot to fully enact key based authentication.
 
 ## Chocolatey Package Usage Scenarios
-Here is the package page: [https://chocolatey.org/packages/win32-openssh]
+Here is the package page: [https://chocolatey.org/packages/openssh]
 
 Here are the individual steps (or use the oneliners below to do all steps):
 - Install Chocolate Package Manager using one of the command lines on the Chocolatey.org home page [https://chocolatey.org]
