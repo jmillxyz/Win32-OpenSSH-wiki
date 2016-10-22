@@ -2,7 +2,9 @@
 
 Download and Install VS 2015 [Community Edition](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx)  
 Download and Install [Strawberry Perl](http://strawberryperl.com/) (needed for building OpenSSL)  
+Download and Install [NASM](http://www.nasm.us)
 Open 'VS2015 x64 Native Tools Command Prompt'  
+Add Perl and NASM installation directories to %PATH%
 Build OpenSSL. (Substitute with your own build dirs where needed)  
 
     cd D:\programming\OpenSSL\openssl-1.0.2f
