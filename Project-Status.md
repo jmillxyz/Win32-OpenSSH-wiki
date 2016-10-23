@@ -13,7 +13,6 @@ Refer to project scope [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/P
  - POSIX File API support in Windows: Currently SFTP and SCP have significant Windows differentiated code. This enables effective Unix based code usage on Windows.  Tracked [here](https://github.com/PowerShell/Win32-OpenSSH/issues/320).
 
 #### Work in pipeline
- - Enable PTY on nano server. 
  - Code cleanup and refactoring: In entire project specific logic has been ifdef'ed and spread out at various places in the project in an attempt to achieve a workable solution on Windows. These need to be cleaned up and refactored as per OpenBSD's coding guidelines in order to get to an acceptable state. Tracked [here] (https://github.com/PowerShell/Win32-OpenSSH/issues?q=is%3Aopen+is%3Aissue+label%3A%22Area-Code+Cleanup%22).
  - Syncing Win32 fork with the latest changes from OpenSSH main repo. Tracked [here] (https://github.com/PowerShell/Win32-OpenSSH/issues/328).
  - SAL annotate Win32 specific code. Run static analysis.Tracked [here] (https://github.com/PowerShell/Win32-OpenSSH/issues/329).
