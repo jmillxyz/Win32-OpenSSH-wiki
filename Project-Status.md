@@ -6,7 +6,7 @@ Refer to project scope [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/P
  - Visual Studio 2015 solution to build OpenSSH for Windows.
  - Secure architecture for Windows: OpenSSH server side architecture is altered for Windows adhering to its security principles. This is done with minimal impact to overall source layout. 
  - Secure ssh-agent: A different version of agent is authored for Windows to fit Windows security model and enable a Single Sign-On experience. 
- - VT100/ANSI TTY and PTY: Rewritten client side ANSI parser to accurately interpret and render VT100 stream on Windows console. Server side VT100 PTY that will support rich Windows console applications. 
+ - VT100/ANSI TTY and PTY: Rewritten client side ANSI parser to accurately interpret and render VT100 stream on Windows console. Server side VT100 PTY that will support rich Windows console applications. Due to missing dependencies on Nano, this feature is only supported on full SKUs. 
 
 #### Work in progress
  - Unicode support in Windows: Windows APIs are typically UTF-16 based while on Unix, its UTF-8. Details [here](https://github.com/PowerShell/Win32-OpenSSH/issues/319).  
