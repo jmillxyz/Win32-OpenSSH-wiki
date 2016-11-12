@@ -101,11 +101,11 @@ ssh-agent will be reimplemented for Windows as a Windows service, running as Loc
 + Register a host key - All host keys, to be used by ssh deamon for host authentication can be securely registered with ssh-agent.  The registration process will be similar to ssh-add usage in Unix. Host keys will be internally encrypted using DPAPI using OS System account.
 + Register a user key - User keys, can be securely one-time registered with ssh-agent for a single sign-on experience. These keys are DPAI encrypted using user's password and ACL'ed as SYSTEM only. This ensures that malware running under user's context can never steal key material.
 + Delete a host or a user key - Similar to ssh-add usage in Unix. 
-+ Create (query and delete) a public key mapping - maps a public key to a local user account. This is the Windows equivalent of authorized_keys in Unix. A restricted user can only create his/her mappings while an admin can manage any mapping. 
++ signature generation and validation - using a registered key. 
 
-ssh-agent will also serve the following executive operations:
-+ signature generation - using a registered key. 
-+ key authentication - ensuring validity of public key mapping, validating a signed payload as part of client key based authentication and generating a Windows user token.
+In addition ssh-agent will also serve the following operations
++ Authentication: ssh-agent will currently serve Basic and Key-Based authentication. It will be responsible for generating the client/user token once authentication succeeds. This includes:
+  + key authentication - ensuring validity of public key mapping, validating a signed payload as part of client key based authentication and generating a Windows user token.
 
 As detailed earlier, session isolation in Windows will be done using CreateProcess based custom logic (in place of fork based logic in Unix). Spawned child process will run as NT Service\SSHD too.
 
