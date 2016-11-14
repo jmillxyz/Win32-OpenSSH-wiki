@@ -92,18 +92,18 @@ Unix domain sockets are used for IPC communication between processes on the same
 
 AF_UNIX channel will be implemented using secure bidirectional named pipes in Windows. This does not support ancillary data but is sufficient for above listed features relevant in Windows. 
 
-#### Privilege Separation and Security model in Windows (tentative design)
+#### Privilege Separation and Security model in Windows
 SSHD will be implemented as a Windows service, running in its [virtual account](https://technet.microsoft.com/en-us/library/dd548356.aspx) context - NT Service\SSHD - this is a restricted account that will only be granted the following needed privileges (primarily needed to spawn off processes as client user): 
 + SE_ASSIGNPRIMARYTOKEN_NAME
 + SE_INCREASE_QUOTA_NAME 
 
-ssh-agent will be reimplemented for Windows as a Windows service, running as LocalSystem with TCB privileges (equivalent to root on Linux). It will serve the role of the deamon's executive broker. Unlike in Unix, ssh-agent will listen on a known static IPC port, serving the following requests:
+ssh-agent will be reimplemented for Windows as a Windows service, running as LocalSystem with TCB privileges (equivalent to root on Linux). Unlike in Unix, ssh-agent will listen on a known static IPC port. This is done as a security measure to protect ssh-agent port from hijack/spoof attacks. It serves the following requests that need be processed at SYSTEM privilege level:
 + Register a host key - All host keys, to be used by ssh deamon for host authentication can be securely registered with ssh-agent.  The registration process will be similar to ssh-add usage in Unix. Host keys will be internally encrypted using DPAPI using OS System account.
 + Register a user key - User keys, can be securely one-time registered with ssh-agent for a single sign-on experience. These keys are DPAI encrypted using user's password and ACL'ed as SYSTEM only. This ensures that malware running under user's context can never steal key material.
 + Delete a host or a user key - Similar to ssh-add usage in Unix. 
 + signature generation and validation - using a registered key. 
 
-In addition ssh-agent will also serve the following operations
+The above listed requests are similar to what ssh-agent serves in Unix. In addition, on Windows, ssh-agent will also serve the following operations
 + Authentication: ssh-agent will currently serve Basic and Key-Based authentication. It will be responsible for generating the client/user token once authentication succeeds. This includes:
   + key authentication - ensuring validity of public key mapping, validating a signed payload as part of client key based authentication and generating a Windows user token. Token generation is done using S4U for domain accounts and a custom SSP for local accounts. 
   + Basic authentication - done using [LogonUser](https://msdn.microsoft.com/en-us/library/windows/desktop/aa378184(v=vs.85).aspx). 
