@@ -113,8 +113,11 @@ As detailed earlier, session isolation in Windows will be done using CreateProce
 End result of authentication in Windows is a Windows user token (if authentication succeeds). SSH sessions that need client user capabilities are hosted in processes running under the context of client user (launched using CreateProcess(user_token)). Ex. cmd.exe for terminal session, sftp_server.exe for sftp session and scp.exe for scp session.
 
 
+Shown below is a high level overview of the various SSH components and access boundaries for various resources involved: 
 
 ![HLA](https://cloud.githubusercontent.com/assets/14185020/20284248/367b1f76-aa71-11e6-9243-6034eae07ba8.JPG)
+
+
 
  
 
