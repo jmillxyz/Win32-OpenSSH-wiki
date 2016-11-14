@@ -114,7 +114,7 @@ End result of authentication in Windows is a Windows user token (if authenticati
 
 
 
-
+![HLA](https://cloud.githubusercontent.com/assets/14185020/20284248/367b1f76-aa71-11e6-9243-6034eae07ba8.JPG)
 
  
 
