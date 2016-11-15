@@ -13,9 +13,11 @@ Refer to project scope [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/P
 
 #### Work in progress
  - Code cleanup and refactoring: In entire project specific logic has been ifdef'ed and spread out at various places in the project in an attempt to achieve a workable solution on Windows. These need to be cleaned up and refactored as per OpenBSD's coding guidelines in order to get to an acceptable state. Tracked [here] (https://github.com/PowerShell/Win32-OpenSSH/issues?q=is%3Aopen+is%3Aissue+label%3A%22Area-Code+Cleanup%22).
+ - Implement pester based basic E2E tests for Windows. Details [here] (https://github.com/PowerShell/Win32-OpenSSH/issues/330).
+ - Enable an automated build and validation system.
 
 #### Work in pipeline
- - SAL annotate Win32 specific code. Run static analysis.Tracked [here] (https://github.com/PowerShell/Win32-OpenSSH/issues/329).
+ - SAL annotate Win32 specific code. Run static analysis. Tracked [here] (https://github.com/PowerShell/Win32-OpenSSH/issues/329).
  - Fix bugs to be addressed for this [milestone](https://github.com/PowerShell/Win32-OpenSSH/milestone/1). 
- - Implement pester based basic E2E tests for Windows. Details [here] (https://github.com/PowerShell/Win32-OpenSSH/issues/330).
+
 
