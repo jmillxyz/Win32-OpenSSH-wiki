@@ -1,6 +1,8 @@
 
 Refer to project scope [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Scope)
 
+As of Nov 1st 2016, active development on Win32 fork is being done in https://github.com/PowerShell/openssh-portable. This repo (https://github.com/PowerShell/Win32-OpenSSH) is being maintained to keep track of releases and issues. Win32-OpenSSH will be deprecated once changes in PowerShell/openssh-portable are integrated back into openssh/openssh-portable.
+
 #### High level tasks completed
  - POSIX compliant IO wrapper on Win32 Overlapped IO: this enables Unix based OpenSSH code to work for and on Windows. 
  - Visual Studio 2015 solution to build OpenSSH for Windows.
