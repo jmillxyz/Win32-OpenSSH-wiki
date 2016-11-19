@@ -1,4 +1,6 @@
-**As of Nov 1st 2016, active development on Win32 fork is being done in https://github.com/PowerShell/openssh-portable.** 
+**As of Nov 1st 2016, active development on Win32 fork is being done in https://github.com/PowerShell/openssh-portable.**
+
+PowerShell/openssh-portable is forked off OpenSSH portable repo @ https://github.com/openssh/openssh-portable. 
 
 This repo (https://github.com/PowerShell/Win32-OpenSSH) is being maintained to keep track of releases and issues. Win32-OpenSSH will be deprecated once changes in PowerShell/openssh-portable are integrated back into openssh/openssh-portable.
 
