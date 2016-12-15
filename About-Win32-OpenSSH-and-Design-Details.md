@@ -8,7 +8,7 @@ OpenSSH and the portable version are single threaded applications, interacting w
 
 Goals
 -----
-As stated earlier, the main goal is side by side Windows support in the portable version of OpenSSH. The project is currently being worked on a fork of OpenSSH7.1p1 - here after, called win32-fork code and main code respectively. The plan is get this fork to a state that could integrate into the latest version in main, sometime around May-June this year, with minimum impact to main sources. Obviously, we would want to reuse the main code as much as possible, whilst respecting the fundamental differences between Unix and Windows operating systems. 
+As stated earlier, the main goal is side by side Windows support in the portable version of OpenSSH. The project is currently being worked on a fork of OpenSSH7.1p1 - here after, called win32-fork code and main code respectively. The plan is get this fork to a state that could integrate into the latest version in main, with minimum impact to main sources. Obviously, we would want to reuse the main code as much as possible, whilst respecting the fundamental differences between Unix and Windows operating systems. 
 
 Guidelines
 -----------
