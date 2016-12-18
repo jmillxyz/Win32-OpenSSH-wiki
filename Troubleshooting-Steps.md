@@ -14,7 +14,7 @@ Trouble shooting steps for typical connection issues:
 Trouble shooting more complex issues:
 - Server side
   * stop sshd and ssh-agent services
-  * delete sshd.log and ssh-agent.log (can be found in the sshd.exe directory)
+  * delete sshd.log and ssh-agent.log (in logs directory)
   * set LogLevel to DEBUG (or DEBUG2/DEBUG3 for higher levels of logging) in sshd_config
   * run the scenario. sshd.log and ssh-agent.log will contain sshd and ssh-agent related traces respectively
 - Client side
