@@ -17,11 +17,12 @@ Refer to project scope [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/P
  - Unicode support in Windows: Windows APIs are typically UTF-16 based while on Unix, its UTF-8. All ssh binaries willon Windows can now take in Unicode arguments, support Unicode (UTF-8 or UTF-16) based configuration, key and log files, accurately encode file names going over SCP and SFTP.
  - POSIX File API support in Windows: SFTP and SCP code is cleaned up to effectively use original OpenSSH code on Windows.  
  - Syncing Win32 fork with the latest changes from OpenSSH main repo. All changes from OpenSSH 7.3 (latest stable source) are integrated in Win32 fork.
+ - Code cleanup and refactoring - Common OpenSSH code is cleaned up and ready to take upstream (we'll first seek feedback from OpenSSH community)
+ - Automated build and validation system - automated Windows builds, unittest and E2E test runs is now enabled.
 
 #### Work in progress
- - Code cleanup and refactoring: In entire project specific logic has been ifdef'ed and spread out at various places in the project in an attempt to achieve a workable solution on Windows. These need to be cleaned up and refactored as per OpenBSD's coding guidelines in order to get to an acceptable state. Tracked [here] (https://github.com/PowerShell/Win32-OpenSSH/issues?q=is%3Aopen+is%3Aissue+label%3A%22Area-Code+Cleanup%22).
- - Implement pester based basic E2E tests for Windows. Details [here] (https://github.com/PowerShell/Win32-OpenSSH/issues/330).
- - Enable an automated build and validation system.
+ - Adding more E2E tests for Windows. Details [here] (https://github.com/PowerShell/Win32-OpenSSH/issues/330).
+ - Getting fork ready to seek community feedback and subsequently upstream integration. 
 
 #### Work in pipeline
  - SAL annotate Win32 specific code. Run static analysis. Tracked [here] (https://github.com/PowerShell/Win32-OpenSSH/issues/329).
