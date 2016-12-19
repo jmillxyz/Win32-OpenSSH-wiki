@@ -1,4 +1,4 @@
-_This is a living document_
+_This is now obsolete. Please check [Project Status](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Status)_
 
 #### Reliability (March) - Status - done
 The current implementation of the POSIX IO wrapper ("select" and "fd" IO) for Windows has some limitations. Specifically, since it spawns numerous threads (one for each set fd in fd_sets passed to select), it does not scale. The overhead of synchronization between these threads impacts performance and reliability. We are currently working on replacing this with one that takes advantage of the native asynchronous IO support available in Windows (Overlapped IO) - hoping that many of the random IO related issues being reported will be resolved with this change. 
