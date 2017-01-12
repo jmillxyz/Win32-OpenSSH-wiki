@@ -1,10 +1,6 @@
 **As of Nov 1st 2016, active development on Win32 fork is being done in https://github.com/PowerShell/openssh-portable.**
 
-PowerShell/openssh-portable is forked off OpenSSH portable repo @ https://github.com/openssh/openssh-portable. Current focus is to stabilize the manually merged changes in this fork from Win32-OpenSSH. Since there are still a handful of merge issues that need to be resolved, Nov-Mid release will be skipped.
-
 This repo (https://github.com/PowerShell/Win32-OpenSSH) is being maintained to keep track of releases and issues. Win32-OpenSSH will be deprecated once changes in PowerShell/openssh-portable are integrated back into openssh/openssh-portable.
-
-
 
 Refer to project scope [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Scope)
 
@@ -17,15 +13,16 @@ Refer to project scope [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/P
  - Unicode support in Windows: Windows APIs are typically UTF-16 based while on Unix, its UTF-8. All ssh binaries willon Windows can now take in Unicode arguments, support Unicode (UTF-8 or UTF-16) based configuration, key and log files, accurately encode file names going over SCP and SFTP.
  - POSIX File API support in Windows: SFTP and SCP code is cleaned up to effectively use original OpenSSH code on Windows.  
  - Syncing Win32 fork with the latest changes from OpenSSH main repo. All changes from OpenSSH 7.3 (latest stable source) are integrated in Win32 fork.
- - Code cleanup and refactoring - Common OpenSSH code is cleaned up and ready to take upstream (we'll first seek feedback from OpenSSH community)
+ - Code cleanup and refactoring - Common OpenSSH code is cleaned up and ready to take upstream. Changes in [this](https://github.com/PowerShell/openssh-portable/tree/latestw) branch are ready for community feedback. 
  - Automated build and validation system - automated Windows builds, unittest and E2E test runs is now enabled.
 
 #### Work in progress
- - Adding more E2E tests for Windows. Details [here] (https://github.com/PowerShell/Win32-OpenSSH/issues/330).
- - Getting fork ready to seek community feedback and subsequently upstream integration. 
+ - Adding more E2E tests for Windows. Details [here] (https://github.com/PowerShell/Win32-OpenSSH/issues/330). 
+ - Code reviews of POSIX compat library.
+ - Conversation with upstream community - seeking their feedback and evaluating integration plans.
+ - Fixing issues reported on [GitHub](https://github.com/PowerShell/Win32-OpenSSH/issues).
 
 #### Work in pipeline
  - SAL annotate Win32 specific code. Run static analysis. Tracked [here] (https://github.com/PowerShell/Win32-OpenSSH/issues/329).
- - Fix bugs to be addressed for this [milestone](https://github.com/PowerShell/Win32-OpenSSH/milestone/1). 
 
 
