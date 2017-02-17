@@ -4,8 +4,7 @@ Download and Install VS 2015 [Community Edition](https://www.visualstudio.com/en
 
 Clone https://github.com/PowerShell/openssh-portable
 
-Build OpenSSL or copy SDK payload from https://github.com/PowerShell/Win32-OpenSSH/tree/L1-Prod/contrib/win32/openssh/OpenSSLSDK. Copy OpenSSLSDK and place it under contrib/win32/openssh.
-
+OpenSSL SDK payload is hosted at https://github.com/PowerShell/Win32-OpenSSH/tree/L1-Prod/contrib/win32/openssh/OpenSSLSDK. Copy OpenSSLSDK and place it under contrib/win32/openssh
 
 Open "contrib\win32\openssh\Win32-OpenSSH.sln" in Visual Studio and continue building Win32-OpenSSH binaries
 
