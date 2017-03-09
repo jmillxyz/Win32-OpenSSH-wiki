@@ -4,6 +4,9 @@
      * `ssh.exe user@host`
 2. Domain Users:
      * `ssh.exe -l user@domain host`
+     * If above doesn't work, try this
+       - ssh.exe 'DOMAIN\user'@host 
+
 
 ##### Login With SSH Keys
 
