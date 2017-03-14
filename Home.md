@@ -4,11 +4,11 @@
 
 [Area Owners](https://github.com/PowerShell/Win32-OpenSSH/wiki/Area-Owners)
 
-[Design Details](About Win32 OpenSSH and Design Details)
+[Design Details](https://github.com/PowerShell/Win32-OpenSSH/wiki/About-Win32-OpenSSH-and-Design-Details)
 
 [Install Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
-[Troubleshooting](Troubleshooting Steps)
+[Troubleshooting](https://github.com/PowerShell/Win32-OpenSSH/wiki/Troubleshooting-Steps)
 
 [SSH Usage Examples](https://github.com/PowerShell/Win32-OpenSSH/wiki/ssh.exe-examples)
 
@@ -16,4 +16,4 @@
 
 [VS 2015 Build Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/Building-using-VS-2015)
 
-[Terminal info](https://github.com/PowerShell/Win32-OpenSSH/wiki/Terminal-Info)
+[Terminal info](https://github.com/PowerShell/Win32-OpenSSH/wiki/TTY-PTY-support-in-Windows-OpenSSH)
