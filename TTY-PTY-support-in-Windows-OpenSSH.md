@@ -1,10 +1,23 @@
-**Overview**   
+## PTY
+Windows OS does not have inbuilt support for a [pseudoterminal](https://en.wikipedia.org/wiki/Pseudoterminal). 
 
-Windows OS doesn't provide the support for virtual terminal (or) interpret the VT sequences.
+Windows version of OpenSSH server implements a VT100 PTY by intercepting [Windows Console](https://msdn.microsoft.com/en-us/library/windows/desktop/ms682055(v=vs.85).aspx) events. This is implemented in ssh-shellhost.exe, connected to sshd via [std i/o](https://en.wikipedia.org/wiki/Standard_streams). At a high level, ssh-shellhost.exe acts as an intermediary between sshd and a Windows console applications performing the following: 
+  - interprets incoming VT100, processes and calls Windows Console IO
+  - processes Windows Console (output) event queue, translates them to VT100 and spits out on stdout.
+
+## TTY
+Windows console previously did not have the capability to process any incoming terminal control codes. Support for xterm is added in Windows 10. 
+
+To support downlevel platforms (down till Windows 7), a VT100 interpreter is implemented in Windows OpenSSH client (ssh.exe) to support typical TTY scenarios. Although this works well when talking to Windows targets, there are limitations and known issues when dealing with interactive applications on Unix like top, vi, etc. 
+
+
+
+
+
 
 As part of the SSH connection establishment, SSH server will create a virtual terminal. SSH Client will transmit each and every keystroke to the virtual terminal at SSH Server side. SSH Server virtual terminal will in return sends back the VT sequences to SSH client. Windows SSH client will receive, interpret the VT sequences and renders the data sent by the SSH server.
 
-If you are using the openssh client and using the windows cmd.exe/powershell to connect to the SSH server then the cmd.exe/powershell needs to interpret and render the VT sequences. Unfortunately cmd.exe/powershell doesn't have the ability to interpret the VT sequences until windows 10.
+If you are using the openssh client and using the windows cmd.exe/powershell to connect to the SSH server then the cmd.exe/powershell needs to interpret and render the VT sequences. Unfortunately cmd.exe/powershell doesn't have the ability to interpret the VT sequences until windows 10. 
 
 For more information, please go through https://msdn.microsoft.com/en-us/library/windows/desktop/mt638032(v=vs.85).aspx
 
