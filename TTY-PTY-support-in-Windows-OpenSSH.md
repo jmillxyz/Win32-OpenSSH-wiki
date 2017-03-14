@@ -34,7 +34,11 @@ If you want to use vi / top / man, etc commands while connecting from windows cl
 3) Set the Screenbuffer width, window size width to >= 90.   
 ![image](https://cloud.githubusercontent.com/assets/23668037/23882328/11ed4116-081d-11e7-87e0-757680ea3a74.png)
 
-4) Set the environment variable (TERM) to xterm. Before/After logging into the SSH server.
+4) Set the environment variable (TERM) to xterm. Before/After logging into the SSH server.   
+    c:\test\> set TERM=xterm   
+    c:\test\> set TERM (This should show the term set to xterm)  
+
+
 
 ## Testing  
 We have tested different scenarios,   
