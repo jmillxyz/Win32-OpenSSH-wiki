@@ -36,6 +36,7 @@ If you want to use vi / top / man, etc commands while connecting from windows cl
 1) Upgrade to windows 10+ OS.   
 
 2) Set the non-legacy console mode in the console properties,   
+   Make sure you **uncheck** the "use legacy console"   
 ![image](https://cloud.githubusercontent.com/assets/23668037/23882278/cc062726-081c-11e7-8e4c-792da6af23b9.png)    
 
 3) Set the Screenbuffer width, window size width to >= 90.   
