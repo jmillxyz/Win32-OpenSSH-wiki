@@ -11,7 +11,7 @@ Windows console previously did not have the capability to process any incoming t
 To support downlevel platforms (down till Windows 7), a VT100 interpreter is implemented in Windows OpenSSH client (ssh.exe) to support typical TTY scenarios. Although this works well when talking to Windows targets, there are limitations and known issues when dealing with interactive applications on Unix like top, vi, etc. 
 
 
-
+================================
 
 
 
