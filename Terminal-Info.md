@@ -13,7 +13,7 @@ If you are using the openssh client,
 
      If you want to use the inbuilt VT100 ANSI parser (that's part of the openssh client) then set the environment variable "SSH_TERM_CONHOST_PARSER" to 0.
 
-  b) Using prior to windows 10 OS then the raw VT sequences will be parsed by the inbuilt VT100 ANSI parser as part of the openssh client. We have fixed most of the issues and have no plans to extend to VT100+ sequences.   
+  b) Using prior versions of windows 10 OS then the raw VT sequences will be parsed by the inbuilt VT100 ANSI parser as part of the openssh client. We have fixed most of the issues and have no plans to extend to VT100+ sequences.   
 
      If you want support for the VT100+ sequences then please upgrade to windows 10+ OS or use the third party tools like putty, Cygwin, etc.
 
