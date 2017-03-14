@@ -11,7 +11,7 @@ For more information, please go through https://msdn.microsoft.com/en-us/library
 If you are using the openssh client,  
   a) Using windows 10+ OS then windows console (cmd.exe/powershell) has the support to interpret the VT sequences received from the SSH server. We simply pass the raw VT sequences to the console (cmd.exe/powershell). If you are facing any issues then it should be fixed by the windows console team.   
 
-     If you want to use the inbuilt VT100 ANSI parser (which is part of the openssh client) then set the environment variable "SSH_TERM_CONHOST_PARSER" to 0.
+     If you want to use the inbuilt VT100 ANSI parser (that's part of the openssh client) then set the environment variable "SSH_TERM_CONHOST_PARSER" to 0.
 
   b) Using prior to windows 10 OS then the raw VT sequences will be parsed by the inbuilt VT100 ANSI parser as part of the openssh client. We have fixed most of the issues and have no plans to extend to VT100+ sequences.   
 
