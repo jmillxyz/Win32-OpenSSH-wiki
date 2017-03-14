@@ -1,6 +1,6 @@
 **Overview**   
 
-Windows OS doesn't provide the support for the virtual terminal (or) interpreting the VT sequences.
+Windows OS doesn't provide the support for virtual terminal (or) interpreting the VT sequences.
 
 During the SSH connection establishment, SSH server will create a virtual terminal. SSH Client will transmit each and every keystroke to the virtual terminal at SSH Server. SSH Server virtual terminal will in return sends back the VT sequences to SSH client. Windows SSH client will receive, interpret the VT sequences and renders the data sent by the SSH server.
 
