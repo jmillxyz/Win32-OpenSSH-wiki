@@ -15,3 +15,5 @@
 [SFTP Usage Examples](https://github.com/PowerShell/Win32-OpenSSH/wiki/sftp.exe-examples)
 
 [VS 2015 Build Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/Building-using-VS-2015)
+
+[Terminal info](https://github.com/PowerShell/Win32-OpenSSH/wiki/Terminal-Info)
