@@ -4,7 +4,7 @@ Windows OS doesn't provide the support for virtual terminal (or) interpret the V
 
 As part of the SSH connection establishment, SSH server will create a virtual terminal. SSH Client will transmit each and every keystroke to the virtual terminal at SSH Server side. SSH Server virtual terminal will in return sends back the VT sequences to SSH client. Windows SSH client will receive, interpret the VT sequences and renders the data sent by the SSH server.
 
-If you are using the openssh client and using the windows cmd.exe/powershell to connect to the SSH server then the cmd.exe/powershell needs to receive, interpret the VT sequences. Unfortunately cmd.exe/powershell doesn't have the ability to interpret the VT sequences until windows 10.
+If you are using the openssh client and using the windows cmd.exe/powershell to connect to the SSH server then the cmd.exe/powershell needs to interpret and render the VT sequences. Unfortunately cmd.exe/powershell doesn't have the ability to interpret the VT sequences until windows 10.
 
 For more information, please go through https://msdn.microsoft.com/en-us/library/windows/desktop/mt638032(v=vs.85).aspx
 
