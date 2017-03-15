@@ -1,7 +1,6 @@
 ## Build OpenSSH: (skip these steps if you’ve already done)
 ```powershell
-Pushd .\openssh-portable\contrib\win32\openssh
-Import-Module .\appveyor.psm1 –Force
+Import-Module  .\openssh-portable\contrib\win32\openssh\appveyor.psm1 –Force
 Start-SSHBuild -Configuration Debug -NativeHostArch x64 –Verbose
 Install-OpenSSH -OpenSSHDir $env:SystemDrive\OpenSSH -Configuration Debug -NativeHostArch x64
 ```
@@ -11,7 +10,7 @@ Install-OpenSSH -OpenSSHDir $env:SystemDrive\OpenSSH -Configuration Debug -Nativ
 Install-TestDependencies
 Deploy-OpenSSHTests -OpenSSHTestDir $env:SystemDrive\OpenSSH -Configuration Debug -NativeHostArch x64
 ```
-- Run pester tests : Launch powershell core at "C:\Program Files\PowerShell\6.0.0.12\powershell.exe" and run the below command:
+- Run pester tests : Launch powershell core windows (for example at **"$env:ProgramFiles\PowerShell\6.0.0.12\powershell.exe"**) and run the below command:
 ```powershell
 cd $env:SystemDrive\OpenSSH
 Run-OpenSSHPesterTest –testRoot $env:SystemDrive\OpenSSH -outputXml testresult.xml
