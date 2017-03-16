@@ -45,7 +45,7 @@ We have tested different scenarios,
 3) Linux client to windows server   
 4) Third party ssh tools like putty/Cygwin to windows server   
 
-For any terminal code changes, please make sure below test cases are passed
+While making any terminal code changes, please make sure below manual test cases are passed
 1) All the arrow key functions should work properly (up, down, left and right arrows).
 2) The backspace, delete, home, end functions keys should work properly.
 3) "cls" should clear only the visible window (windows 10+ OS) / should clear entire buffer (prior versions of windows 10 OS).
