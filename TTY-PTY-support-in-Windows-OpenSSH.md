@@ -38,8 +38,6 @@ If you want to use vi / top / man, etc commands while connecting from windows cl
     c:\test\> set TERM=xterm   
     c:\test\> set TERM (This should show the term set to xterm)  
 
-
-
 ## Testing  
 We have tested different scenarios,   
 1) Windows client (cmd.exe / powershell) to windows server   
@@ -47,6 +45,14 @@ We have tested different scenarios,
 3) Linux client to windows server   
 4) Third party ssh tools like putty/Cygwin to windows server   
 
+For any terminal code changes, please make sure below test cases are passed
+1) All the arrow key functions should work properly (up, down, left and right arrows).
+2) The backspace, delete, home, end functions keys should work properly.
+3) "cls" should clear only the visible window (windows 10+ OS) / should clear entire buffer (prior versions of windows 10 OS).
+4) When connected to unix ssh server, the basic commands like vi, top, man, clear, etc should work properly.    
 
-
-
+## Known windows 10 console issues (These will be fixed by the windows console team)
+### When connected to unix ssh server   
+a) vi command, the up/down arrow keys are not working.    
+b) vim command, intermittently the file is opened in the Replace mode.     
+c) top command, clears the previous screen contents.    
