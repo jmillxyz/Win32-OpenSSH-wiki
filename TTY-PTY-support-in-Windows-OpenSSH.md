@@ -56,3 +56,6 @@ While making any terminal code changes, please make sure below manual test cases
 a) vi command, the up/down/left/right arrow keys are not working. Please use h,j,k,l as an alternative.    
 b) vim command, intermittently the file is opened in the Replace mode.     
 c) top command, clears the previous screen contents.    
+
+### When connected to windows ssh server and using powershell    
+a) while executing an unknown command (abcdef) in the powershell, the last line ( + FullyQualifiedErrorId : CommandNotFoundException) is not displayed on the console
