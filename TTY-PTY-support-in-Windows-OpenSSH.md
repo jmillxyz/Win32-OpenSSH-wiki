@@ -53,6 +53,6 @@ While making any terminal code changes, please make sure below manual test cases
 
 ## Known windows 10 console issues (These will be fixed by the windows console team)
 ### When connected to unix ssh server   
-a) vi command, the up/down/side arrow keys are not working.    
+a) vi command, the up/down/left/right arrow keys are not working. Please use h,j,k,l as an alternative.    
 b) vim command, intermittently the file is opened in the Replace mode.     
 c) top command, clears the previous screen contents.    
