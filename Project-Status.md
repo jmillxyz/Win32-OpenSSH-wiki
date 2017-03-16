@@ -17,10 +17,9 @@ Refer to project scope [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/P
  - Automated build and validation system - automated Windows builds, unittest and E2E test runs is now enabled.
 
 #### Work in progress
- - Adding more E2E tests for Windows. Details [here] (https://github.com/PowerShell/Win32-OpenSSH/issues/330). 
- - Code reviews of POSIX compat library.
- - Conversation with upstream community - seeking their feedback and evaluating integration plans.
- - Fixing issues reported on [GitHub](https://github.com/PowerShell/Win32-OpenSSH/issues).
+ - Adding test coverage for POSIX compat library. 
+ - Conversation with upstream community - seeking their feedback and evaluating integration plans. PR posted [here](https://github.com/openssh/openssh-portable/pull/63)
+ - Evaluating support Windows CNG crypto library instead of OpenSSL.
 
 #### Work in pipeline
  - SAL annotate Win32 specific code. Run static analysis. Tracked [here] (https://github.com/PowerShell/Win32-OpenSSH/issues/329).
