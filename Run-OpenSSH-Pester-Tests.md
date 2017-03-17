@@ -17,7 +17,7 @@ cd $env:SystemDrive\OpenSSH
 Import-Module  .\openssh-portable\contrib\win32\openssh\appveyor.psm1 –Force
 Run-OpenSSHPesterTest –testRoot $env:SystemDrive\OpenSSH -outputXml testresult.xml
 ```
-   Note: If you want to run a particular test, skip step 3 and just launch it:
+   Note: If you want to run a particular test, just launch it by the script name:
 ```powershell
 .\SCP.Tests.ps1
 ```
