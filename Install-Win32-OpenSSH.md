@@ -4,7 +4,7 @@
 * Extract contents to `C:\Program Files\OpenSSH`
 * Start Powershell as Administrator
      * `cd 'C:\Program Files\OpenSSH'`
-* On Windows 10, in developer mode, a different implementation of SSH exists in-box. Look for TCP port bindings on port 22
+* On Windows 10, in developer mode, a different implementation of SSH exists in-box. Look for TCP port bindings on port 22 and these processes - “SSH Server Broker” and “SSH Server Proxy”
      * `netstat -anop TCP`
      * If you do see 22 occupied, [#610](https://github.com/PowerShell/Win32-OpenSSH/issues/610) has workarounds to deal with port conflict. 
 * Install sshd and ssh-agent services. 
