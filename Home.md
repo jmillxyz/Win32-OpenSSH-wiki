@@ -17,5 +17,3 @@
 [VS 2015 Build Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/Building-using-VS-2015)
 
 [TTY PTY support](https://github.com/PowerShell/Win32-OpenSSH/wiki/TTY-PTY-support-in-Windows-OpenSSH)
-
-[Run Pester tests](https://github.com/PowerShell/Win32-OpenSSH/wiki/Run-OpenSSH-Pester-Tests)
