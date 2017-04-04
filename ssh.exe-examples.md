@@ -17,7 +17,14 @@
      * `ssh-add.exe id_rsa` 
 3. Copy `id_rsa.pub` (client's public key) to corresponding user's directory on ssh HOST
      * as `%systemdrive%\users\user\.ssh\authorized_keys`
-4. Login using private key
+4. Adjust permissions on authorized_keys file
+```   $authorizedKeyPath = "%systemdrive%\users\user\.ssh\authorized_keys"
+   $acl = get-acl $authorizedKeyPath
+   $ar = New-Object  System.Security.AccessControl.FileSystemAccessRule("NT Service\sshd", "Read", "Allow")
+   $acl.SetAccessRule($ar)
+   Set-Acl  $authorizedKeyPath $acl
+``` 
+5. Login using private key
      * `ssh.exe -i .\id_rsa user@host` (work group user)
      * `ssh.exe -i .\id_rsa -l user@domain host` (domain user)
 
