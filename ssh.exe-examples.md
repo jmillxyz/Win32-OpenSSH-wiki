@@ -18,7 +18,8 @@
 3. Copy `id_rsa.pub` (client's public key) to corresponding user's directory on ssh HOST
      * as `%systemdrive%\users\user\.ssh\authorized_keys`
 4. Adjust permissions on authorized_keys file
-```   $authorizedKeyPath = "%systemdrive%\users\user\.ssh\authorized_keys"
+```   
+   $authorizedKeyPath = "%systemdrive%\users\user\.ssh\authorized_keys"
    $acl = get-acl $authorizedKeyPath
    $ar = New-Object  System.Security.AccessControl.FileSystemAccessRule("NT Service\sshd", "Read", "Allow")
    $acl.SetAccessRule($ar)
