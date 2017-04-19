@@ -11,10 +11,10 @@
 ##### Login With SSH Keys
 
 1. Generate a key pair on the client:
-     * `ssh-keygen.exe -t rsa -f id_rsa`
+     * `ssh-keygen -t rsa -f id_rsa`
 2. Register private key with ssh-agent (for single sign-on experience)
      * `net start ssh-agent`
-     * `ssh-add.exe id_rsa` 
+     * `ssh-add id_rsa` 
 3. Copy `id_rsa.pub` (client's public key) to corresponding user's directory on ssh HOST
      * as `%systemdrive%\users\user\.ssh\authorized_keys`
 4. Adjust permissions on authorized_keys file
@@ -26,8 +26,8 @@
    Set-Acl  $authorizedKeyPath $acl
 ``` 
 5. Login using private key
-     * `ssh.exe -i .\id_rsa user@host` (work group user)
-     * `ssh.exe -i .\id_rsa -l user@domain host` (domain user)
+     * `ssh -i .\id_rsa user@host` (work group user)
+     * `ssh -i .\id_rsa -l user@domain host` (domain user)
 
 ##### For Unix and Linux users
 
