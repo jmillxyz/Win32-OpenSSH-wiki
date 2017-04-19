@@ -23,10 +23,6 @@
      * host private keys are now securely stored by ssh-agent, private key files can be removed at this point.
 * Open Firewall
      * `New-NetFirewallRule -Protocol TCP -LocalPort 22 -Direction Inbound -Action Allow -DisplayName SSH`
-* If you need key-based authentication, run the following to setup the key-auth package
-          
-    * `powershell -executionpolicy bypass -file install-sshlsa.ps1` (for Win7 and Server 2008, see [here](https://github.com/PowerShell/Win32-OpenSSH/issues/189))
-    * `Restart-Computer`
 * Set sshd in auto-start mode and open up firewall (optional)
      * `Set-Service sshd -StartupType Automatic`
      * `Set-Service ssh-agent -StartupType Automatic`
@@ -45,5 +41,3 @@ netsh advfirewall firewall add rule name='SSH Port' dir=in action=allow protocol
      * `Stop-Service sshd`
 * Uninstall
      * `powershell.exe -executionpolicy bypass -file uninstall-sshd.ps1`
-     * `powershell.exe -executionpolicy bypass -file uninstall-sshlsa.ps1` (for Win7 and Server 2008, see [here](https://github.com/PowerShell/Win32-OpenSSH/issues/189))
-     * Reboot if you need to install a newer version of Win32-OpenSSH
