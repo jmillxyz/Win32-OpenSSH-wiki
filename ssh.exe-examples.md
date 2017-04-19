@@ -1,11 +1,11 @@
 
 ##### Login With Password:
 1. Work Group Users:
-     * `ssh.exe user@host`
-2. Domain Users:
-     * `ssh.exe -l user@domain host`
-     * If above doesn't work, try this
-       - ssh.exe 'DOMAIN\user'@host 
+     * `ssh user@host`
+2. Domain Users: Any of the following formats:
+     * `ssh -l user@domain host`
+     * `ssh domain\user@host`
+     * `ssh user@domain@host`
 
 
 ##### Login With SSH Keys
