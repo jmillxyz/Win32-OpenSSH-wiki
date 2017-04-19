@@ -2,7 +2,7 @@
 ##### Login With Password:
 1. Work Group Users:
      * `ssh user@host`
-2. Domain Users: Any of the following formats:
+2. Domain Users: Domain needs to be explicitly specified. Any of the following formats would work:
      * `ssh -l user@domain host`
      * `ssh domain\user@host`
      * `ssh user@domain@host`
