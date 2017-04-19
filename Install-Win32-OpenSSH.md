@@ -37,7 +37,5 @@ netsh advfirewall firewall add rule name='SSH Port' dir=in action=allow protocol
 ## Uninstall Win32 OpenSSH
 
 * Start Powershell as Administrator
-* Stop the service
-     * `Stop-Service sshd`
 * Uninstall
      * `powershell.exe -executionpolicy bypass -file uninstall-sshd.ps1`
