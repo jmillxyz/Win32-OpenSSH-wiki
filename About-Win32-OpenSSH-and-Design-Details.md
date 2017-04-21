@@ -8,11 +8,11 @@ OpenSSH and the portable version are single threaded applications, interacting w
 
 Goals
 -----
-As stated earlier, the main goal is side by side Windows support in the portable version of OpenSSH. The project is currently being worked on a fork of OpenSSH7.1p1 - here after, called win32-fork code and main code respectively. The plan is get this fork to a state that could integrate into the latest version in main, with minimum impact to main sources. Obviously, we would want to reuse the main code as much as possible, whilst respecting the fundamental differences between Unix and Windows operating systems. 
+As stated earlier, the main goal is side by side Windows support in the portable version of OpenSSH. The project is currently being worked on a fork of OpenSSH7.1p1 - here after, called windows-fork code and main code respectively. The plan is get this fork to a state that could integrate into the latest version in main, with minimum impact to main sources. Obviously, we would want to reuse the main code as much as possible, whilst respecting the fundamental differences between Unix and Windows operating systems. 
 
 Guidelines
 -----------
-To prevent any regressions in main and to enable easier review of the changes coming from win32-fork, there will be no "main" code moving or refactoring in win32-fork. There are multiple places where platform abstraction makes sense (auth, console to name a few), but this wont be addressed in the fork as it would lead to significant code churn. This will be done post integration once we have stable Windows supported version with significant test coverage living in main repo. Crypto support using Windows [CNG](https://msdn.microsoft.com/en-us/library/windows/desktop/aa376210(v=vs.85).aspx) has been tested out in win32-fork but since it needed reasonable modifications to original code,  relevant changes will be reverted\undone. This means that the Windows supported version potentially available mid this year will rely on OpenSSL's crypto (exception is SSP for key-based authentication that will use CNG - more details later). Coding style will follow [OpenBSD guidelines](http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man9/style.9?query=style&sec=9).
+To prevent any regressions in main and to enable easier review of the changes coming from win32-fork, there will be no "main" code moving or refactoring in windows-fork. There are multiple places where platform abstraction makes sense (auth, console to name a few), but this wont be addressed in the fork as it would lead to significant code churn. This will be done post integration once we have stable Windows supported version with significant test coverage living in main repo. Coding style will follow [OpenBSD guidelines](http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man9/style.9?query=style&sec=9).
 
 Design details
 -------------
@@ -44,13 +44,12 @@ Design summary of POSIX wrapper
 
 | Signal | Detail |
 |:-------|:-------|
-|SIGINT  |Windows invokes its Ctrl+C handler on a different thread, that handler queues the interrupt in the internal queue and handled by any of the blocking calls (select, etc) |
+|SIGINT  |Windows invokes its Ctrl+C handler on a different thread, that handler queues the interrupt in the internal queue and schedules an APC on main thread |
 |SIGWINCH|Like Ctrl+C, a console windows size change event is captured in a native handled, queued and processed in one of the blocking calls |
-| SIGILL, SIGTERM, SIGQUIT, WJSIGNAL,SIGTTIN, SIGTTOU | Not generated in Windows, these may be defined by handlers will never be invoked |
-| SIGHUP | TBD |
-| SIGCHLD | TBD |
-|SIGTSTP | TBD |
-|SIGPIPE | only accepts SIG_IGN handler (that's all OpenSSH uses) |
+| SIGILL, SIGTERM, SIGQUIT, WJSIGNAL,SIGTTIN, SIGTTOU, SIGHUP | Not generated in Windows, these may be defined by handlers will never be invoked |
+| SIGCHLD | Implemented by listening (WaitForAnyObject) on child process handles |
+|SIGTSTP | See SIGINT |
+|SIGPIPE | Implemented by scheduling an APC call back |
 |SIGALARM | implemented internally inside the wrapper. handler automatically called when native timer set by CreateWaitableTimer expires |
 
 + Additional details on underlying Win32 calls used
@@ -66,36 +65,27 @@ Design summary of POSIX wrapper
 | pipe | CreateNamedPipe  | A uni directional named pipe with and internal name is created, CreateFile called to connect from other end  |
 | read | ReadFileEx |   |
 | write | WriteFileEx |   |
-| fdopen | TBD |    |
-| fstat |  TBD |     |
 | dup, dup2 | SetStdHandle | only supported on standard IO file descriptors (used for IO redirection) |
-| socketpair | CreateNamedPipe | A bi directional named pipe with an internal name is created, CreateFile called to connect from other end. This does not support AF_UNIX ancilliary messages. More details later |
 | setitimer | CreateWaitableTimer |
-
-A fully functional prototype (for socket, file and pipe IO) of this wrapper is available [here](https://github.com/PowerShell/Win32-OpenSSH/tree/L2-Win32Posix-Prototype/contrib/win32/w32-posix-prototype/win32posix/win32posix)
 
 #### fork()
 There is no easy fork() equivalent in Windows. fork() is used in OpenSSH in multiple places, of those - 3 are worth mentioning 
 + Session isolation: Each accepted connection in sshd is handed off and processed in a forked child. This will be implemented in Windows using CreateProcess based custom logic - will need #def differentiated code between Unix and Windows
 + Privilege separation: Implemented in OpenSSH by processing and parsing network data in forked and underprivileged child processes that communicate to privileged Monitor process through IPC. Monitor does the core crypto validation and authentication. Privilege downgrading is done by setuid(restricted_user). Security model in Windows will be different, running the SSHD service itself in a low privileged mode. So, the whole Privilege separation relevant code is not needed and will be disabled for Windows. 
-+ sftp and scp: sftp and scp client side utilities invoke ssh using fork() and exec(). This logic will be disabled and substituted with CreateProcess based one.
-+ The rest of the places fork() is used is listed below. None of these are critical to the functionality in Windows and will be appropriately disabled for Windows.
-  - TBD
++ sftp and scp: sftp and scp client side utilities invoke ssh using fork() and exec(). This logic will be substituted with CreateProcess based one.
 
 #### AF_UNIX domain sockets
 Unix domain sockets are used for IPC communication between processes on the same host. Apart from providing stream/datagram modes, they also support a secure way to transmit ancillary data (like file descriptors). The only place ancillary data is used in OpenSSH is in "ProxyUseFDPass" feature where a proxy command is issued by ssh client to create a connected socket, and its FD is transmitted back over IPC. This feature will be disabled on Windows. The rest of the places AF_UNIX sockets are used:
-+ ControlMaster - used to multiplex multiple sessions over a single SSH connection. 
++ ControlMaster - used to multiplex multiple sessions over a single SSH connection. This feature passes on ancillary data (file descriptors) over the socket connection.
 + SSHAgent - used to managed store keys and crypto validation based on those. SSH agent and key management for Windows are discussed later in this document.
-+ Local Socket Forwarding - This is forwarding traffic to AF_UNIX sockets and this feature is not applicable in Windows
++ Local Socket Forwarding - This is forwarding traffic to AF_UNIX sockets.
 + SSHD rexec - Not applicable for Windows. SSHD will be implemented as Windows service, that can be configured for auto restart.
 + SSHD from inetd - Not applicable for Windows. 
 
-AF_UNIX channel will be implemented using secure bidirectional named pipes in Windows. This does not support ancillary data but is sufficient for above listed features relevant in Windows. 
+AF_UNIX channel will be implemented using secure bidirectional named pipes in Windows. Support for ancillary data will be added in a limited form to support ControlMaster. 
 
 #### Privilege Separation and Security model in Windows
-SSHD will be implemented as a Windows service, running in its [virtual account](https://technet.microsoft.com/en-us/library/dd548356.aspx) context - NT Service\SSHD - this is a restricted account that will only be granted the following needed privileges (primarily needed to spawn off processes as client user): 
-+ SE_ASSIGNPRIMARYTOKEN_NAME
-+ SE_INCREASE_QUOTA_NAME 
+SSHD will be implemented as a Windows service. Unlike in Unix (sshd runs as root), it runs as [NetworkService](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684272(v=vs.85).aspx). Its process token is associated with its [service SID](http://sourcedaddy.com/windows-7/understanding-service-sids.html) - "NT Service\SSHD".
 
 ssh-agent will be reimplemented for Windows as a Windows service, running as LocalSystem with TCB privileges (equivalent to root on Linux). Unlike in Unix, ssh-agent will listen on a known static IPC port. This is done as a security measure to protect ssh-agent port from hijack/spoof attacks. It serves the following requests that need be processed at SYSTEM privilege level:
 + Register a host key - All host keys, to be used by ssh deamon for host authentication can be securely registered with ssh-agent.  The registration process will be similar to ssh-add usage in Unix. Host keys will be internally encrypted using DPAPI using OS System account.
