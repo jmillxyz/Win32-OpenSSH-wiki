@@ -105,7 +105,7 @@ End result of authentication in Windows is a Windows user token (if authenticati
 
 Shown below is a high level overview of the various SSH components and access boundaries for various resources involved: 
 
-![HLA](https://cloud.githubusercontent.com/assets/14185020/25296972/c4f50898-269f-11e7-8f5e-55224825cb77.JPG)
+![HLA](https://cloud.githubusercontent.com/assets/14185020/25297023/30648b4e-26a0-11e7-8e6e-954974cd8112.JPG)
 
  
 
