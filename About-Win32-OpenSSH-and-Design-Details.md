@@ -101,7 +101,8 @@ The above listed requests are similar to what ssh-agent serves in Unix. In addit
 As detailed earlier, session isolation in Windows will be done using CreateProcess based custom logic (in place of fork based logic in Unix). Spawned child process will run as NT Service\SSHD too.
 
 End result of authentication in Windows is a Windows user token (if authentication succeeds). SSH sessions that need client user capabilities are hosted in processes running under the context of client user (launched using CreateProcess(user_token)). Ex. cmd.exe for terminal session, sftp_server.exe for sftp session and scp.exe for scp session.
-
+This means that in order to login via ssh, one needs to have a valid Windows account on the target.
+If user profile does not exist, it gets created upon first logon via ssh. This would typically (in default sshd configuration) be via password based authentication (since profile does not exist for authorized_keys to be placed).
 
 Shown below is a high level overview of the various SSH components and access boundaries for various resources involved: 
 
