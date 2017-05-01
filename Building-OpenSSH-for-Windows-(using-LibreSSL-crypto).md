@@ -4,7 +4,7 @@
 
 #### Building OpenSSH for Windows
 In Powershell:
-  - cd <repository root>
+  - cd repository-root
   - ipmo .\contrib\win32\openssh\OpenSSHBuildHelper.psm1 -Force
   - Build-OpenSSH -Configuration <Release|Debug> -NativeHostArch <x64|x86>
 
