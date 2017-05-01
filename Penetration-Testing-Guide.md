@@ -5,3 +5,7 @@ https://github.com/PowerShell/Win32-OpenSSH/wiki/Building-OpenSSH-for-Windows-(u
 
 [Basic Usage Examples](https://github.com/PowerShell/Win32-OpenSSH/wiki/ssh.exe-examples)
 
+[Thread Model Document - will be added soon]
+
+[Areas to focus on]
+
