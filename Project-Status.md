@@ -15,11 +15,12 @@ Refer to project scope [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/P
  - Syncing Win32 fork with the latest changes from OpenSSH main repo. Windows fork is being maintained up-to-date with upstream repo.
  - Code cleanup and refactoring - Common OpenSSH code is cleaned up and ready to take upstream. Changes in [this](https://github.com/PowerShell/openssh-portable/tree/latestw) branch are ready for community feedback. 
  - Automated build and validation system - automated Windows builds, unittest and E2E test runs is now enabled.
+ - Evaluated Microsoft CNG support in OpenSSH. Since this requires significant crypto interface refactoring, its decided to switch to LibreSSL (in place of OpenSSL). 
 
 #### Work in progress
  - Adding test coverage for POSIX compat library. 
  - Conversation with upstream community - seeking their feedback and evaluating integration plans. PR posted [here](https://github.com/openssh/openssh-portable/pull/63)
- - Evaluating support Windows CNG crypto library instead of OpenSSL.
+ - Penetration Testing OpenSSH for Windows. See [here](https://blogs.msdn.microsoft.com/powershell/2017/05/01/openssh-security-testing-kick-off/) for the blog post.
 
 #### Work in pipeline
  - SAL annotate Win32 specific code. Run static analysis. Tracked [here] (https://github.com/PowerShell/Win32-OpenSSH/issues/329).
