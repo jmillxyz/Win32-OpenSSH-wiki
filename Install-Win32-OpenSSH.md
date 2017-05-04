@@ -11,6 +11,15 @@
      * `powershell -executionpolicy bypass -file install-sshd.ps1`
 * Setup SSH host keys (this will generate all the 'host' keys that sshd expects when its starts)
      * `.\ssh-keygen.exe -A`
+* Grant "NT service\sshd" read access the host private key files:
+     ```
+        Get-ChildItem -Path 'C:\Program Files\OpenSSH\ssh_host_*_key' | % {    
+        $acl = get-acl $_.FullName
+        $ar = New-Object  System.Security.AccessControl.FileSystemAccessRule("NT Service\sshd", "Read", "Allow")
+        $acl.SetAccessRule($ar)
+        Set-Acl $_.FullName $acl
+     }
+     ```
 * Secure SSH host keys (optional)
      * `Start-Service ssh-agent`
      * download psexec from [here](https://technet.microsoft.com/en-us/sysinternals/pstools)
