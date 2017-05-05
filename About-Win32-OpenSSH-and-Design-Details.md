@@ -72,7 +72,7 @@ Design summary of POSIX wrapper
 There is no easy fork() equivalent in Windows. fork() is used in OpenSSH in multiple places, of those - 3 are worth mentioning 
 + Session isolation: Each accepted connection in sshd is handed off and processed in a forked child. This will be implemented in Windows using CreateProcess based custom logic - will need #def differentiated code between Unix and Windows
 + Privilege separation: Implemented in OpenSSH by processing and parsing network data in forked and underprivileged child processes that communicate to privileged Monitor process through IPC. Monitor does the core crypto validation and authentication. Privilege downgrading is done by setuid(restricted_user). 
-While privilege separation is ideal, it requires adding in complexity and refactoring to accommodate a Windows specific solution along with a Unix based on in a common architecture. 
+While privilege separation is ideal, it requires adding in complexity and refactoring to accommodate a Windows specific solution along with a Unix based one in a common architecture. 
 The plan is to have a initial Windows version with no privilege separation. In Windows, ssh daemon will run under the context of [Network Service](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684272(v=vs.85).aspx). 
 + sftp and scp: sftp and scp client side utilities invoke ssh using fork() and exec(). This logic will be substituted with CreateProcess based one.
 
@@ -86,7 +86,7 @@ Unix domain sockets are used for IPC communication between processes on the same
 
 AF_UNIX channel will be implemented using secure bidirectional named pipes in Windows. Support for ancillary data will be added in a limited form to support ControlMaster. 
 
-#### Privilege Separation and Security model in Windows
+#### Security model in Windows
 SSHD will be implemented as a Windows service. Unlike in Unix (sshd runs as root), it runs as [NetworkService](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684272(v=vs.85).aspx). Its process token is associated with its [service SID](http://sourcedaddy.com/windows-7/understanding-service-sids.html) - "NT Service\SSHD".
 
 ssh-agent will be reimplemented for Windows as a Windows service, running as LocalSystem with TCB privileges (equivalent to root on Linux). Unlike in Unix, ssh-agent will listen on a known static IPC port. This is done as a security measure to protect ssh-agent port from hijack/spoof attacks. It serves the following requests that need be processed at SYSTEM privilege level:
