@@ -71,7 +71,9 @@ Design summary of POSIX wrapper
 #### fork()
 There is no easy fork() equivalent in Windows. fork() is used in OpenSSH in multiple places, of those - 3 are worth mentioning 
 + Session isolation: Each accepted connection in sshd is handed off and processed in a forked child. This will be implemented in Windows using CreateProcess based custom logic - will need #def differentiated code between Unix and Windows
-+ Privilege separation: Implemented in OpenSSH by processing and parsing network data in forked and underprivileged child processes that communicate to privileged Monitor process through IPC. Monitor does the core crypto validation and authentication. Privilege downgrading is done by setuid(restricted_user). Security model in Windows will be different, running the SSHD service itself in a low privileged mode. So, the whole Privilege separation relevant code is not needed and will be disabled for Windows. 
++ Privilege separation: Implemented in OpenSSH by processing and parsing network data in forked and underprivileged child processes that communicate to privileged Monitor process through IPC. Monitor does the core crypto validation and authentication. Privilege downgrading is done by setuid(restricted_user). 
+While privilege separation is ideal, it requires adding in complexity and refactoring to accommodate a Windows specific solution along with a Unix based on in a common architecture. 
+The plan is to have a initial Windows version with no privilege separation. In Windows, ssh daemon will run under the context of [Network Service](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684272(v=vs.85).aspx). 
 + sftp and scp: sftp and scp client side utilities invoke ssh using fork() and exec(). This logic will be substituted with CreateProcess based one.
 
 #### AF_UNIX domain sockets
