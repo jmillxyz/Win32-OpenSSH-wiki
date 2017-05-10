@@ -22,6 +22,7 @@ If you are using the openssh client,
 
      If you want support for the VT100+ sequences then please upgrade to windows 10+ OS or use the third party tools like putty, Cygwin, etc.
 
+# SETUP
 ## Windows SSH Client to UNIX SSH server  
 If you want to use vi / top / man, etc commands while connecting from windows client to Linux server then please follow these steps   
 
