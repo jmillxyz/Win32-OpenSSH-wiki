@@ -41,8 +41,7 @@ If you want to use vi / top / man, etc commands while connecting from windows cl
 
 ## UNIX SSH Client to WINDOWS SSH server  
 1) Set the environment variable (TERM) to xterm. Before logging into the SSH server.
-    c:\test\> set TERM=xterm   
-    c:\test\> set TERM (This should show the term set to xterm)
+![image](https://cloud.githubusercontent.com/assets/23668037/25919629/1790cfcc-3584-11e7-954c-d3df3c86f8ec.png)
 
 ## WINDOWS SSH Client to WINDOWS SSH server  
 1) Set the non-legacy console mode in the console properties,   
