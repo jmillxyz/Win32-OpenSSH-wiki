@@ -54,11 +54,11 @@ If you want to use vi / top / man, etc commands while connecting from windows cl
 
 3) If your windows client machine is **windows 10 or above ** and if you have any issues,   
 
-   a) set the environment variable SSH_TERM_CONHOST_PARSER to 0    
+   a) exit the current ssh session (if any)     
+
+   b) set the environment variable SSH_TERM_CONHOST_PARSER to 0    
            c:\test\> set SSH_TERM_CONHOST_PARSER=0    
            c:\test\> set SSH_TERM_CONHOST_PARSER (This should show "0")    
-
-   b) exit the current ssh session (if any)     
 
    c) start a new ssh session.    
 
