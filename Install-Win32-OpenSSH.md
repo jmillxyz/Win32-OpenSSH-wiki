@@ -9,9 +9,9 @@
      * If you do see 22 occupied, [#610](https://github.com/PowerShell/Win32-OpenSSH/issues/610) has workarounds to deal with port conflict. 
 * Install sshd and ssh-agent services. 
      * `powershell -executionpolicy bypass -file install-sshd.ps1`
-* Setup SSH host keys (This will generate all the 'host' keys that sshd expects when its starts. The 'host' keys only have current user as owner and full control by default.)
+* Setup SSH host keys (This will generate all the 'host' keys that sshd expects when its starts. The 'host' keys only have current user as owner and full control by default starting from build v0.0.13.0.)
      * `.\ssh-keygen.exe -A`
-* (This step is required starting build v0.0.13.0. ) Grant "NT service\sshd" read access the host private key files:
+* (Required starting build v0.0.13.0. ) Grant "NT service\sshd" read access the host private key files:
      ```
         Get-ChildItem -Path 'C:\Program Files\OpenSSH\ssh_host_*_key' | % {    
         $acl = get-acl $_.FullName
