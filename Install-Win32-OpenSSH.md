@@ -10,9 +10,9 @@
 * Install sshd and ssh-agent services. 
      * `powershell -executionpolicy bypass -file install-sshd.ps1`
 * Setup SSH host keys 
-     * `.\ssh-keygen.exe -A` (This will generate all the 'host' keys that sshd expects when its starts. The generated 'host' keys are [secured][Secure file] starting from build v0.0.13.0.)
+     * `.\ssh-keygen.exe -A` (This will generate all [secured][Secure file] 'host' keys (starting from build [v0.0.13.0][build13]).)
      * If existing host keys are used instead of generate new, make sure they are [secured][Secure file].
-* (Required starting build v0.0.13.0. ) Grant "NT service\sshd" Read access the host key files:
+* (Required starting build [v0.0.13.0][build13]. ) Grant "NT service\sshd" Read access the host key files:
      ```
         Get-ChildItem -Path 'C:\Program Files\OpenSSH\ssh_host_*_key*' | % {    
         $acl = get-acl $_.FullName
@@ -51,3 +51,4 @@ netsh advfirewall firewall add rule name='SSH Port' dir=in action=allow protocol
      * `powershell.exe -executionpolicy bypass -file uninstall-sshd.ps1`
 
 [Secure file]: https://github.com/PowerShell/Win32-OpenSSH/wiki/Security-protection-of-various-files-in-win32-openssh
+[build13]: https://github.com/PowerShell/Win32-OpenSSH/releases/tag/v0.0.13.0
