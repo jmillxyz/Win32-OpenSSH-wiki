@@ -10,7 +10,7 @@
 * Install sshd and ssh-agent services. 
      * `powershell -executionpolicy bypass -file install-sshd.ps1`
 * Setup SSH host keys 
-     * `.\ssh-keygen.exe -A` (This will generate all [secured][Secure file] 'host' keys (starting from build [v0.0.13.0][build13]).)
+     * `.\ssh-keygen.exe -A` (This will generate all [secured][Secure file] 'host' keys (starting build [v0.0.13.0][build13]).)
      * If existing host keys are used instead of generate new, make sure they are [secured][Secure file].
 * (Required starting build [v0.0.13.0][build13]. ) Grant "NT service\sshd" Read access the host key files:
      ```
