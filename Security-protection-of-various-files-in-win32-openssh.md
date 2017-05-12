@@ -58,8 +58,7 @@ function Add-PermissionToFileACL
     param(
         [string]$FilePath,
         [System.Security.Principal.NTAccount] $User,
-        [System.Security.AccessControl.FileSystemRights]$Perm
-    )    
+        [System.Security.AccessControl.FileSystemRights]$Perm)    
 
     $myACL = Get-ACL $filePath        
     $objACE = New-Object System.Security.AccessControl.FileSystemAccessRule `
@@ -76,18 +75,18 @@ function Add-PermissionToFileACL
 The new generated keys have current login use as owner and only grant the owner full control access. 
 1. Grant "NT Service\sshd" Read access to both public and private host key files for the keys to function.
 ```
-Add-PermissionToFileACL -FilePath $hostKeyFilePath -User "NT Service\sshd" -Perm "Read"
-Add-PermissionToFileACL -FilePath "$hostKeyFilePath.pub" -User "NT Service\sshd" -Perm "Read"
+Add-PermissionToFileACL -FilePath $hostPrivateKeyFilePath -User "NT Service\sshd" -Perm "Read"
+Add-PermissionToFileACL -FilePath "$hostPrivateKeyFilePath.pub" -User "NT Service\sshd" -Perm "Read"
 ```
-2. On server machine, grant "NT Service\sshd" Read access to authorized_keys
+2. On server machine, grant "NT Service\sshd" Read access to authorized_keys in a user's home directory
 ```
-$user = '<user>'
+$user = '<myusername>'
 $userProfilePath = "$env:systemdrive\Users\$user"
 Add-PermissionToFileACL -FilePath "$userProfilePath\.ssh\authorized_keys" -User "NT Service\sshd" -Perm "Read"
 ```
-3. On client machine, if user ssh_config is specified at $env:USERPROFILE\.ssh\config, make sure it is secured.
+3. On client machine, if user ssh_config is specified at $home\.ssh\config, make sure it is secured.
 ```
-Set-SecureFileACL "$env:USERPROFILE\.ssh\config"
+Set-SecureFileACL "$home\.ssh\config"
 ```
 
 **For users to use existing host and user keys generated before build [v0.0.13.0][build13].**
@@ -108,16 +107,16 @@ Add-PermissionToFileACL -FilePath $hostPublicKeyFilePath -User "NT Service\sshd"
 Set-SecureFileACL -FilePath $userPrivateKeyFilePath
 ``` 
 
-4. On server machine, adjust file permission of authorized_keys file: Set server login user as owner and grant server login user full control and "NT Service\sshd" Read access.
+4. On server machine, adjust file permission of authorized_keys file in a user's home directory: Set server login user as owner and grant server login user full control and "NT Service\sshd" Read access.
 ```
-$user = '<user>'
+$user = '<myusername>'
 $userProfilePath = "$env:systemdrive\Users\<user>"
 $objUser = New-Object System.Security.Principal.NTAccount($user)
 Set-SecureFileACL "$userProfilePath\.ssh\authorized_keys" -owner $objUser
 Add-PermissionToFileACL -FilePath "$userProfilePath\.ssh\authorized_keys" -User "NT Service\sshd" -Perm "Read"
 ```
-5. On client machine, if user ssh_config is specified at $env:USERPROFILE\.ssh\config, make sure it is secured.
+5. On client machine, if user ssh_config is specified at $home\.ssh\config, make sure it is secured.
 ```
-Set-SecureFileACL "$env:USERPROFILE\.ssh\config"
+Set-SecureFileACL "$home\.ssh\config"
 ```
 [build13]: https://github.com/PowerShell/Win32-OpenSSH/releases/tag/v0.0.13.0
