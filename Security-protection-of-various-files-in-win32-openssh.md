@@ -7,7 +7,7 @@ Starting on build [v0.0.13.0][build13], win32 openssh make sure files are secure
 Utility scripts to adjust file permissions:
 1. Script to remove inheritance of the file, assign owner, and grant the owner full control 
 ```
-$user = "<user>"
+$user = "<myusername>"
 $objUser = New-Object System.Security.Principal.NTAccount($user)
 Set-SecureFileACL -filepath $env:systemdrive\Users\$user\.ssh\authorized_keys -owner $objUser
 function Set-SecureFileACL 
