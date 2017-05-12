@@ -1,10 +1,8 @@
 If sshd cannot start
   * Check that sshd_config is in place
   * Check that host keys are generated and have correct file permission:
-  * Check if private host keys are protected:
-    * The file owner of private host key files cannot be other accounts than current user, Administrators group, Local system account, or an user account in local Administrators group
-    * Other accounts than current user, Administrators group, Local system account, or an user account in local Administrators group should not have any access to private key file
-  * Check if "NT service\sshd" have read access to public key files
+  * Check that private host keys are [secured][Secure file].
+  * Check that "NT service\sshd" have Read access to public and private key files
 
 Trouble shooting steps for typical connection issues:
 - Server side - run sshd in debug mode
@@ -24,3 +22,5 @@ Trouble shooting more complex issues:
 - Client side
   * set LogLevel to DEBUG (or DEBUG2/DEBUG3 for higher levels of logging) in ssh_config
   * Run ssh.exe in verbose mode as detailed above
+
+[Secure file]: https://github.com/PowerShell/Win32-OpenSSH/wiki/Security-protection-of-various-files-in-win32-openssh
