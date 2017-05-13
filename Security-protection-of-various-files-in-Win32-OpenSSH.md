@@ -82,7 +82,7 @@ Set-SecureFileACL -filepath $env:systemdrive\Users\$user\.ssh\authorized_keys -o
 
 ### Add-PermissionToFileACL
 
-`Add-PermissionToFileACL` grants `NT Service\sshd` read permission to a file.
+`Add-PermissionToFileACL` grants an user a file permission to access a file.
 
 ```powershell
 function Add-PermissionToFileACL
@@ -100,13 +100,13 @@ function Add-PermissionToFileACL
 }
 ```
 
-#### Example: Setting owner of public host key to `NT Service\sshd`
+#### Example: Grants `NT Service\sshd` Read permission to a host public key file
 
 ```powershell
-Add-PermissionToFileACL -FilePath "$hostKeyFilePath.pub" -User "NT Service\sshd" -Perm "Read"
+Add-PermissionToFileACL -FilePath "$hostKeyFilePath -User "NT Service\sshd" -Perm "Read"
 ```
 
-## Managing keys end-to-end for Win32-OpenSSH
+## Managing keys and config files end-to-end for Win32-OpenSSH
 
 ### Generating new keys using `v0.0.13.0`
 
@@ -115,8 +115,8 @@ However, some files will still require some ACL modification.
 
 1. If the generated keys (both private and public) are going to be used as host keys, you must grant `NT Service\sshd` Read access: 
 ```powershell
-Add-PermissionToFileACL -FilePath $hostPrivateKeyFilePath -User "NT Service\sshd" -Perm "Read"
-Add-PermissionToFileACL -FilePath "$hostPrivateKeyFilePath.pub" -User "NT Service\sshd" -Perm "Read"
+Add-PermissionToFileACL -FilePath $hostKeyFilePath -User "NT Service\sshd" -Perm "Read"
+Add-PermissionToFileACL -FilePath "$hostKeyFilePath.pub" -User "NT Service\sshd" -Perm "Read"
 ```
 
 2. On the server running `sshd`, grant `NT Service\sshd` Read access to `authorized_keys` in `~\.ssh\`:
@@ -126,12 +126,12 @@ $userProfilePath = "$env:systemdrive\Users\$user"
 Add-PermissionToFileACL -FilePath "$userProfilePath\.ssh\authorized_keys" -User "NT Service\sshd" -Perm "Read"
 ```
 
-3. On the client machine, if a user has a `ssh_config` at `~\.ssh\config`, make sure that the user is the owner and has Full Control:
+3. On the client machine, if an user has a `ssh_config` at `~\.ssh\config`, make sure that the user is the owner and has Full Control:
 ```powershell
 Set-SecureFileACL '~\.ssh\config'
 ```
 
-### Transitioning existing keys to `v0.0.13.0`
+### Transitioning existing keys and files to `v0.0.13.0`
 
 If you have host or user keys that were generated before build [v0.0.13.0][build13], you'll need to secure those key files before using them `v0.0.13.0` or later.
 
@@ -163,7 +163,7 @@ Set-SecureFileACL "$userProfilePath\.ssh\authorized_keys" -owner $objUser
 Add-PermissionToFileACL -FilePath "$userProfilePath\.ssh\authorized_keys" -User "NT Service\sshd" -Perm "Read"
 ```
 
-5. On the client, if a user has their own `ssh_config` located at `~\.ssh\config`, it must be owned by that user (or a group to which that user belongs):
+5. On the client, if a user has their own `ssh_config` located at `~\.ssh\config`, make sure that the user is the owner and has Full Control:
 ```powershell
 Set-SecureFileACL "~\.ssh\config"
 ```
