@@ -1,4 +1,4 @@
-# Secure protection of keys and configure files
+# Secure protection of keys and config files
 
 Starting with the release of [v0.0.13.0][build13], Win32-OpenSSH ensures files are secure before they are loaded.
 `ssh-keygen.exe` generates protected key files as well.
