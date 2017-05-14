@@ -13,7 +13,7 @@
 ***
 1. Copy `id_rsa.pub` (client's public key) to corresponding user's directory on ssh server machine
      * as `%systemdrive%\users\<user>\.ssh\authorized_keys` (path on the ssh server machine)
-2. Make sure the authorized_keys file is [secured][Secure file] and "NT Service\sshd" has Read access to it
+2. Make sure the authorized_keys file is [secured][Secure file] (you make need to re-ACL it if it is not.) and "NT Service\sshd" has Read access to it
 ```   
    $authorizedKeyPath = "%systemdrive%\users\<user>\.ssh\authorized_keys"
    $acl = get-acl $authorizedKeyPath
