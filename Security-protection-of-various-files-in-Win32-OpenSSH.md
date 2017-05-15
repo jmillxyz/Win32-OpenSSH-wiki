@@ -24,6 +24,8 @@ authorized_keys   NT SERVICE\sshd:(R)
                   someotheruser:(R) 
 ```
 - Host specific resources on server side - host private keys
+In a secure configuration, host private keys should be registered with ssh-agent. See [wiki](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH) for details on how to secure host keys.
+If the private keys are directly consumed by SSHD, following are enforced:
   - Should be owned by "SYSTEM" (or Administrators group)
   - Should not be accessible to other users or groups (other than Administrators group).
   - "NT Service/sshd" can only have (R) access.
