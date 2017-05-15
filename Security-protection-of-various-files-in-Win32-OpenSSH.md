@@ -3,7 +3,7 @@
 Starting with the release of [v0.0.13.0][build13], Win32-OpenSSH ensures any configuration and key files are secure before they are loaded.
 
 Specifically, following permission checks are enforced:
-## User specific resources on client side - private keys and ssh_config (%userprofile%\\.ssh\config)
+### User specific resources on client side - private keys and ssh_config (%userprofile%\\.ssh\config)
   - Should be owned by the user
   - Should not be accessible to other users.
   - Ex. ssh would fail to use the following private key for userA, since "someotheruser" also has access.
@@ -12,7 +12,7 @@ c:\>icacls userkey
 userkey  userA:(F)
          someotheruser:(R) 
 ```
-## User specific resources on server side - authorized_keys
+### User specific resources on server side - authorized_keys
   - Should be owned by the user.
   - Should not be accessible to other users. 
   - "NT Service/sshd" can only have (R) access. 
@@ -23,7 +23,8 @@ authorized_keys   NT SERVICE\sshd:(R)
                   userA:(F)
                   someotheruser:(R) 
 ```
-## Host specific resources on server side - host private keys. In a secure configuration, host private keys should be registered with ssh-agent. See [wiki](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH) for details on how to secure host keys. If the private keys are directly consumed by SSHD, following are enforced:
+### Host specific resources on server side - host private keys 
+In a secure configuration, host private keys should be registered with ssh-agent. See [wiki](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH) for details on how to secure host keys. If the private keys are directly consumed by SSHD, following are enforced:
   - Should be owned by "SYSTEM" (or Administrators group)
   - Should not be accessible to other users or groups (other than Administrators group).
   - "NT Service/sshd" can only have (R) access.
