@@ -1,26 +1,35 @@
-If sshd cannot start
-  * Check that sshd_config is in place
-  * Check that host keys are generated and have correct file permission:
-  * Check that private host keys are [secured][Secure file].
-  * Check that "NT service\sshd" have Read access to public and private key files
+If sshd won't start:
 
-Trouble shooting steps for typical connection issues:
-- Server side - run sshd in debug mode
-   * `net stop sshd`
-   * In an elevated admin console - `sshd.exe -d`
-   * This will dump debug logs real time on console
-- Client side - start ssh.exe in verbose mode
-   * `ssh.exe -v ...`
-   * This will dump verbose logs on console
+* Ensure that `sshd_config` is in the same directory as `sshd.exe`
+* Ensure that host keys are generated and have the [correct file permissions][Secure file]:
+  * Ensure that private host keys are [secured][Secure file]
+  * Ensure that `NT service\sshd` has `Read` access to public and private key files
 
-Trouble shooting more complex issues:
-- Server side
-  * stop sshd and ssh-agent services
-  * delete sshd.log and ssh-agent.log (in logs directory)
-  * set LogLevel to DEBUG (or DEBUG2/DEBUG3 for higher levels of logging) in sshd_config
-  * run the scenario. sshd.log and ssh-agent.log will contain sshd and ssh-agent related traces respectively
-- Client side
-  * set LogLevel to DEBUG (or DEBUG2/DEBUG3 for higher levels of logging) in ssh_config
-  * Run ssh.exe in verbose mode as detailed above
+Troubleshooting steps for typical connection issues:
+
+* Server side: run `sshd` in debug mode
+  * `net stop sshd`
+  * In an elevated Administrator console, run `sshd` in debug mode
+    * `sshd.exe -d`
+  * This will dump debug logs in real time to stdout on the console
+  * You can also add additional `d`s to get more debug information:
+    * `sshd.exe -dd` or `sshd.exe -ddd`
+* Client side: start `ssh` in verbose mode
+  * `ssh.exe -v ...`
+  * This will dump verbose logs in real time to stdout on the console
+  * You can also add additional `v`s to get more verbose messages:
+    * `ssh.exe -vv ...` or `ssh.exe -vvv`
+
+Troubleshooting more complex issues:
+* Server side
+  * Stop `sshd` and `ssh-agent` services
+    * `Get-Service ssh* | Stop-Service`
+  * Delete `sshd.log` and `ssh-agent.log` (in the `logs` directory of your installation path)
+  * Set `LogLevel` to `DEBUG` (or `DEBUG2`/`DEBUG3` for higher levels of logging) in `sshd_config`
+  * Rerun the workflow that's giving you problems. `logs\sshd.log` and `logs\ssh-agent.log` will contain `sshd` and `ssh-agent` related traces respectively.
+  * If the problem isn't clear, please post these logs along with some steps to help us reproduce your problem in [our GitHub Issues](https://github.com/powershell/Win32-OpenSSH/issues).
+* Client side
+  * Set `LogLevel` to `DEBUG` (or `DEBUG2`/`DEBUG3` for higher levels of logging) in `ssh_config`. 
+  * Run `ssh.exe` in verbose mode as detailed above
 
 [Secure file]: https://github.com/PowerShell/Win32-OpenSSH/wiki/Security-protection-of-various-files-in-win32-openssh
