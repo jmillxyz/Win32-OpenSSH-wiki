@@ -3,9 +3,9 @@
 Starting with the release of [v0.0.13.0][build13], Win32-OpenSSH ensures any configuration and key files are secure before they are loaded.
 
 Specifically, following permission checks are enforced:
-- User specific resources on client side - 
-  - User's private keys should not be accessible to other users.
-  - User's ssh_config (%userprofile%\.ssh\config) should not be accessible to other users.
+- User specific resources on client side - private keys and ssh_config ((%userprofile%\.ssh\config)
+  - Should not be accessible to other (non-admin) users.
+  - Should not be owned by any other (non-admin) user.
   - Ex. ssh would fail to use the following private key for userA, since "someotheruser" also has access.
 ```
 c:\>icacls userkey
@@ -13,7 +13,8 @@ userkey  userA(F)
          someotheruser(R) 
 ```
 - User specific resources on server side - authorized_keys
-  - Should not be accessible to other users. 
+  - Should not be accessible to other (non-admin) users. 
+  - Should not be owned by any other (non-admin) user. 
   - "NT Service/sshd" can only have (R) access. 
   - Ex. sshd would not respect the following authorized_keys for userA, since "someotheruser" also has access. 
 ```
@@ -23,8 +24,8 @@ authorized_keys   NT SERVICE\sshd:(R)
                   someotheruser(R) 
 ```
 - Host specific resources on server side - host private keys
-  - Should not be owned by a non-admin user
   - Should not be accessible to any non-admin user
+  - Should not be owned by a non-admin user
   - "NT Service/sshd" can only have (R) access.
   - Ex. sshd would not respect the following host key, since "nonadmin" has access. 
 ```
