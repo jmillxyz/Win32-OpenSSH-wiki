@@ -1,5 +1,3 @@
-##### Welcome to the Win32-OpenSSH wiki!
-
 ## Project
 
 * [Project Status](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Status)
