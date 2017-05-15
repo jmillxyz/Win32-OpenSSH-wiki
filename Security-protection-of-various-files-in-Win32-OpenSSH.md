@@ -4,35 +4,35 @@ Starting with the release of [v0.0.13.0][build13], Win32-OpenSSH ensures any con
 
 Specifically, following permission checks are enforced:
 - User specific resources on client side - private keys and ssh_config ((%userprofile%\.ssh\config)
-  - Should not be accessible to other (non-admin) users.
-  - Should not be owned by any other (non-admin) user.
+  - Should be owned by the user
+  - Should not be accessible to other users.
   - Ex. ssh would fail to use the following private key for userA, since "someotheruser" also has access.
 ```
 c:\>icacls userkey
-userkey  userA(F)
-         someotheruser(R) 
+userkey  userA:(F)
+         someotheruser:(R) 
 ```
 - User specific resources on server side - authorized_keys
-  - Should not be accessible to other (non-admin) users. 
-  - Should not be owned by any other (non-admin) user. 
+  - Should be owned by the user.
+  - Should not be accessible to other users. 
   - "NT Service/sshd" can only have (R) access. 
   - Ex. sshd would not respect the following authorized_keys for userA, since "someotheruser" also has access. 
 ```
 c:\>icacls authorized_keys 
 authorized_keys   NT SERVICE\sshd:(R)
-                  userA(F)
-                  someotheruser(R) 
+                  userA:(F)
+                  someotheruser:(R) 
 ```
 - Host specific resources on server side - host private keys
-  - Should not be accessible to any non-admin user
-  - Should not be owned by a non-admin user
+  - Should be owned by "SYSTEM" (or Administrators group)
+  - Should not be accessible to other users or groups (other than Administrators group).
   - "NT Service/sshd" can only have (R) access.
   - Ex. sshd would not respect the following host key, since "nonadmin" has access. 
 ```
 c:\>icacls hostkey 
 hostkey   NT SERVICE\sshd:(R)
-          admin(F)
-          nonadmin(R) 
+          BUILTIN\Administrators:(F)
+          nonadmin:(R) 
 ```
 
 ## Tips to adjust permissions
