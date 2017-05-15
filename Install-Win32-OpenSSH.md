@@ -11,6 +11,11 @@
      * `powershell -executionpolicy bypass -file install-sshd.ps1`
 * Setup SSH host keys 
      * `.\ssh-keygen.exe -A`.
+     * Add read access for "NT Service/sshd" on all host public keys
+        * `icacls ssh_host_dsa_key.pub /grant "NT SERVICE\sshd":(R)`
+        * `icacls ssh_host_rsa_key.pub /grant "NT SERVICE\sshd":(R)`
+        * `icacls ssh_host_ecdsa_key.pub /grant "NT SERVICE\sshd":(R)`
+        * `icacls ssh_host_ed25519_key.pub /grant "NT SERVICE\sshd":(R)`
      * See [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/Security-protection-of-various-files-in-Win32-OpenSSH) for instructions to set the right permissions on host keys. 
 * Secure SSH host keys (optional)
      * `Start-Service ssh-agent`
