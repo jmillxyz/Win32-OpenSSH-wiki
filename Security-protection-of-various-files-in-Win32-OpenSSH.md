@@ -3,7 +3,7 @@
 Starting with the release of [v0.0.13.0][build13], Win32-OpenSSH ensures any configuration and key files are secure before they are loaded.
 
 Specifically, following permission checks are enforced:
-- User specific resources on client side - private keys and ssh_config ((%userprofile%\.ssh\config)
+- User specific resources on client side - private keys and ssh_config (%userprofile%\\.ssh\config)
   - Should be owned by the user
   - Should not be accessible to other users.
   - Ex. ssh would fail to use the following private key for userA, since "someotheruser" also has access.
