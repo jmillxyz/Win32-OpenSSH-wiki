@@ -1,31 +1,53 @@
 # Secure protection of keys and config files
 
-Starting with the release of [v0.0.13.0][build13], Win32-OpenSSH ensures files are secure before they are loaded.
-`ssh-keygen.exe` generates protected key files as well.
+Starting with the release of [v0.0.13.0][build13], Win32-OpenSSH ensures any configuration and key files are secure before they are loaded.
 
-The following files need to be "secure":
+Specifically, following permission checks are enforced:
+- User specific resources on client side - 
+  - User's private keys should not be accessible to other users.
+  - User's ssh_config (%userprofile%\.ssh\config) should not be accessible to other users.
+  - Ex. ssh would fail to use the following private key for userA, since "someotheruser" also has access.
+```
+c:\>icacls userkey
+userkey  userA(F)
+         someotheruser(R) 
+```
+- User specific resources on server side - authorized_keys
+  - Should not be accessible to other users. 
+  - "NT Service/sshd" can only have (R) access. 
+  - Ex. sshd would not respect the following authorized_keys for userA, since "someotheruser" also has access. 
+```
+c:\>icacls authorized_keys 
+authorized_keys   NT SERVICE\sshd:(R)
+                  userA(F)
+                  someotheruser(R) 
+```
+- Host specific resources on server side - host private keys
+  - Should not be owned by a non-admin user
+  - Should not be accessible to any non-admin user
+  - "NT Service/sshd" can only have (R) access.
+  - Ex. sshd would not respect the following host key, since "nonadmin" has access. 
+```
+c:\>icacls hostkey 
+hostkey   NT SERVICE\sshd:(R)
+          admin(F)
+          nonadmin(R) 
+```
 
-- on the client-side
-  - user's private keys
-  - user's `ssh_config` located at `~\.ssh\config`
-- on the server-side
-  - user's `authorized_keys`
-  - private host keys
+## Tips to adjust permissions
+### icacls
+You could use icacls to add / remove permissions on a given file
+Ex. you could do the following to fix permissions on user's private key file
+```
+c:\>icacls userkey
+userkey  userA(F)
+         someotheruser(R) 
+c:>icacls userkey /remove someotheruser
+c:\>icacls userkey
+userkey  userA(F)
+```
 
-"Secure" means:
-
-1. The file owner of these files must be one of the following (additionally, no other users or groups may have any access to the files):
-    - the local Administrators group
-    - LocalSystem account
-    - a user in the local Administrators group
-    - the user associated with a user key or user config
-1. `NT Service\sshd` must have (and only have) Read access to `authorized_keys` and all host keys.
-(Note: this means that `NT Service\sshd` *cannot* have Write access or Full Control.)
-
-## Utility scripts to adjust file permissions
-
-The following scripts are used in instructions below to help with managing the permissions of key files:
-
+You could also user the following PowerShell based routines to help with adjusting permissions
 ### Set-SecureFileACL
 
 `Set-SecureFileACL` removes inherited ACLs on a file, assigns the current user as an owner (unless the `-Owner` parameter is specified), and grants the owner Full Control of the file:
