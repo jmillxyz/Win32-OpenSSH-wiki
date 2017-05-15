@@ -63,7 +63,7 @@ function Set-SecureFileACL
         )
 
     $myACL = Get-ACL -Path $FilePath
-    $myACL.SetAccessRuleProtection($True, $True)
+    $myACL.SetAccessRuleProtection($True, $FALSE)
     Set-Acl -Path $FilePath -AclObject $myACL
 
     $myACL = Get-ACL $FilePath
