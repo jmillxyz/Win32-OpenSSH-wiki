@@ -10,7 +10,7 @@
 
 This example connects to the local machine (`localhost`) as the user `test1`, and downloads/uploads some files.
 
-```sh
+```
 sftp test1@localhost                       //login to local machine using test1 username
 sftp -i .ssh/id_rsa test1@remotehost       //login using .ssh/id_rsa public key pair
 pwd                                        //show current remote directory
