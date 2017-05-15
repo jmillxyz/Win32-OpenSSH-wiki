@@ -22,7 +22,7 @@ $acl.SetAccessRule($ar)
 Set-Acl $authorizedKeyPath $acl
 ``` 
 
-### Usage from client-side
+### Usage from client-side (`ssh`)
 
 1. Generate a key pair on the client:
      * `ssh-keygen -t rsa -f id_rsa`
