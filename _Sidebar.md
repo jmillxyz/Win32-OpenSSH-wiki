@@ -20,7 +20,7 @@
 * [Troubleshooting](https://github.com/PowerShell/Win32-OpenSSH/wiki/Troubleshooting-Steps)
 * [Retrieving download links for the latest packages](https://github.com/PowerShell/Win32-OpenSSH/wiki/How-to-retrieve-links-to-latest-packages)
 
-## Developing and Contributing
+## Developing/Contributing
 * [Building Win32-OpenSSH on Windows (w/ LibreSSL)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Building-OpenSSH-for-Windows-(using-LibreSSL-crypto))
 * [Building Win32-OpenSSH on Linux](https://github.com/PowerShell/Win32-OpenSSH/wiki/Building-Win32-OpenSSH-on-Linux)
 * [VS 2015 Build Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/Building-using-VS-2015)
