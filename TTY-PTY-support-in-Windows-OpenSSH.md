@@ -1,25 +1,45 @@
 # SETUP
-## Windows SSH Client to UNIX SSH server  
-If you want to use vi / top / man, etc commands while connecting from windows client to Linux server then please follow these steps   
+## Windows SSH client to Linux/Unix/macOS (*nix) SSH server 
+ 
+If you want to have the best experience while using utilities like vi, top, man, etc. while connected from a Windows SSH client to a *nix server, you should configure your terminal to use an xterm-like rendering mode.
 
-1) Upgrade to windows 10+ OS.   
+Unfortunately, this rendering mode is only included with Windows 10. If you're not on Windows 10, you may have more luck using a third-party terminal emulator or console host like [Cmder]() or [ConEmu]().
 
-2) Set the non-legacy console mode in the console properties,   
-   Make sure you **uncheck** the "use legacy console"   
-![image](https://cloud.githubusercontent.com/assets/23668037/23882278/cc062726-081c-11e7-8e4c-792da6af23b9.png)    
+1. Open a shell from which you want to use `ssh` (either `powershell` or `cmd`).
+1. Right-click the application icon in the upper-left and the window and select `Properties`.
+1. Ensure that `Use legacy console (requires relaunch)` is unchecked:
 
-3) Set the Screenbuffer width, window size width to >= 90.   
-![image](https://cloud.githubusercontent.com/assets/23668037/23882328/11ed4116-081d-11e7-87e0-757680ea3a74.png)
+   ![image](https://cloud.githubusercontent.com/assets/23668037/23882278/cc062726-081c-11e7-8e4c-792da6af23b9.png)    
+1. In the `Layout` tab, set the Screen Buffer width and Window Size width to >= 90:
 
-4) Set the environment variable (TERM) to xterm. Before logging into the SSH server.   
-    c:\test\> set TERM=xterm   
-    c:\test\> set TERM (This should show the term set to xterm)  
+   ![image](https://cloud.githubusercontent.com/assets/23668037/23882328/11ed4116-081d-11e7-87e0-757680ea3a74.png)
 
-## UNIX SSH Client to WINDOWS SSH server  
-1) Set the environment variable (TERM) to xterm. Before logging into the SSH server.
-![image](https://cloud.githubusercontent.com/assets/23668037/25919629/1790cfcc-3584-11e7-954c-d3df3c86f8ec.png)
+   All of these changes will persist within the same shortcut to `cmd` or `powershell`.
+   If you want to change the defaults for *new* shortcuts, select `Defaults` in Step 2 instead of `Properties`.
+1. Set the `TERM` environment variable to `xterm`:
 
-## WINDOWS SSH Client to WINDOWS SSH server  
+   ```
+   set TERM=xterm 
+   ```
+   
+   In PowerShell you can also use the `$env:` namespace to edit this variable:
+   
+   ```powershell
+   $env:TERM = 'xterm'
+   ```
+   
+   Both of these methods will only persist for the current session.
+   If you want this to happen every time you start PowerShell, you can leverage [PowerShell profiles]().
+
+## Linux/Unix/macOS SSH client to Windows SSH server
+
+1. Set the `TERM` environment variable to `xterm`:
+   ```bash
+   export TERM=xterm
+   ```
+
+## Windows SSH Client to Windows SSH server
+
 1) Set the non-legacy console mode in the console properties,   
    Make sure you **uncheck** the "use legacy console"   
 ![image](https://cloud.githubusercontent.com/assets/23668037/23882278/cc062726-081c-11e7-8e4c-792da6af23b9.png)    
