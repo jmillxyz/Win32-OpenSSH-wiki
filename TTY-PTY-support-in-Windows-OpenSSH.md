@@ -3,7 +3,7 @@
  
 If you want to have the best experience while using utilities like vi, top, man, etc. while connected from a Windows SSH client to a *nix server, you should configure your terminal to use an xterm-like rendering mode.
 
-Unfortunately, this rendering mode is only included with Windows 10. If you're not on Windows 10, you may have more luck using a third-party terminal emulator or console host like [Cmder]() or [ConEmu]().
+Unfortunately, this rendering mode is only included with Windows 10. If you're not on Windows 10, you may have more luck using a third-party terminal emulator or console host like [Cmder](http://cmder.net/) or [ConEmu](https://conemu.github.io/).
 
 1. Open a shell from which you want to use `ssh` (either `powershell` or `cmd`).
 1. Right-click the application icon in the upper-left and the window and select `Properties`.
@@ -29,7 +29,7 @@ Unfortunately, this rendering mode is only included with Windows 10. If you're n
    ```
    
    Both of these methods will only persist for the current session.
-   If you want this to happen every time you start PowerShell, you can leverage [PowerShell profiles]().
+   If you want this to happen every time you start PowerShell, you can leverage [PowerShell profiles](https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.core/about/about_profiles).
 
 ## Linux/Unix/macOS SSH client to Windows SSH server
 
