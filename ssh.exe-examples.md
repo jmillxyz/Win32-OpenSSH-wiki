@@ -10,18 +10,6 @@
 
 ## Login With SSH Keys
 
-### Setup server-side (`sshd`)
-
-1. Copy `id_rsa.pub` (client's public key) to corresponding user's directory on the SSH server at `%systemdrive%\Users\<user>\.ssh\authorized_keys`
-2. Make sure the authorized_keys file is [secured][Secure file] (you may need to re-ACL it) and "NT Service\sshd" has Read access to it
-```powershell
-$authorizedKeyPath = "%systemdrive%\users\<user>\.ssh\authorized_keys"
-$acl = Get-Acl $authorizedKeyPath
-$ar = New-Object System.Security.AccessControl.FileSystemAccessRule("NT Service\sshd", "Read", "Allow")
-$acl.SetAccessRule($ar)
-Set-Acl $authorizedKeyPath $acl
-``` 
-
 ### Usage from client-side (`ssh`)
 
 1. Generate a key pair on the client:
@@ -33,6 +21,18 @@ Set-Acl $authorizedKeyPath $acl
 3. Login using [secured][Secure file] private key
      * `ssh -i .\id_rsa user@host` (workgroup user)
      * `ssh -i .\id_rsa -l user@domain host` (domain user)
+
+### Setup server-side (`sshd`)
+
+1. Copy `id_rsa.pub` (client's public key) to corresponding user's directory on the SSH server at `%systemdrive%\Users\<user>\.ssh\authorized_keys`
+2. Make sure the authorized_keys file is [secured][Secure file] (you may need to re-ACL it) and "NT Service\sshd" has Read access to it
+```powershell
+$authorizedKeyPath = "%systemdrive%\users\<user>\.ssh\authorized_keys"
+$acl = Get-Acl $authorizedKeyPath
+$ar = New-Object System.Security.AccessControl.FileSystemAccessRule("NT Service\sshd", "Read", "Allow")
+$acl.SetAccessRule($ar)
+Set-Acl $authorizedKeyPath $acl
+``` 
 
 ### For Unix and Linux users
 
