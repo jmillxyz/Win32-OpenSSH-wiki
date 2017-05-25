@@ -1,10 +1,11 @@
-Various OpenSSH resource files are integral to secure working of both server and client stacks. Here we discuss how to protect these resources, how OpenSSH for Windows enforces permission checks and tips on individual case studies on how to fix any permission related issues. 
+Various OpenSSH resource files are integral to secure working of both server and client stacks. Here we discuss how to protect these resources, how OpenSSH for Windows enforces permission checks and individual case studies on how to fix any permission related issues. 
 
 2 fundamental reasons leading to the differences between how these permission checks work on Unix vs Windows:
 - SuperUser on Unix maps to either [System (SY)](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684190(v=vs.85).aspx) or [AdministratorsGroup (AG)] on Windows. 
 - Permission controlling in Windows is more granular than in Unix. 
 
-Its important to understand the distinction between "AdministratorsGroup" and an admin user. A logged on admin user would typically run processes in [non-elevated](https://msdn.microsoft.com/en-us/library/windows/desktop/dn742497(v=vs.85).aspx) mode. Even though an admin user is part of AG, these non-elevated processes do have authority to access resources that are locked only to AG. 
+
+Its important to understand the distinction between "AdministratorsGroup" and an admin user. A logged on admin user would typically run processes in [non-elevated](https://msdn.microsoft.com/en-us/library/windows/desktop/dn742497(v=vs.85).aspx) mode. Even though an admin user is part of AG, these non-elevated processes **do not have authority** to access resources that are locked only to AG. 
 
 Any misconfigured permissions would manifest as an attention seeking log entry. Ex. if a private key is not protected, you'll see the following:
 ```
