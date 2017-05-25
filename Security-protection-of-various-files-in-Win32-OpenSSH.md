@@ -1,7 +1,7 @@
 Various OpenSSH resource files are integral to secure working of both server and client stacks. Here we discuss how to protect these resources, how OpenSSH for Windows enforces permission checks and individual case studies on how to fix any permission related issues. 
 
 2 fundamental reasons leading to the differences between how these permission checks work on Unix vs Windows:
-- SuperUser on Unix maps to either [System (SY)](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684190(v=vs.85).aspx) or [AdministratorsGroup (AG)] on Windows. 
+- SuperUser on Unix maps to either [System (SY)](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684190(v=vs.85).aspx) or AdministratorsGroup (AG) on Windows. 
 - Permission controlling in Windows is more granular than in Unix. 
 
 
