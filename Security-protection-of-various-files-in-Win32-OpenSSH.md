@@ -48,7 +48,7 @@ ssh_host_dsa_key   NT SERVICE\sshd:(F)
                    otheruser1:(IR)
                    otheruser2:(R)
 ```
-Steps to fix these permissions - disable inheritance and remove access to otheruser*
+Steps to fix these permissions - disable inheritance, remove access to otheruser*, and fix access to sshd
 ```
 PS C:\>icacls .\users\thisuser\.ssh\authorized_keys /inheritance:d
 PS C:\>icacls .\users\thisuser\.ssh\authorized_keys /remove otheruser1
