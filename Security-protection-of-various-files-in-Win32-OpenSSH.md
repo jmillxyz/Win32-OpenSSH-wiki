@@ -33,13 +33,16 @@ PS C:\>icacls .\ssh_host_dsa_key /setowner system
 PS C:\>icacls .\ssh_host_dsa_key /remove otheruser
 ```
 ### authorized_keys
-authorized_keys is an user associated file that represents a list of authorized public keys that could be used for (key-based) user authentication. Unauthorized access to this file compromises the associated user's account. This file should not be owned by not provide access to any other user. Note that sshd service needs access to authorized_keys for public key validation. 
-Following is a misconfigured authorized key because 'otheruser1' has access to the file (through inheritance) and 'otheruser2' has access to this file (explicit permission). 
+authorized_keys is an user associated file that represents a list of authorized public keys that could be used for (key-based) user authentication. Unauthorized access to this file compromises the associated user's account. This file should not be owned by, nor provide access to any other user. Note that sshd service needs **read** access to authorized_keys for public key validation. 
+Following is a misconfigured authorized key because 
+- 'otheruser1' has access to the file (through inheritance) 
+- 'otheruser2' has access to this file (explicit permission). 
+- sshd service has full access (it only needs read access)
 ```
 PS C:\>(get-acl .\users\thisuser\.ssh\authorized_keys).owner
 thisuser
 PS C:\>icacls .\users\thisuser\.ssh\authorized_keys
-ssh_host_dsa_key   NT SERVICE\sshd:(R)
+ssh_host_dsa_key   NT SERVICE\sshd:(F)
                    BUILTIN\Administrators:(F)
                    thisuser:(F) 
                    otheruser1:(IR)
@@ -50,5 +53,7 @@ Steps to fix these permissions - disable inheritance and remove access to otheru
 PS C:\>icacls .\users\thisuser\.ssh\authorized_keys /inheritance:d
 PS C:\>icacls .\users\thisuser\.ssh\authorized_keys /remove otheruser1
 PS C:\>icacls .\users\thisuser\.ssh\authorized_keys /remove otheruser2
+PS C:\>icacls .\users\thisuser\.ssh\authorized_keys /remove `"NT SERVICE\sshd`"
+PS C:\>icacls .\users\thisuser\.ssh\authorized_keys /grant `"NT SERVICE\sshd`":`(R`)
 ```
 
