@@ -32,6 +32,10 @@ Steps to fix these permissions
 PS C:\>icacls .\ssh_host_dsa_key /setowner system
 PS C:\>icacls .\ssh_host_dsa_key /remove otheruser
 ```
+At this point, you could do the following to replicate these permissions onto other host keys
+```
+PS C:\>get-acl .\ssh_host_dsa_key | Set-Acl ssh_host*key
+```
 ### authorized_keys
 authorized_keys is an user associated file that represents a list of authorized public keys that could be used for (key-based) user authentication. Unauthorized access to this file compromises the associated user's account. This file should not be owned by, nor provide access to any other user. Note that sshd service needs **read** access to authorized_keys for public key validation. 
 Following is a misconfigured authorized key because 
