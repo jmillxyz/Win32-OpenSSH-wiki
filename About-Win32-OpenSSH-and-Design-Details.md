@@ -108,7 +108,8 @@ If user profile does not exist, it gets created upon first logon via ssh. This w
 
 Shown below is a high level overview of the various SSH components and access boundaries for various resources involved: 
 
-![HLA](https://cloud.githubusercontent.com/assets/14185020/25297023/30648b4e-26a0-11e7-8e6e-954974cd8112.JPG)
+![HLA](https://cloud.githubusercontent.com/assets/14185020/26595943/de433644-4521-11e7-9a48-78bf7d3dbb17.JPG)
+
 
  
 
