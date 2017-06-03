@@ -19,7 +19,7 @@ Powershell utility scripts are included starting release [V0.0.15.0](https://git
 ```
   - Powershell module `OpenSSHUtils.psm1` checks and fixes customer specified files.
     - Function `Fix-HostSSHDConfigPermissions` fixes the sshd_config file specified by user
-    - Function `Fix-HostKeyPermissions` fixes the permission for host keys specified by user
+    - Function `Fix-HostKeyPermissions` fixes the permission for host keys specified by user; Note that this function make sure 'NT Service\sshd' Read permission to the host files for now. It is recommended to register the host key with `ssh-agent`. After the private keys are registered with `ssh-agent`, the private keys are safely deleted.
     - Function `Fix-UserKeyPermissions` fixes the the permissions for user's key files specified by user
     - Function `Fix-AuthorizedKeyPermissions` fixes the permissions for the authorized_keys file specified by user
     - Function `Fix-UserSSHConfigPermissions` fixes the permissions for user's ssh config specified by user
@@ -29,8 +29,8 @@ Import-Module .\OpenSSHUtils.psm1 -Force
 # prompt to confirm you want to confirm you want to update each permission on the file
 Fix-HostSSHDConfigPermissions c:\test\sshd_config
 # -Quiet suppresses prompting to confirm you want to update each permission on the file
-Fix-HostKeyPermissions -FilePath c:\test\sshtest_hostkey_ecdsa -Quiet
 Fix-AuthorizedKeyPermissions -FilePath C:\Users\sshtest_ssouser\.ssh\authorized_keys -Quiet
+Fix-HostKeyPermissions -FilePath c:\test\sshtest_hostkey_ecdsa -Quiet
 Fix-HostUserPermissions -FilePath c:\test\sshtest_userssokey_ed25519 -Quiet
 Fix-UserSSHConfigPermissions -FilePath '~\.ssh\config' -Quiet
 ```
