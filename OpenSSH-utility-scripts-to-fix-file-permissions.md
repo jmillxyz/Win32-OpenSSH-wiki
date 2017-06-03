@@ -29,7 +29,7 @@ It checks and fixes the below file permissions on user's default files:
 It checks and fixes permissions on customer specified files.
  - Function `Fix-HostSSHDConfigPermissions` fixes permission on sshd_config file specified by user
  - Function `Fix-HostKeyPermissions` fixes permission for host keys specified by user; **Note that to keep the host private keys secure, it is recommended to register them with ssh-agent following
-steps in [link](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)**, but this function suggest to grant 'NT Service\sshd' Read permission to the host keys. Choose no if you already they are registered already.
+steps in [link](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)**, but this function suggests to grant 'NT Service\sshd' Read permission to the host keys. Choose no if they are registered already.
  - Function `Fix-UserKeyPermissions` fixes the permissions on user's key files specified by user
  - Function `Fix-AuthorizedKeyPermissions` fixes permissions on the authorized_keys file specified by user
  - Function `Fix-UserSSHConfigPermissions` fixes permissions on user's ssh config specified by user
