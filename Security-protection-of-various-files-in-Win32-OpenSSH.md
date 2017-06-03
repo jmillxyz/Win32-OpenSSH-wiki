@@ -10,7 +10,7 @@ Improper file permissions will likely result in a broken configuration (OpenSSH 
 Its important to understand the distinction between "AdministratorsGroup" and an admin user. A logged on admin user would typically run processes in [non-elevated](https://msdn.microsoft.com/en-us/library/windows/desktop/dn742497(v=vs.85).aspx) mode. Even though an admin user is part of AG, these non-elevated processes **do not have authority** to access resources that are locked only to AG. 
 
 Any misconfigured permissions would manifest as an attention seeking log entry. Ex. if a private key is not protected, you'll see the following:
-```
+```Powershell
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -21,7 +21,7 @@ Permissions for 'ssh_host_dsa_key' are too open.
 ### Host private key files
 Host keys represent host's identity. To prevent unauthorized access to these files, host keys need to be owned by SY or AG. No other user should have access to host key files. Its recommended that host private keys be registered with ssh-agent. Otherwise, sshd service would require read access to these files. 
 Following is a misconfigured host private key because 'otheruser' owns it and has access to the key. 
-```
+```Powershell
 PS C:\>(get-acl .\ssh_host_dsa_key).owner
 otheruser
 PS C:\>icacls .\ssh_host_dsa_key
@@ -30,12 +30,12 @@ ssh_host_dsa_key   NT AUTHORITY\SYSTEM:(F)
                    otheruser:(R) 
 ```
 Steps to fix these permissions
-```
+```Powershell
 PS C:\>icacls .\ssh_host_dsa_key /setowner system
 PS C:\>icacls .\ssh_host_dsa_key /remove otheruser
 ```
 At this point, you could do the following to replicate these permissions onto other host keys
-```
+```Powershell
 PS C:\>get-acl .\ssh_host_dsa_key | Set-Acl ssh_host*key
 ```
 ### authorized_keys
@@ -44,7 +44,7 @@ Following is a misconfigured authorized key because
 - 'otheruser1' has access to the file (through inheritance) 
 - 'otheruser2' has access to this file (explicit permission). 
 - sshd service has full access (it only needs read access)
-```
+```Powershell
 PS C:\>(get-acl .\users\thisuser\.ssh\authorized_keys).owner
 thisuser
 PS C:\>icacls .\users\thisuser\.ssh\authorized_keys
@@ -55,7 +55,7 @@ ssh_host_dsa_key   NT SERVICE\sshd:(F)
                    otheruser2:(R)
 ```
 Steps to fix these permissions - disable inheritance, remove access to otheruser*, and fix access to sshd
-```
+```Powershell
 PS C:\>icacls .\users\thisuser\.ssh\authorized_keys /inheritance:d
 PS C:\>icacls .\users\thisuser\.ssh\authorized_keys /remove otheruser1
 PS C:\>icacls .\users\thisuser\.ssh\authorized_keys /remove otheruser2
