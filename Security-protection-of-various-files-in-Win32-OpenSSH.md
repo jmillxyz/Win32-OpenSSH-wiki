@@ -64,7 +64,7 @@ PS C:\>icacls .\users\thisuser\.ssh\authorized_keys /grant `"NT SERVICE\sshd`":`
 ```
 ## Client side resources
 ### User private key files
-User's private keys are user's credentials. To prevent unauthorized access to these files, private keys need to be owned by the user and no other user should have access to host key files.
+User's private keys are user's credentials. To prevent unauthorized access to these files, private keys need to be owned by the user and no other user should have access to user's key files.
 ### ssh_config
 User level default ssh_config is located in user's profile (~/.ssh/config). This has similar restrictions as the user's private keys described above.  
 
