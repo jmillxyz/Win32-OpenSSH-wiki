@@ -20,7 +20,7 @@ Powershell utility scripts are included starting release [V0.0.15.0](https://git
   - Powershell module `OpenSSHUtils.psm1` checks and fixes customer specified files.
     - Function `Fix-HostSSHDConfigPermissions` fixes the sshd_config file specified by user
     - Function `Fix-HostKeyPermissions` fixes the permission for host keys specified by user; **Note that to keep the host private keys secure, it is recommended to register them with ssh-agent following
-steps in [link](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH). **, but this function make sure 'NT Service\sshd' Read permission to the host files for now in case they are not registered yet. 
+steps in [link](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)**, but this function makes sure 'NT Service\sshd' has Read permission to the host keys for now in case they are not registered yet.
     - Function `Fix-UserKeyPermissions` fixes the the permissions for user's key files specified by user
     - Function `Fix-AuthorizedKeyPermissions` fixes the permissions for the authorized_keys file specified by user
     - Function `Fix-UserSSHConfigPermissions` fixes the permissions for user's ssh config specified by user
