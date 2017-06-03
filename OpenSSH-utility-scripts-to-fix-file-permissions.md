@@ -31,7 +31,7 @@ Use it to fix permissions of client side files - keys and config files of curren
 ```
 
 ### OpenSSHUtils.psm1
-Above 2 scripts use core functionality implemented in this base module. If you are dealing with a custom OpenSSH configuration, you may find the following functions useful. 
+Above 2 scripts use core functionality implemented in this base module. If you are dealing with a custom OpenSSH configurations, you may find the following functions useful. 
 ```PowerShell
 Import-Module .\OpenSSHUtils.psm1 -Force
 # All routines following -Quiet semantics
@@ -44,5 +44,5 @@ Fix-AuthorizedKeyPermissions -FilePath C:\Users\sshtest_ssouser\.ssh\authorized_
 # fix permissions a specific ssh_config
 Fix-UserSSHConfigPermissions -FilePath '~\.ssh\config'
 # fix permissions on an user key
-Fix-HostUserPermissions -FilePath c:\test\sshtest_userssokey_ed25519 -Quiet
+Fix-HostUserPermissions -FilePath c:\test\sshtest_userssokey_ed25519
 ```
