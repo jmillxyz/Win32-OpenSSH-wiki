@@ -14,7 +14,7 @@ It checks and fixes the below permissions on default host files:
 
 **`FixUserFilePermissions.ps1`**
 
-It checks and fixes the below file permissions for user's default files: 
+It checks and fixes the below file permissions on user's default files: 
  - user's ssh_config located at `~\.ssh\config`
  - user's keys located at `~\.ssh\id_rsa`, `~\.ssh\id_rsa.pub`
  - user's keys located at `~\.ssh\id_dsa`, `~\.ssh\id_dsa.pub`
@@ -27,12 +27,12 @@ It checks and fixes the below file permissions for user's default files:
 **`OpenSSHUtils.psm1` module**
 
 It checks and fixes permissions on customer specified files.
- - Function `Fix-HostSSHDConfigPermissions` fixes the sshd_config file specified by user
- - Function `Fix-HostKeyPermissions` fixes the permission for host keys specified by user; **Note that to keep the host private keys secure, it is recommended to register them with ssh-agent following
+ - Function `Fix-HostSSHDConfigPermissions` fixes permission on sshd_config file specified by user
+ - Function `Fix-HostKeyPermissions` fixes permission for host keys specified by user; **Note that to keep the host private keys secure, it is recommended to register them with ssh-agent following
 steps in [link](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)**, but this function makes sure 'NT Service\sshd' has Read permission to the host keys for now in case they are not registered yet.
- - Function `Fix-UserKeyPermissions` fixes the the permissions for user's key files specified by user
- - Function `Fix-AuthorizedKeyPermissions` fixes the permissions for the authorized_keys file specified by user
- - Function `Fix-UserSSHConfigPermissions` fixes the permissions for user's ssh config specified by user
+ - Function `Fix-UserKeyPermissions` fixes the permissions on user's key files specified by user
+ - Function `Fix-AuthorizedKeyPermissions` fixes permissions on the authorized_keys file specified by user
+ - Function `Fix-UserSSHConfigPermissions` fixes permissions on user's ssh config specified by user
 
 ```PowerShell
 Import-Module .\OpenSSHUtils.psm1 -Force
