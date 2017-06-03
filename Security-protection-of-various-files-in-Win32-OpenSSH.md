@@ -1,6 +1,6 @@
 Various OpenSSH resource files are integral to secure working of both server and client stacks. Here we discuss how to protect these resources, how OpenSSH for Windows enforces permission checks and individual case studies on how to fix any permission related issues. 
 
-Improper file permissions will likely result in a broken configuration (OpenSSH fails to work). [Utility scripts](https://github.com/PowerShell/Win32-OpenSSH/wiki/OpenSSH-utility-scripts-to-fix-file-permissions) included in release payload can help with fixing any permissions related issues. 
+Improper file permissions will likely result in a broken configuration (OpenSSH fails to work). Powershell based [Utility scripts](https://github.com/PowerShell/Win32-OpenSSH/wiki/OpenSSH-utility-scripts-to-fix-file-permissions) included in release payload can help with fixing any permissions related issues. Here, you'll find icacls based commands to fix such issues.
 
 2 fundamental reasons leading to the differences between how these permission checks work on Unix vs Windows:
 - SuperUser on Unix maps to either [System (SY)](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684190(v=vs.85).aspx) or AdministratorsGroup (AG) on Windows. 
