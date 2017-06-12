@@ -15,6 +15,8 @@ Use it to fix file permissions on host side. Checks and fixes file permissions o
 .\FixHostFilePermissions.ps1
 #   Evaluate and make changes without prompting
 .\FixHostFilePermissions.ps1 -Confirm:$false
+#   Evaluate and tell what changes this script will make
+.\FixHostFilePermissions.ps1 -WhatIf
 ```
 
 ### FixUserFilePermissions.ps1
