@@ -2,6 +2,7 @@ Powershell utility scripts included in [v0.0.15.0](https://github.com/PowerShell
 
 Improper file permissions will likely result in a broken configuration (OpenSSH fails to work). You may use the following scripts (provided in release payload) to help evaluate and fix any permission related issues.
 
+**Note that the script files in [v0.0.15.0](https://github.com/PowerShell/Win32-OpenSSH/releases/tag/v0.0.15.0) has been updated after the initial release. Please download the latest `*.psm1`,`*.ps1`, and `*.psd1` files in the package to match the below instruction.**
 ### FixHostFilePermissions.ps1
 Use it to fix file permissions on host side. Checks and fixes file permissions on:
  - sshd_config
@@ -13,7 +14,7 @@ Use it to fix file permissions on host side. Checks and fixes file permissions o
 #   Evaluate each file and prompt before making changes
 .\FixHostFilePermissions.ps1
 #   Evaluate and make changes without prompting
-.\FixHostFilePermissions.ps1 -Quiet
+.\FixHostFilePermissions.ps1 -Confirm:$false
 ```
 
 ### FixUserFilePermissions.ps1
@@ -27,22 +28,24 @@ Use it to fix permissions of client side files - keys and config files of curren
 #   Evaluate each file and prompt before making changes
 .\FixUserFilePermissions.ps1
 #   Evaluate and make changes without prompting
-.\FixUserFilePermissions.ps1 -Quiet
+.\FixUserFilePermissions.ps1 -Confirm:$false
+#   Evaluate and tell what changes this script will make
+.\FixUserFilePermissions.ps1 -Whatif
 ```
 
 ### OpenSSHUtils.psm1
 Above 2 scripts use core functionality implemented in this base module. If you are dealing with a custom OpenSSH configurations, you may find the following functions useful. 
 ```PowerShell
-Import-Module .\OpenSSHUtils.psm1 -Force
-# All routines following -Quiet semantics
+Import-Module .\OpenSSHUtils.psd1 -Force
+# All routines following -Confirm and -Whatif semantics
 # fix permissions on a specified sshd_config
-Fix-HostSSHDConfigPermissions -FilePath c:\test\sshd_config
+Repair-SshdConfigPermission -FilePath c:\test\sshd_config
 # fix permissions on a specified host key
-Fix-HostKeyPermissions -FilePath c:\test\sshtest_hostkey_ecdsa
+Repair-SshdHostKeyPermission -FilePath c:\test\sshtest_hostkey_ecdsa
 # fix permissions on a specified authorized_key
-Fix-AuthorizedKeyPermissions -FilePath C:\Users\sshtest_ssouser\.ssh\authorized_keys
+Repair-AuthorizedKeyPermission -FilePath C:\Users\sshtest_ssouser\.ssh\authorized_keys
 # fix permissions a specific ssh_config
-Fix-UserSSHConfigPermissions -FilePath '~\.ssh\config'
+Repair-UserKeyPermission -FilePath '~\.ssh\config'
 # fix permissions on an user key
-Fix-HostUserPermissions -FilePath c:\test\sshtest_userssokey_ed25519
+Repair-UserSshConfigPermission -FilePath c:\test\sshtest_userssokey_ed25519
 ```
