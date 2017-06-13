@@ -17,7 +17,7 @@ To figure out if this is the case, look for TCP port bindings on port 22 and the
     * `powershell -ExecutionPolicy Bypass -File install-sshd.ps1`
 * Generate SSH host keys
     * `.\ssh-keygen.exe -A`
-    * `.\FixHostFilePermissions.ps1 -Quiet`
+    * `.\FixHostFilePermissions.ps1 -Confirm:$false`
 * Secure SSH host keys (optional)
     * `Start-Service ssh-agent`
     * Download psexec from [here](https://technet.microsoft.com/en-us/sysinternals/pstools)
