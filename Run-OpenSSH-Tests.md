@@ -4,7 +4,7 @@ Import-Module C:\git\openssh-portable\contrib\win32\openssh\OpenSSHBuildHelper.p
 Build-OpenSSH -Configuration Debug -NativeHostArch x64
 Install-OpenSSH -OpenSSHDir $env:SystemDrive\OpenSSH -Configuration Debug -NativeHostArch x64
 ```
-## Run OpenSSH Pester Tests:
+## Run OpenSSH E2E Tests:
 ```powershell
 Import-Module C:\git\openssh-portable\contrib\win32\openssh\OpenSSHTestHelper.psm1 -Force
 Setup-OpenSSHTestEnvironment -Quiet -OpenSSHBinPath Setup-OpenSSHTestEnvironment -Quiet -OpenSSHBinPath
