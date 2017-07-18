@@ -64,9 +64,8 @@ Unfortunately, this rendering mode is only included with Windows 10. If you're n
 
 ## Known windows 10 console issues (These will be fixed by the windows console team)
 ### When connected to unix ssh server   
-a) vi command, the up/down/left/right arrow keys are not working. Please use h,j,k,l as an alternative.    
-b) vim command, intermittently the file is opened in the Replace mode.     
-c) top command, clears the previous screen contents.    
+a) vim command, intermittently the file is opened in the Replace mode.     
+b) top command, clears the previous screen contents.    
 
 ### When connected to windows ssh server and using powershell    
 a) while executing an unknown command (abcdef) in the powershell, the last line ( + FullyQualifiedErrorId : CommandNotFoundException) is not displayed on the console
