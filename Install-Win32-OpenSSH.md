@@ -38,7 +38,7 @@ To figure out if this is the case, look for TCP port bindings on port 22 and the
 Note: `New-NetFirewallRule` is for servers only. If you're on a client desktop machine (like Windows 10) try:
 
 ```
-netsh advfirewall firewall add rule name='SSH Port' dir=in action=allow protocol=TCP localport=22
+netsh advfirewall firewall add rule name=SSHPort dir=in action=allow protocol=TCP localport=22
 ```
 
 ## Uninstall Win32 OpenSSH
