@@ -4,6 +4,10 @@ This repo (https://github.com/PowerShell/Win32-OpenSSH) is being maintained to k
 
 Refer to project scope [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Scope)
 
+#### Work in progress
+ - Following up on minor issues identified via penetration testing. 
+ - Conversation with upstream community - seeking their feedback and evaluating integration plans. PR posted [here](https://github.com/openssh/openssh-portable/pull/63). Contentious areas of logic identified and refactoring work to converge Unix and Windows code is in progress.
+
 #### High level tasks completed
  - POSIX compliant IO wrapper on Win32 Overlapped IO: this enables Unix based OpenSSH code to work for and on Windows. 
  - Visual Studio 2015 solution to build OpenSSH for Windows.
@@ -16,13 +20,10 @@ Refer to project scope [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/P
  - Code cleanup and refactoring - Common OpenSSH code is cleaned up and ready to take upstream. Changes in [this](https://github.com/PowerShell/openssh-portable/tree/latestw) branch are ready for community feedback. 
  - Automated build and validation system - automated Windows builds, unittest and E2E test runs is now enabled.
  - Evaluated Microsoft CNG support in OpenSSH. Since this requires significant crypto interface refactoring, its decided to switch to LibreSSL (in place of OpenSSL). 
+ - Improved overall test coverage on Windows. Pester based E2E coverage is still pretty minimal compared to bash scripts based coverage on Unix. Plan is to progressively add more coverage going forward. Any contributions here are very welcome. 
+ - Initial [Penetration Testing OpenSSH](https://blogs.msdn.microsoft.com/powershell/2017/05/01/openssh-security-testing-kick-off/) done. 
 
-#### Work in progress
- - Adding test coverage for POSIX compat library. 
- - Conversation with upstream community - seeking their feedback and evaluating integration plans. PR posted [here](https://github.com/openssh/openssh-portable/pull/63)
- - Penetration Testing OpenSSH for Windows. See [here](https://blogs.msdn.microsoft.com/powershell/2017/05/01/openssh-security-testing-kick-off/) for the blog post.
 
-#### Work in pipeline
- - SAL annotate Win32 specific code. Run static analysis. Tracked [here] (https://github.com/PowerShell/Win32-OpenSSH/issues/329).
+
 
 
