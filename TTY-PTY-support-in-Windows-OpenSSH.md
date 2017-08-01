@@ -31,6 +31,8 @@ Unfortunately, this rendering mode is only included with Windows 10. If you're n
    Both of these methods will only persist for the current session.
    If you want this to happen every time you start PowerShell, you can leverage [PowerShell profiles](https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.core/about/about_profiles).
 
+   If the TERM environment variable is not found then the SSH client code sets the TERM as 'xterm-256color' for the duration of SSH session.
+
 ## Linux/Unix/macOS SSH client to Windows SSH server
 
 1. Set the `TERM` environment variable to `xterm`:
