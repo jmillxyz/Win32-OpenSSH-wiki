@@ -73,7 +73,7 @@ There is no easy fork() equivalent in Windows. fork() is used in OpenSSH in mult
 + Session isolation: Each accepted connection in sshd is handed off and processed in a forked child. This will be implemented in Windows using CreateProcess based custom logic - will need #def differentiated code between Unix and Windows
 + Privilege separation: Implemented in OpenSSH by processing and parsing network data in forked and underprivileged child processes that communicate to privileged Monitor process through IPC. Monitor does the core crypto validation and authentication. Privilege downgrading is done by setuid(restricted_user). 
 While privilege separation is ideal, it requires adding in complexity and refactoring to accommodate a Windows specific solution along with a Unix based one in a common architecture. 
-The plan is to have a initial Windows version with no privilege separation. In Windows, ssh daemon will run under the context of [Network Service](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684272(v=vs.85).aspx). 
+The plan is to have a initial Windows version with no privilege separation. In Windows, ssh daemon will run under the context of its service account - NT Service\SSHD.
 + sftp and scp: sftp and scp client side utilities invoke ssh using fork() and exec(). This logic will be substituted with CreateProcess based one.
 
 #### AF_UNIX domain sockets
@@ -95,10 +95,9 @@ ssh-agent will be reimplemented for Windows as a Windows service, running as Loc
 + Delete a host or a user key - Similar to ssh-add usage in Unix. 
 + signature generation and validation - using a registered key. 
 
-The above listed requests are similar to what ssh-agent serves in Unix. In addition, on Windows, ssh-agent will also serve the following "auth-agent" operations
-+ Authentication: ssh-agent will currently serve Basic and Key-Based authentication. It will be responsible for generating the client/user token once authentication succeeds. This includes:
-  + key authentication - ensuring validity of public key mapping, validating a signed payload as part of client key based authentication and generating a Windows user token. Token generation is done using S4U for domain accounts and a custom SSP for local accounts. 
-  + Basic authentication - done using [LogonUser](https://msdn.microsoft.com/en-us/library/windows/desktop/aa378184(v=vs.85).aspx). 
+The above listed requests are similar to what ssh-agent serves in Unix. Since sshd runs as a low privileged service, we need an equivalent of Unix's privileged monitor that can serve any privileged operations. Ssh-agent on Windows also hosts a privileged monitor/broker that serves the following operations:
++ Key-Based authentication. It will be responsible for generating the client/user token once authentication succeeds. This includes - ensuring validity of public key mapping, validating a signed payload as part of client key based authentication and generating a Windows user token. Token generation is done using S4U for domain accounts and a custom SSP for local accounts. 
++ User profile management - user profiles are loaded upon sshd's request. User profile typically needs to be loaded for interactive sessions. 
 
 As detailed earlier, session isolation in Windows will be done using CreateProcess based custom logic (in place of fork based logic in Unix). Spawned child process will run as NT Service\SSHD too.
 
