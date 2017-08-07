@@ -9,7 +9,7 @@ https://github.com/PowerShell/Win32-OpenSSH/wiki/Building-OpenSSH-for-Windows-(u
 
 [Client side configuration](https://linux.die.net/man/5/ssh_config)
 
-[Thread Model Document](https://github.com/PowerShell/Win32-OpenSSH/files/968449/OpenSSH-threat-model.zip)
+[Threat Model Document](https://github.com/PowerShell/Win32-OpenSSH/files/968449/OpenSSH-threat-model.zip)
 
 [Areas to focus on - will be added soon]
 
