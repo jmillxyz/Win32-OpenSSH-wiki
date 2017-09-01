@@ -1,6 +1,6 @@
 ## Install Win32 OpenSSH (test release)
 
-* Note [these](https://github.com/PowerShell/Win32-OpenSSH/wiki/Various-Considerations) consideration first. Check [project scope](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Scope) second. 
+* Note [these considerations](https://github.com/PowerShell/Win32-OpenSSH/wiki/Various-Considerations) and [project scope](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Scope) first.
 * Download the [latest](https://github.com/PowerShell/Win32-OpenSSH/releases/latest/) build of OpenSSH.
 To get links to latest downloads [this wiki page](https://github.com/PowerShell/Win32-OpenSSH/wiki/How-to-retrieve-links-to-latest-packages).
 A [Chocolatey package](https://chocolatey.org/packages/openssh) is also available if you prefer using Chocolatey.
