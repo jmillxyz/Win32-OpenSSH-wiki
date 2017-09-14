@@ -1,25 +1,25 @@
 ## Install Win32 OpenSSH (test release)
 
-* Note [these considerations](https://github.com/PowerShell/Win32-OpenSSH/wiki/Various-Considerations) and [project scope](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Scope) first.
-* Download the [latest](https://github.com/PowerShell/Win32-OpenSSH/releases/latest/) build of OpenSSH.
+1. Note [these considerations](https://github.com/PowerShell/Win32-OpenSSH/wiki/Various-Considerations) and [project scope](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Scope) first.
+1. Download the [latest](https://github.com/PowerShell/Win32-OpenSSH/releases/latest/) build of OpenSSH.
 To get links to latest downloads [this wiki page](https://github.com/PowerShell/Win32-OpenSSH/wiki/How-to-retrieve-links-to-latest-packages).
 A [Chocolatey package](https://chocolatey.org/packages/openssh) is also available if you prefer using Chocolatey.
 For compatibility issues on Nano see [issues on Nano](https://github.com/PowerShell/Win32-OpenSSH/issues/234).
 If you're interested in a PowerShell script to automate installation and configuration check out [this issue](https://github.com/PowerShell/Win32-OpenSSH/issues/332).
-* Extract contents of the latest build to `C:\Program Files\OpenSSH`
-* Start Windows Powershell as Administrator
-* Navigate to the OpenSSH directory
+1. Extract contents of the latest build to `C:\Program Files\OpenSSH`
+1. Start Windows Powershell as Administrator
+1. Navigate to the OpenSSH directory
     * `cd 'C:\Program Files\OpenSSH'`
-* On Windows 10, if you've [enabled Developer Mode](https://docs.microsoft.com/en-us/windows/uwp/get-started/enable-your-device-for-development), you probably have another implementation of SSH installed on your machine.
+1. On Windows 10, if you've [enabled Developer Mode](https://docs.microsoft.com/en-us/windows/uwp/get-started/enable-your-device-for-development), you probably have another implementation of SSH installed on your machine.
 To figure out if this is the case, look for TCP port bindings on port 22 and these services: “SSH Server Broker” and “SSH Server Proxy”
     * `netstat -anop TCP`
     * If you do see 22 occupied, [#610](https://github.com/PowerShell/Win32-OpenSSH/issues/610) has workarounds to deal with port conflict. 
-* Install `sshd` and `ssh-agent` services. 
+1. Install `sshd` and `ssh-agent` services. 
     * `powershell -ExecutionPolicy Bypass -File install-sshd.ps1`
-* Generate SSH host keys
+1. Generate SSH host keys
     * `.\ssh-keygen.exe -A`
     * `.\FixHostFilePermissions.ps1 -Confirm:$false`
-* Secure SSH host keys (optional)
+1. Secure SSH host keys (optional)
     * `Start-Service ssh-agent`
     * Download psexec from [here](https://technet.microsoft.com/en-us/sysinternals/pstools)
     * Launch cmd.exe as SYSTEM
@@ -30,9 +30,9 @@ To figure out if this is the case, look for TCP port bindings on port 22 and the
         * `ssh-add ssh_host_ecdsa_key`
         * `ssh-add ssh_host_ed25519_key`
     * Host private keys are now securely stored by ssh-agent, private key files can be deleted at this point.
-* Open the firewall on TCP port 22 to allow inbound SSH connections
+1. Open the firewall on TCP port 22 to allow inbound SSH connections
     * `New-NetFirewallRule -Protocol TCP -LocalPort 22 -Direction Inbound -Action Allow -DisplayName SSH`
-* Setup `sshd` and `ssh-agent` to auto-start (optional)
+1. Setup `sshd` and `ssh-agent` to auto-start (optional)
     * `Set-Service sshd -StartupType Automatic`
     * `Set-Service ssh-agent -StartupType Automatic`
 
