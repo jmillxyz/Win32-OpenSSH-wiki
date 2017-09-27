@@ -24,6 +24,7 @@
 
      `ssh-add.exe <user priviate>`
 1. To check out a repository:
+
 **Note that `git clone username@domain@servermachine:C:/test/myrepo.git` does not work due to [known issue](https://github.com/PowerShell/Win32-OpenSSH/issues/895). Work around it by following steps:
 
      ```
