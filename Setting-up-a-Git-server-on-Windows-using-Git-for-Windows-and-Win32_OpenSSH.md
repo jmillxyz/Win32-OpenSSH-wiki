@@ -18,7 +18,7 @@
 1. Set environment variable for git to use Win32_OpenSSH
 
      `$env:GIT_SSH_COMMAND = '"C:\Program Files\OpenSSH\ssh.exe" -T'`
-1. (Optional: for key based auth) For key based authentication to work, generate user private and public key. The generated public key need to copy to C:\Users\{user}\.ssh\authorizedkeys as indicated in step 5 on Server
+1. (Optional) For key based authentication to work, generate user private and public key. The generated public key need to copy to C:\Users\{user}\.ssh\authorized_keys as indicated in step 5 on Server
 
      `ssh-keygen.exe -t ed25519 -f c:\test\myprivatekey`
 1. (Optional) Register the user private key for single sign on
