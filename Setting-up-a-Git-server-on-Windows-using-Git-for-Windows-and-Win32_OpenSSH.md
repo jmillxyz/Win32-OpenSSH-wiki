@@ -13,14 +13,17 @@
 1. Create a central Git repository. Go to where you want to create a central repo, `git clone --bare <source dir>`. A directory with name `<source dir>.git` will be created. In it will be the .git contents of your source dir repo. for example:
 
      `git clone --bare c:\git\newrepo.git`
-1. If you already have user private and public keys, copy the public key to C:\Users\{user}\.ssh\ and rename it to authorized_keys
+1. If you already have user private and public keys, copy the user public key to `C:\Users\{user}\.ssh\` and rename it to authorized_keys
 ## On Client
 1. Set environment variable for git to use Win32_OpenSSH
 
      `$env:GIT_SSH_COMMAND = '"C:\Program Files\OpenSSH\ssh.exe" -T'`
+1. (Optional: for key based auth) For key based authentication to work, generate user private and public key. The generated public key need to copy to C:\Users\{user}\.ssh\authorizedkeys as indicated in step 5 on Server
+
+     `ssh-keygen.exe -t ed25519 -f c:\test\myprivatekey`
 1. (Optional) Register the user private key for single sign on
 
-     `ssh-add.exe <user priviate key>`
+     `ssh-add.exe c:\test\myprivatekey`
 1. To check out a repository:
 
 **Note that `git clone user@domain@servermachine:C:/test/myrepo.git` does not work due to [known issue](https://github.com/PowerShell/Win32-OpenSSH/issues/895). Work around it by following steps:
