@@ -10,12 +10,9 @@
      ```
 1. Restart sshd so the changes to the `Path` environment variable can take effect.
 1. Create Windows users for all Git users.
-1. Create a central Git repositories
-    * Go to where you want to create a central repo, `git clone --bare <source dir>` A directory with name `<source dir>.git` will be created.  In it will be the .git contents of your source dir repo. for example:
+1. Create a central Git repository. Go to where you want to create a central repo, `git clone --bare <source dir>`. A directory with name `<source dir>.git` will be created. In it will be the .git contents of your source dir repo. for example:
 
-     ```
-     git clone --bare c:\git\newrepo.git
-     ```
+     `git clone --bare c:\git\newrepo.git`
 1. If you already have user private and public keys, copy the public key to C:\Users\{user}\.ssh\ and rename it to authorized_keys
 ## On Client
 1. Set environment variable for git to use Win32_OpenSSH
@@ -26,13 +23,13 @@
      `ssh-add.exe <user priviate key>`
 1. To check out a repository:
 
-**Note that `git clone username@domain@servermachine:C:/test/myrepo.git` does not work due to [known issue](https://github.com/PowerShell/Win32-OpenSSH/issues/895). Work around it by following steps:
+**Note that `git clone user@domain@servermachine:C:/test/myrepo.git` does not work due to [known issue](https://github.com/PowerShell/Win32-OpenSSH/issues/895). Work around it by following steps:
 
      # initialize a local repo folder
      git init mylocalrepo
      cd mylocalrepo
      # add the remote repro
-     git remote add origin username@domain@servermachine:C:/test/myrepo.git
+     git remote add origin user@domain@servermachine:C:/test/myrepo.git
      # work around the known issue by launching powershell to run the git commands
      git config --local remote.origin.uploadpack "powershell git-upload-pack"
      git config --local remote.origin.receivepack "powershell git-receive-pack"
