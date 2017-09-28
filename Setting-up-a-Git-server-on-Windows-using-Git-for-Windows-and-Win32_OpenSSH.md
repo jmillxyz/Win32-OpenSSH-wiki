@@ -1,5 +1,5 @@
 ## You need to download and install:
-* [Install Win32_OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
+* [Win32_OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 * [Git for Windows](https://git-scm.com/download/win), selecting the "Run Git and included Unix tools from the Windows Command Prompt" when prompted. This option will install a bin folder in Program Files\git that will be placed into your path thus taking possibly taking precedence over other tools.
 ## On Server
 1. Set system environment variable for sshd to pick up the git commands
