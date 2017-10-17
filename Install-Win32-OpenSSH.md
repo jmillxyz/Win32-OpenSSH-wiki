@@ -32,6 +32,12 @@ To figure out if this is the case, look for TCP port bindings on port 22 and the
     * Host private keys are now securely stored by ssh-agent, private key files can be deleted at this point.
 1. Open the firewall on TCP port 22 to allow inbound SSH connections
     * `New-NetFirewallRule -Protocol TCP -LocalPort 22 -Direction Inbound -Action Allow -DisplayName SSH`
+
+    Note: `New-NetFirewallRule` is for servers only. If you're on a client desktop machine (like Windows 10) try:
+
+    ```
+    netsh advfirewall firewall add rule name=SSHPort dir=in action=allow protocol=TCP localport=22
+    ```
 1. Setup `sshd` and `ssh-agent` to auto-start (optional)
     * `Set-Service sshd -StartupType Automatic`
     * `Set-Service ssh-agent -StartupType Automatic`
@@ -44,12 +50,6 @@ Configure the default ssh shell in the windows registry. It should look like [th
 
 _If you are configuring the powershell.exe/cmd.exe/bash.exe as default ssh shell then you can ignore `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShellCommandOption`._
 
-
-Note: `New-NetFirewallRule` is for servers only. If you're on a client desktop machine (like Windows 10) try:
-
-```
-netsh advfirewall firewall add rule name=SSHPort dir=in action=allow protocol=TCP localport=22
-```
 
 ## Uninstall Win32 OpenSSH
 
