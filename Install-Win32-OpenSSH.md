@@ -37,6 +37,7 @@ To figure out if this is the case, look for TCP port bindings on port 22 and the
     * `Set-Service ssh-agent -StartupType Automatic`
 1. Configuring the default ssh shell (optional)
 Configure the default ssh shell in the windows registry
+
 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShell` - **Full path of the shell executable.**
 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShellCommandOption` - **option to execute non-interactive commmands.**
 
