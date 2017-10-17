@@ -35,6 +35,14 @@ To figure out if this is the case, look for TCP port bindings on port 22 and the
 1. Setup `sshd` and `ssh-agent` to auto-start (optional)
     * `Set-Service sshd -StartupType Automatic`
     * `Set-Service ssh-agent -StartupType Automatic`
+1. Configuring the default ssh shell (optional)
+Configure the default ssh shell in the windows registry
+`Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShell` - **Full path of the shell executable.**
+`Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShellCommandOption` - **option to execute non-interactive commmands.**
+
+If you are configuring the powershell.exe/cmd.exe/bash.exe as default ssh shell then you can ignore `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShellCommandOption`.
+
+It should look like [this](https://user-images.githubusercontent.com/23668037/31640389-f133818a-b292-11e7-8522-c2bb744eb67c.png).
 
 Note: `New-NetFirewallRule` is for servers only. If you're on a client desktop machine (like Windows 10) try:
 
