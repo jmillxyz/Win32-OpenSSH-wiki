@@ -41,7 +41,7 @@ Configure the default ssh shell in the windows registry
 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShell` - **Full path of the shell executable.**
 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShellCommandOption` - **option to execute non-interactive commmands.**
 
-If you are configuring the powershell.exe/cmd.exe/bash.exe as default ssh shell then you can ignore `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShellCommandOption`.
+_If you are configuring the powershell.exe/cmd.exe/bash.exe as default ssh shell then you can ignore `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShellCommandOption`._
 
 It should look like [this](https://user-images.githubusercontent.com/23668037/31640389-f133818a-b292-11e7-8522-c2bb744eb67c.png).
 
