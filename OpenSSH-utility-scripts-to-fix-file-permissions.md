@@ -2,7 +2,6 @@ Powershell utility scripts included in [v0.0.15.0](https://github.com/PowerShell
 
 Improper file permissions will likely result in a broken configuration (OpenSSH fails to work). You may use the following scripts (provided in release payload) to help evaluate and fix any permission related issues.
 
-**Note that the script files in [v0.0.15.0](https://github.com/PowerShell/Win32-OpenSSH/releases/tag/v0.0.15.0) has been updated after the initial release. Please download the latest `*.psm1`,`*.ps1`, and `*.psd1` files in the package to match the below instruction.**
 ### FixHostFilePermissions.ps1
 Use it to fix file permissions on host side. Checks and fixes file permissions on:
  - sshd_config
