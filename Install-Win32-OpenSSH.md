@@ -47,7 +47,7 @@ Configure the default ssh shell in the windows registry.
 
 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShell` - Full path (case sensitive) of the shell executable
 
-`Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShellCommandOption` - command option for the default shell. It is used for executing the remote ssh commands. _Example- ssh user@ip hostname_
+`Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShellCommandOption` - The switch that the configured default shell requires to execute a command and immediately exit and return to the calling process. It is used for executing the remote ssh commands. _Example- ssh user@ip hostname_
 
 If you are configuring the powershell.exe/cmd.exe/WSL-bash.exe as default ssh shell then you can ignore `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShellCommandOption`. Your registry should look like [this](https://user-images.githubusercontent.com/23668037/32013581-67206dca-b970-11e7-8820-fde658d302c1.png).
 
