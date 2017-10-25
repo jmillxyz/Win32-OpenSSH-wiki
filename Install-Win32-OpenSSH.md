@@ -43,16 +43,15 @@ To figure out if this is the case, look for TCP port bindings on port 22 and the
     * `Set-Service ssh-agent -StartupType Automatic`
 1. Configuring the default ssh shell (optional)
 
-Configure the default ssh shell in the windows registry. It should look like [this](https://user-images.githubusercontent.com/23668037/31640389-f133818a-b292-11e7-8522-c2bb744eb67c.png).
+Configure the default ssh shell in the windows registry. It should look like [this](https://user-images.githubusercontent.com/23668037/32013581-67206dca-b970-11e7-8820-fde658d302c1.png).
 
 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShell` - Full path (case sensitive) of the shell executable
 
 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShellCommandOption` - command option for the default shell. It is used for executing the remote ssh commands. _Example- ssh user@ip hostname_
 
-_If you are configuring the powershell.exe/cmd.exe/bash.exe as default ssh shell then you can ignore `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShellCommandOption`._
+If you are configuring the powershell.exe/cmd.exe/bash.exe(WSL) as default ssh shell then you can ignore `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShellCommandOption`.
 
-
-
+If you want to configure default shell (Ex- cygwin) other than powershell/cmd/WSL-bash then your registry should look like [this](https://user-images.githubusercontent.com/23668037/32014915-56f9ee04-b974-11e7-87d4-66f983010367.png)
 
 ## Uninstall Win32 OpenSSH
 
