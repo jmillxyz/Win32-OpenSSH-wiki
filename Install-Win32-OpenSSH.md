@@ -51,7 +51,7 @@ Configure the default ssh shell in the windows registry. It should look like [th
 
 If you are configuring the powershell.exe/cmd.exe/bash.exe(WSL) as default ssh shell then you can ignore `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShellCommandOption`.
 
-If you want to configure default shell (Ex- cygwin) other than powershell/cmd/WSL-bash then your registry should look like [this](https://user-images.githubusercontent.com/23668037/32014915-56f9ee04-b974-11e7-87d4-66f983010367.png)
+If you want to configure default shell (Ex- cygwin) other than powershell/cmd/WSL-bash then your registry should look like [this](https://user-images.githubusercontent.com/23668037/32015013-9e644cee-b974-11e7-8375-bf3d50f596df.png)
 
 ## Uninstall Win32 OpenSSH
 
