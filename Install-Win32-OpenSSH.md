@@ -30,6 +30,7 @@ To figure out if this is the case, look for TCP port bindings on port 22 and the
         * `ssh-add ssh_host_ecdsa_key`
         * `ssh-add ssh_host_ed25519_key`
     * Host private keys are now securely stored by ssh-agent, private key files can be deleted at this point.
+[`sdelete`](https://docs.microsoft.com/en-us/sysinternals/downloads/sdelete) may be used to securely erase them.
 1. Open the firewall on TCP port 22 to allow inbound SSH connections
     * `New-NetFirewallRule -Protocol TCP -LocalPort 22 -Direction Inbound -Action Allow -DisplayName SSH`
 
