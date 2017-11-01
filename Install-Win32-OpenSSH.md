@@ -42,9 +42,11 @@ To figure out if this is the case, look for TCP port bindings on port 22 and the
 1. Setup `sshd` and `ssh-agent` to auto-start (optional)
     * `Set-Service sshd -StartupType Automatic`
     * `Set-Service ssh-agent -StartupType Automatic`
+1. Start the `sshd` and `ssh-agent`
+    * `net start sshd`
 1. Configuring the default ssh shell (optional)
 
-Configure the default ssh shell in the windows registry. 
+On the server side, configure the default ssh shell in the windows registry. 
 
 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShell` - Full path (case sensitive) of the shell executable
 
