@@ -3,8 +3,6 @@
 1. Note [these considerations](https://github.com/PowerShell/Win32-OpenSSH/wiki/Various-Considerations) and [project scope](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Scope) first.
 1. Download the [latest](https://github.com/PowerShell/Win32-OpenSSH/releases/latest/) build of OpenSSH.
 To get links to latest downloads [this wiki page](https://github.com/PowerShell/Win32-OpenSSH/wiki/How-to-retrieve-links-to-latest-packages).
-A [Chocolatey package](https://chocolatey.org/packages/openssh) is also available if you prefer using Chocolatey.
-If you're interested in a PowerShell script to automate installation and configuration check out [this issue](https://github.com/PowerShell/Win32-OpenSSH/issues/332).
 1. Extract contents of the latest build to `C:\Program Files\OpenSSH`
 1. Start Windows Powershell as Administrator
 1. Navigate to the OpenSSH directory
