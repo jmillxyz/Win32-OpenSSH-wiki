@@ -11,7 +11,7 @@
 ## Installation
 
 * [Install Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
-* [Alternative installation using Chocolatey](https://github.com/DarwinJS/ChocoPackages/blob/master/openssh/readme.md)
+* [Alternative installation using the universal installer](https://github.com/DarwinJS/ChocoPackages/blob/master/openssh/readme.md)
 
 ## Usage
 * [SSH Usage Examples](https://github.com/PowerShell/Win32-OpenSSH/wiki/ssh.exe-examples)
