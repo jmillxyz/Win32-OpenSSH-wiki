@@ -4,7 +4,6 @@
 1. Download the [latest](https://github.com/PowerShell/Win32-OpenSSH/releases/latest/) build of OpenSSH.
 To get links to latest downloads [this wiki page](https://github.com/PowerShell/Win32-OpenSSH/wiki/How-to-retrieve-links-to-latest-packages).
 A [Chocolatey package](https://chocolatey.org/packages/openssh) is also available if you prefer using Chocolatey.
-For compatibility issues on Nano see [issues on Nano](https://github.com/PowerShell/Win32-OpenSSH/issues/234).
 If you're interested in a PowerShell script to automate installation and configuration check out [this issue](https://github.com/PowerShell/Win32-OpenSSH/issues/332).
 1. Extract contents of the latest build to `C:\Program Files\OpenSSH`
 1. Start Windows Powershell as Administrator
