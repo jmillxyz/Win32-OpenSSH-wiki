@@ -15,7 +15,7 @@ To figure out if this is the case, look for TCP port bindings on port 22 and the
     * `powershell -ExecutionPolicy Bypass -File install-sshd.ps1`
 1. Generate SSH host keys
     * `.\ssh-keygen.exe -A`
-    * `powershell -ExecutionPolicy Bypass '.\FixHostFilePermissions.ps1 -Confirm:$false'`
+    * `Powershell.exe -ExecutionPolicy Bypass -Command ". .\FixHostFilePermissions.ps1 -Confirm:$false"` (Note the first "." is a call operator.)
 1. Secure SSH host keys (optional)
     * `Start-Service ssh-agent`
     * Download psexec from [here](https://technet.microsoft.com/en-us/sysinternals/pstools)
@@ -29,12 +29,12 @@ To figure out if this is the case, look for TCP port bindings on port 22 and the
     * Host private keys are now securely stored by ssh-agent, private key files can be deleted at this point.
 [`sdelete`](https://docs.microsoft.com/en-us/sysinternals/downloads/sdelete) may be used to securely erase them.
 1. Open the firewall on TCP port 22 to allow inbound SSH connections
-    * `New-NetFirewallRule -Protocol TCP -LocalPort 22 -Direction Inbound -Action Allow -DisplayName SSH`
+    * `New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Service sshd -Enabled True -Direction Inbound -Protocol TCP -Action Allow`
 
     Note: `New-NetFirewallRule` is for servers only. If you're on a client desktop machine (like Windows 10) try:
 
     ```
-    netsh advfirewall firewall add rule name=SSHPort dir=in action=allow protocol=TCP localport=22
+    netsh advfirewall firewall add rule name=sshd dir=in action=allow protocol=TCP
     ```
 1. Setup `sshd` and `ssh-agent` to auto-start (optional)
     * `Set-Service sshd -StartupType Automatic`
