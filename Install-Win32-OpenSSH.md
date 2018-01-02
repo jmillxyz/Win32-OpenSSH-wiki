@@ -34,7 +34,7 @@ To figure out if this is the case, look for TCP port bindings on port 22 and the
     Note: `New-NetFirewallRule` is for servers only. If you're on a client desktop machine (like Windows 10) try:
 
     ```
-    netsh advfirewall firewall add rule name=sshd dir=in action=allow protocol=TCP
+    netsh advfirewall firewall add rule name=sshd dir=in action=allow protocol=TCP service=sshd
     ```
 1. Setup `sshd` and `ssh-agent` to auto-start (optional)
     * `Set-Service sshd -StartupType Automatic`
