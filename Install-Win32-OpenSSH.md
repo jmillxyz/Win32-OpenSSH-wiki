@@ -28,10 +28,10 @@ To figure out if this is the case, look for TCP port bindings on port 22 and the
         * `ssh-add ssh_host_ed25519_key`
     * Host private keys are now securely stored by ssh-agent, private key files can be deleted at this point.
 [`sdelete`](https://docs.microsoft.com/en-us/sysinternals/downloads/sdelete) may be used to securely erase them.
-1. Open the firewall on TCP port 22 to allow inbound SSH connections
+1. Open the firewall for sshd.exe to allow inbound SSH connections
     * `New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Service sshd -Enabled True -Direction Inbound -Protocol TCP -Action Allow`
 
-    Note: `New-NetFirewallRule` is for servers only. If you're on a client desktop machine (like Windows 10) try:
+    Note: `New-NetFirewallRule` is for Windows 2012 and above servers only. If you're on a client desktop machine (like Windows 10) or Windows 2008 R2 and below, try:
 
     ```
     netsh advfirewall firewall add rule name=sshd dir=in action=allow protocol=TCP service=sshd
