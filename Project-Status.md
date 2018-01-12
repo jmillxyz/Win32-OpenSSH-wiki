@@ -2,6 +2,8 @@
 
 This repo (https://github.com/PowerShell/Win32-OpenSSH) is being maintained to keep track of releases and issues. Win32-OpenSSH will be deprecated once changes in PowerShell/openssh-portable are integrated back into openssh/openssh-portable.
 
+Win32-OpenSSH is shipped as FOD (Feature On Demand) in Windows 10 fall creator update. For more information, please visit our [official blog](https://blogs.msdn.microsoft.com/powershell/2017/12/15/using-the-openssh-beta-in-windows-10-fall-creators-update-and-windows-server-1709/).
+
 Refer to project scope [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Scope)
 
 #### Work in progress
