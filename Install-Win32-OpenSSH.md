@@ -13,9 +13,9 @@ To figure out if this is the case, look for TCP port bindings on port 22 and the
     * If you do see 22 occupied, [#610](https://github.com/PowerShell/Win32-OpenSSH/issues/610) has workarounds to deal with port conflict. 
 1. Install `sshd` and `ssh-agent` services. 
     * `powershell -ExecutionPolicy Bypass -File install-sshd.ps1`
-1. Generate SSH host keys
+1. Generate SSH host keys (in powershell window)
     * `.\ssh-keygen.exe -A`
-    * `Powershell.exe -ExecutionPolicy Bypass -Command ". .\FixHostFilePermissions.ps1 -Confirm:$false"` (Note the first "." is a call operator.)
+    * `Powershell.exe -ExecutionPolicy Bypass -Command '. .\FixHostFilePermissions.ps1 -Confirm:$false'` (Note the first "." is a call operator.)
 1. Secure SSH host keys (optional)
     * `Start-Service ssh-agent`
     * Download psexec from [here](https://technet.microsoft.com/en-us/sysinternals/pstools)
