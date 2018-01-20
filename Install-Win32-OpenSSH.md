@@ -16,7 +16,7 @@ To get links to latest downloads [this wiki page](https://github.com/PowerShell/
     ```
 1. Start `sshd` (this will automatically generate host keys under %programdata%\ssh if they don't already exist)
     * `net start sshd`
-1. Only when you migrate from releases before 1.0.0.0:
+1. Migrate sshd configuration from 0.0.X.X versions (optional):
     * To use existing customized sshd_config, you need to copy it from binary location to %programdata%\ssh\sshd_config (Note that %programdata% is a hidden directory).
     * To use existing host keys, you need to copy them from binary location to %programdata%\ssh\
     * Prior versions required SSHD resources (sshd_config, host keys and authorized_keys) to have READ access to "NT Service\SSHD". This is no longer a requirement and the corresponding ACL entry should be removed. You may run Powershell.exe -ExecutionPolicy Bypass -Command '. .\FixHostFilePermissions.ps1 -Confirm:$false' (Note the first "." is a call operator.) to fix up these permissions.
