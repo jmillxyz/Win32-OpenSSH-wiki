@@ -5,13 +5,7 @@
 To get links to latest downloads [this wiki page](https://github.com/PowerShell/Win32-OpenSSH/wiki/How-to-retrieve-links-to-latest-packages).
 1. Extract contents of the latest build to `C:\Program Files\OpenSSH`
 1. In an elevated Powershell console, run the following
-* `powershell.exe -ExecutionPolicy Bypass -File uninstall-sshd.ps1`
-1. Navigate to the OpenSSH directory
-    * `cd 'C:\Program Files\OpenSSH'`
-1. Only when you migrate from releases before 1.0.0.0:
-    * To use existing customized sshd_config, you need to copy it from binary location to %programdata%\ssh\sshd_config (Note that %programdata% is a hidden directory).
-    * To use existing host keys, you need to copy them from binary location to %programdata%\ssh\
-    * Prior versions required SSHD resources (sshd_config, host keys and authorized_keys) to have READ access to "NT Service\SSHD". This is no longer a requirement and the corresponding ACL entry should be removed. You may run Powershell.exe -ExecutionPolicy Bypass -Command '. .\FixHostFilePermissions.ps1 -Confirm:$false' (Note the first "." is a call operator.) to fix up these permissions.
+    * `powershell.exe -ExecutionPolicy Bypass -File uninstall-sshd.ps1`
 1. Open the firewall for sshd.exe to allow inbound SSH connections
     * `New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Service sshd -Enabled True -Direction Inbound -Protocol TCP -Action Allow`
 
@@ -20,11 +14,16 @@ To get links to latest downloads [this wiki page](https://github.com/PowerShell/
     ```
     netsh advfirewall firewall add rule name=sshd dir=in action=allow protocol=TCP service=sshd
     ```
+1. Start `sshd`
+    * `net start sshd`
+1. Only when you migrate from releases before 1.0.0.0:
+    * To use existing customized sshd_config, you need to copy it from binary location to %programdata%\ssh\sshd_config (Note that %programdata% is a hidden directory).
+    * To use existing host keys, you need to copy them from binary location to %programdata%\ssh\
+    * Prior versions required SSHD resources (sshd_config, host keys and authorized_keys) to have READ access to "NT Service\SSHD". This is no longer a requirement and the corresponding ACL entry should be removed. You may run Powershell.exe -ExecutionPolicy Bypass -Command '. .\FixHostFilePermissions.ps1 -Confirm:$false' (Note the first "." is a call operator.) to fix up these permissions.
 1. Setup `sshd` and `ssh-agent` to auto-start (optional)
     * `Set-Service sshd -StartupType Automatic`
     * `Set-Service ssh-agent -StartupType Automatic`
-1. Start `sshd`
-    * `net start sshd`
+
 1. Configuring the default ssh shell (optional)
 
 On the server side, configure the default ssh shell in the windows registry. 
