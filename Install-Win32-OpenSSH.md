@@ -5,7 +5,7 @@
 To get links to latest downloads [this wiki page](https://github.com/PowerShell/Win32-OpenSSH/wiki/How-to-retrieve-links-to-latest-packages).
 1. Extract contents of the latest build to `C:\Program Files\OpenSSH`
 1. In an elevated Powershell console, run the following
-    * `powershell.exe -ExecutionPolicy Bypass -File uninstall-sshd.ps1`
+    * `powershell.exe -ExecutionPolicy Bypass -File install-sshd.ps1`
 1. Open the firewall for sshd.exe to allow inbound SSH connections
     * `New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Service sshd -Enabled True -Direction Inbound -Protocol TCP -Action Allow`
 
