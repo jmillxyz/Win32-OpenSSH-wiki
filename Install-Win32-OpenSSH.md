@@ -14,7 +14,7 @@ To get links to latest downloads [this wiki page](https://github.com/PowerShell/
     ```
     netsh advfirewall firewall add rule name=sshd dir=in action=allow protocol=TCP service=sshd
     ```
-1. Start `sshd`
+1. Start `sshd` (this will automatically generate host keys under %programdata%\ssh if they don't already exist)
     * `net start sshd`
 1. Only when you migrate from releases before 1.0.0.0:
     * To use existing customized sshd_config, you need to copy it from binary location to %programdata%\ssh\sshd_config (Note that %programdata% is a hidden directory).
