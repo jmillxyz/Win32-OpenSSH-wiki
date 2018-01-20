@@ -7,12 +7,6 @@ To get links to latest downloads [this wiki page](https://github.com/PowerShell/
 1. Start Windows Powershell as Administrator
 1. Navigate to the OpenSSH directory
     * `cd 'C:\Program Files\OpenSSH'`
-1. On Windows 10, if you've [enabled Developer Mode](https://docs.microsoft.com/en-us/windows/uwp/get-started/enable-your-device-for-development), you probably have another implementation of SSH installed on your machine.
-To figure out if this is the case, look for TCP port bindings on port 22 and these services: “SSH Server Broker” and “SSH Server Proxy”
-    * `netstat -anop TCP`
-    * If you do see 22 occupied, [#610](https://github.com/PowerShell/Win32-OpenSSH/issues/610) has workarounds to deal with port conflict. 
-1. Install `sshd` and `ssh-agent` services. 
-    * `powershell -ExecutionPolicy Bypass -File install-sshd.ps1`
 1. Only when you migrate from releases before 1.0.0.0:
     * To use existing customized sshd_config, you need to copy it from binary location to %programdata%\ssh\sshd_config (Note that %programdata% is a hidden directory).
     * To use existing host keys, you need to copy them from binary location to %programdata%\ssh\
