@@ -4,7 +4,8 @@
 1. Download the [latest](https://github.com/PowerShell/Win32-OpenSSH/releases/latest/) build of OpenSSH.
 To get links to latest downloads [this wiki page](https://github.com/PowerShell/Win32-OpenSSH/wiki/How-to-retrieve-links-to-latest-packages).
 1. Extract contents of the latest build to `C:\Program Files\OpenSSH`
-1. Start Windows Powershell as Administrator
+1. In an elevated Powershell console, run the following
+* `powershell.exe -ExecutionPolicy Bypass -File uninstall-sshd.ps1`
 1. Navigate to the OpenSSH directory
     * `cd 'C:\Program Files\OpenSSH'`
 1. Only when you migrate from releases before 1.0.0.0:
