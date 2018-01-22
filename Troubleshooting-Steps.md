@@ -3,7 +3,7 @@ Troubleshooting steps for typical service startup and connection issues:
 * Server side: run `sshd` in debug mode
   * `Stop-Service sshd` (if sshd service is running)
   * Open cmd as SYSTEM. Download psexec from [here](https://docs.microsoft.com/en-us/sysinternals/downloads/psexec).
-    * `psexec -i -s cmd`
+    * `psexec -s cmd`
   * `sshd.exe -d`
   * This will dump debug logs in real time to stdout on the console
   * You can also add additional `d`s for more detailed loggin:
