@@ -7,12 +7,12 @@ To get links to latest downloads [this wiki page](https://github.com/PowerShell/
 1. In an elevated Powershell console, run the following
     * `powershell.exe -ExecutionPolicy Bypass -File install-sshd.ps1`
 1. Open the firewall for sshd.exe to allow inbound SSH connections
-    * `New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Service sshd -Enabled True -Direction Inbound -Protocol TCP -Action Allow`
+    * `New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22`
 
     Note: `New-NetFirewallRule` is for Windows 2012 and above servers only. If you're on a client desktop machine (like Windows 10) or Windows 2008 R2 and below, try:
 
     ```
-    netsh advfirewall firewall add rule name=sshd dir=in action=allow protocol=TCP service=sshd
+    netsh advfirewall firewall add rule name=sshd dir=in action=allow protocol=TCP localport=sshd
     ```
 1. Start `sshd` (this will automatically generate host keys under %programdata%\ssh if they don't already exist)
     * `net start sshd`
