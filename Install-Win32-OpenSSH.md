@@ -3,7 +3,7 @@
 1. Note [these considerations](https://github.com/PowerShell/Win32-OpenSSH/wiki/Various-Considerations) and [project scope](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Scope) first.
 1. Download the [latest](https://github.com/PowerShell/Win32-OpenSSH/releases/latest/) build of OpenSSH.
 To get links to latest downloads [this wiki page](https://github.com/PowerShell/Win32-OpenSSH/wiki/How-to-retrieve-links-to-latest-packages).
-1. Extract contents of the latest build to `C:\Program Files\OpenSSH` (Make sure binary location has the write permissions to just SYSTEM, Administrator groups.)
+1. Extract contents of the latest build to `C:\Program Files\OpenSSH` (Make sure binary location has the write permissions to SYSTEM, Administrator groups and "Read,execute" permissions to "User" account.)
 1. In an elevated Powershell console, run the following
     * `powershell.exe -ExecutionPolicy Bypass -File install-sshd.ps1`
 1. Open the firewall for sshd.exe to allow inbound SSH connections
