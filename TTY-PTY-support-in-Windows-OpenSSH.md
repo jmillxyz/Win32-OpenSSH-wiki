@@ -68,6 +68,7 @@ Unfortunately, this rendering mode is only included with Windows 10. If you're n
 ### When connected to unix ssh server   
 a) vim command, intermittently the file is opened in the Replace mode.     
 b) top command, clears the previous screen contents.    
+c) window resize is not supported because of a bug in conhost.exe (conhost.exe is a windows 10 module to parse ANSI sequences).
 
 ### When connected to windows ssh server and using powershell    
 a) while executing an unknown command (abcdef) in the powershell, the last line ( + FullyQualifiedErrorId : CommandNotFoundException) is not displayed on the console
