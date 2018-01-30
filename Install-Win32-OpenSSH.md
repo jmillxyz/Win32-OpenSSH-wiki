@@ -12,7 +12,7 @@ To get links to latest downloads [this wiki page](https://github.com/PowerShell/
     Note: `New-NetFirewallRule` is for Windows 2012 and above servers only. If you're on a client desktop machine (like Windows 10) or Windows 2008 R2 and below, try:
 
     ```
-    netsh advfirewall firewall add rule name=sshd dir=in action=allow protocol=TCP localport=sshd
+    netsh advfirewall firewall add rule name=sshd dir=in action=allow protocol=TCP localport=22
     ```
 1. Start `sshd` (this will automatically generate host keys under %programdata%\ssh if they don't already exist)
     * `net start sshd`
