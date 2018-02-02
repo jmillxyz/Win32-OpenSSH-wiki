@@ -69,12 +69,11 @@ Design summary of POSIX wrapper
 | setitimer | CreateWaitableTimer |
 
 #### fork()
-There is no easy fork() equivalent in Windows. fork() is used in OpenSSH in multiple places, of those - 3 are worth mentioning 
-+ Session isolation: Each accepted connection in sshd is handed off and processed in a forked child. This will be implemented in Windows using CreateProcess based custom logic - will need #def differentiated code between Unix and Windows
-+ Privilege separation: Implemented in OpenSSH by processing and parsing network data in forked and underprivileged child processes that communicate to privileged Monitor process through IPC. Monitor does the core crypto validation and authentication. Privilege downgrading is done by setuid(restricted_user). 
-While privilege separation is ideal, it requires adding in complexity and refactoring to accommodate a Windows specific solution along with a Unix based one in a common architecture. 
-The plan is to have a initial Windows version with no privilege separation. In Windows, ssh daemon will run under the context of its service account - NT Service\SSHD.
-+ sftp and scp: sftp and scp client side utilities invoke ssh using fork() and exec(). This logic will be substituted with CreateProcess based one.
+There is no easy fork() equivalent in Windows. Instead posix_spawn is implemented and used instead. This will result in additional code to accommodate the underlying differences between two calls. More details around the following logic below will be added soon. 
++ Session isolation: 
++ Privilege separation:  
++ sftp and scp: 
+
 
 #### AF_UNIX domain sockets
 Unix domain sockets are used for IPC communication between processes on the same host. Apart from providing stream/datagram modes, they also support a secure way to transmit ancillary data (like file descriptors). The only place ancillary data is used in OpenSSH is in "ProxyUseFDPass" feature where a proxy command is issued by ssh client to create a connected socket, and its FD is transmitted back over IPC. This feature will be disabled on Windows. The rest of the places AF_UNIX sockets are used:
@@ -84,30 +83,22 @@ Unix domain sockets are used for IPC communication between processes on the same
 + SSHD rexec - Not applicable for Windows. SSHD will be implemented as Windows service, that can be configured for auto restart.
 + SSHD from inetd - Not applicable for Windows. 
 
-AF_UNIX channel will be implemented using secure bidirectional named pipes in Windows. Support for ancillary data will be added in a limited form to support ControlMaster. 
+AF_UNIX channel will be implemented using secure bidirectional named pipes in Windows. Support for ancillary data will be added at a later time to support ControlMaster. 
 
 #### Security model in Windows
-SSHD will be implemented as a Windows service. Unlike in Unix (sshd runs as root), it runs in a less privileged [service account](http://sourcedaddy.com/windows-7/understanding-service-sids.html) - "NT Service\SSHD". This service account is assigned only one needed privilege - [SeAssignPrimaryTokenPrivilege](https://msdn.microsoft.com/en-us/library/windows/desktop/bb530716(v=vs.85).aspx). This privilege is needed to launch session processes on client's behalf.
-
-ssh-agent will be reimplemented for Windows as a Windows service, running as LocalSystem with TCB privileges (equivalent to root on Linux). Unlike in Unix, ssh-agent will listen on a known static IPC port. This is done as a security measure to protect ssh-agent port from hijack/spoof attacks. It serves the following "key-agent" requests that need be processed at SYSTEM privilege level:
+SSHD will be implemented as a Windows service. The overall architecture is similar to Unix. SSHD listener runs as System with TCB privileges (equivalent to root on Linux), spawns a worker to process and incoming connection. The worker acts as a privileged monitor, further spawning an unprivileged child (running as "sshd") to process unauthenticated network data. Once the connection is authentication, unprivileged child exits, and the privileged monitor spawns one more worker running in the context of the authenticated user.  
+ssh-agent will be reimplemented for Windows as a Windows service, running as LocalSystem 
+. Unlike in Unix, ssh-agent will listen on a known static IPC port. This is done as a security measure to protect ssh-agent port from hijack/spoof attacks. It serves the following "key-agent" requests that need be processed at SYSTEM privilege level:
 + Register a host key - All host keys, to be used by ssh deamon for host authentication can be securely registered with ssh-agent.  The registration process will be similar to ssh-add usage in Unix. Host keys will be internally encrypted using DPAPI using OS System account.
 + Register a user key - User keys, can be securely one-time registered with ssh-agent for a single sign-on experience. These keys are DPAI encrypted using user's password and ACL'ed as SYSTEM only. This ensures that malware running under user's context can never steal key material.
 + Delete a host or a user key - Similar to ssh-add usage in Unix. 
 + signature generation and validation - using a registered key. 
 
-The above listed requests are similar to what ssh-agent serves in Unix. Since sshd runs as a low privileged service, we need an equivalent of Unix's privileged monitor that can serve any privileged operations. Ssh-agent on Windows also hosts a privileged monitor/broker that serves the following operations:
-+ Key-Based authentication. It will be responsible for generating the client/user token once authentication succeeds. This includes - ensuring validity of public key mapping, validating a signed payload as part of client key based authentication and generating a Windows user token. Token generation is done using S4U for domain accounts and a custom SSP for local accounts. 
-+ User profile management - user profiles are loaded upon sshd's request. User profile typically needs to be loaded for interactive sessions. 
-
-As detailed earlier, session isolation in Windows will be done using CreateProcess based custom logic (in place of fork based logic in Unix). Spawned child process will run as NT Service\SSHD too.
-
 End result of authentication in Windows is a Windows user token (if authentication succeeds). SSH sessions that need client user capabilities are hosted in processes running under the context of client user (launched using CreateProcess(user_token)). Ex. cmd.exe for terminal session, sftp_server.exe for sftp session and scp.exe for scp session.
 This means that in order to login via ssh, one needs to have a valid Windows account on the target.
 If user profile does not exist, it gets created upon first logon via ssh. This would typically (in default sshd configuration) be via password based authentication (since profile does not exist for authorized_keys to be placed).
 
-Shown below is a high level overview of the various SSH components and access boundaries for various resources involved: 
 
-![HLA](https://cloud.githubusercontent.com/assets/14185020/26595943/de433644-4521-11e7-9a48-78bf7d3dbb17.JPG)
 
 
  
