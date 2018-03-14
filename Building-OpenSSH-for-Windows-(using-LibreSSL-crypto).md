@@ -6,12 +6,10 @@
 In Powershell:
   - cd repository-root
   - ipmo .\contrib\win32\openssh\OpenSSHBuildHelper.psm1 -Force
-  - Build-OpenSSH -Configuration <Release|Debug> -NativeHostArch <x64|x86>
+  - Start-OpenSSHBuild -Configuration <Release|Debug> -NativeHostArch <x64|x86>
 
 #### Deploying OpenSSH for Windows
-  - Copy libreSSL crypto dll to a known PATH
-    - copy .\contrib\win32\openssh\LibreSSLSDK\x64\libcrypto-41.dll (Join-Path $env:windir system32)
-  - Package-OpenSSH -Configuration <Release|Debug> -NativeHostArch <x64|x86>
+  - Start-OpenSSHPackage -Configuration <Release|Debug> -NativeHostArch <x64|x86>
   - Above generates Zipped binary and symbols payload. Follow further installation instructions [here].
 
 #### Building using Visual Studio 2015
