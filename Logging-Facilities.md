@@ -8,6 +8,11 @@ In v7.6.1.0 and later, ETW logging is added and is the default. You can view the
 The admin channel is for CRITICAL and ERROR events, operational is for INFO and debug is for DEBUG* variants.
 The payload would mimic what users would otherwise see in a typical syslog entry. 
 
+To see Debug logs in EventViewer, do the following:
+- Ensure sshd_config has logging level at DEBUG or above
+- In Eventviewer, select option to show "Analytic and Debug Logs" (under top menu, View)
+- Enable Debug logging (select Debug channel, click "Enable log" on right menu) 
+
 File based logging option (useful for quickly collecting debug traces) can be turned on by setting the following in sshd_config
 
  `SyslogFacility LOCAL0 `
