@@ -13,6 +13,7 @@ To see Debug logs in EventViewer, do the following:
 - In Eventviewer, select option to show "Analytic and Debug Logs" (under top menu, View)
 - Enable Debug logging (select Debug channel, click "Enable log" on right menu) 
 
+#### File based logging
 File based logging option (useful for quickly collecting debug traces) can be turned on by setting the following in sshd_config
 
  `SyslogFacility LOCAL0 `
