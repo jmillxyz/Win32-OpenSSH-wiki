@@ -10,7 +10,7 @@ The payload would mimic what users would otherwise see in a typical syslog entry
 
 File based logging option (useful for quickly collecting debug traces) can be turned on by setting the following in sshd_config
 
- `LogFacility LOCAL0 `
+ `SyslogFacility LOCAL0 `
 
 With this option, the logs would be collected at %programdata%\ssh\logs.
 sftp-server would follow similar semantics for logging (by default to ETW) and to files using the following as subsystem path in sshd_config:
