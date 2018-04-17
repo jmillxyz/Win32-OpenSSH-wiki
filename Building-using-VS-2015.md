@@ -4,7 +4,7 @@ Download and Install VS 2015 [Community Edition](https://www.visualstudio.com/en
 
 Clone https://github.com/PowerShell/openssh-portable
 
-LibreSSL SDK payload is hosted at https://github.com/PowerShell/Win32-OpenSSH/tree/L1-Prod/contrib/win32/openssh/LibreSSLSDK. Copy LibreSSLSDK and place it under contrib/win32/openssh
+Download the latest PowerShell LibreSSL [release](https://github.com/PowerShell/LibreSSL/releases/tag/V2.6.4.1) and copy LibreSSL folder to $openssh-portable\contrib\win32\openssh.
 
 Open "contrib\win32\openssh\Win32-OpenSSH.sln" in Visual Studio and continue building Win32-OpenSSH binaries
 
