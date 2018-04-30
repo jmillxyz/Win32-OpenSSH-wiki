@@ -17,7 +17,6 @@ Intent of this project is to get to a state that can converge to and integrate i
 - Use MS CNG (instead of OpenSSL)
 - Key management using MS CNG
 - Xterm, VT220 terminal modes
-- ETW Logging (syslog alternative in Windows)
 
 If you are looking for a specific feature not in above list and not in [here](https://github.com/PowerShell/Win32-OpenSSH/labels/feature%20request), feel free to add it [issue list](https://github.com/PowerShell/Win32-OpenSSH/issues).
 
