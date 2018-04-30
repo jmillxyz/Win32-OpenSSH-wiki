@@ -7,3 +7,4 @@ To figure out if this is the case, look for TCP port bindings on port 22 and the
     * `netstat -anop TCP`
     * If you do see 22 occupied, [#610](https://github.com/PowerShell/Win32-OpenSSH/issues/610) has workarounds to deal with port conflict. 
 
+- SFTP doesn't support chmod
