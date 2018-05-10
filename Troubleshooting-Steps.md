@@ -23,7 +23,7 @@ Troubleshooting more complex issues:
     * `Stop-Service sshd`
   * Delete `sshd.log` and `ssh-agent.log` (under %programdata%\ssh\logs)
   * Set the following in `sshd_config`
-    * `LogFacility LOCAL0`
+    * `SyslogFacility LOCAL0`
     * `LogLevel` to `DEBUG` (or `DEBUG2`/`DEBUG3` for higher levels of logging)
   * Rerun the workflow that's giving you problems. `logs\sshd.log` will contain `sshd` related traces.
   * If the problem isn't clear, please post these logs along with some steps to help us reproduce your problem in [our GitHub Issues](https://github.com/powershell/Win32-OpenSSH/issues).
