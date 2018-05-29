@@ -11,7 +11,8 @@ ______
 Available authentication methods are "password" and "publickey".
 ______
 #### Chroot
-fds
+Supported from 7.7.0.0
+
 ______
 #### Not supported
 AllowStreamLocalForwarding
