@@ -1,7 +1,6 @@
 Listed here are Windows specific details that supplement or override the original sshd configuration manual documented in [OpenBSD manual](https://man.openbsd.org/sshd_config)
 
 line1 
-
 line2
 _______
 #### AllowGroups
