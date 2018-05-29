@@ -11,7 +11,7 @@ ______
 Available authentication methods are "password" and "publickey".
 ______
 #### Chroot
-Supported from 7.7.0.0
+Supported from 7.7.0.0 </br>
 To setup a sftp-only chroot server, set ForceCommand to `internal-sftp`
 
 ______
