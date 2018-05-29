@@ -3,7 +3,7 @@ _______
 #### AllowGroups, AllowUsers, DenyGroups, DenyUsers
 The allow/deny directives are processed in the following order: **DenyUsers**, **AllowUsers**, **DenyGroups**, and finally **AllowGroups**. 
 
-See PATTERNS in [ssh_config](http://man.openbsd.org/ssh_config.5) for more information on patterns.
+See PATTERNS in [ssh_config](http://man.openbsd.org/ssh_config.5#PATTERNS) for more information on patterns.
 
 windows specific info to follow...
 ______
