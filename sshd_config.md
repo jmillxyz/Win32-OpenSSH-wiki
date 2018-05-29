@@ -1,7 +1,4 @@
 Listed here are Windows specific details that supplement or override the original sshd configuration manual documented in [OpenBSD manual](https://man.openbsd.org/sshd_config)
-
-line1 
-line2
 _______
 #### AllowGroups
 This keyword can be followed by a list of group name patterns, separated by spaces. If specified, login is allowed only for users whose primary group or supplementary group list matches one of the patterns. Only group names are valid; a numerical group ID is not recognized. By default, login is allowed for all groups. The allow/deny directives are processed in the following order: **DenyUsers**, **AllowUsers**, **DenyGroups**, and finally **AllowGroups**. See PATTERNS in [ssh_config](http://man.openbsd.org/ssh_config.5) for more information on patterns.
@@ -20,11 +17,10 @@ ______
 Available authentication methods are "password" and "publickey".
 ______
 #### Not supported
-AuthorizedKeysCommand
-AuthorizedKeysCommandUser
-AuthorizedPrincipalsCommand
-AuthorizedPrincipalsCommandUser
-
+ AuthorizedKeysCommand
+ AuthorizedKeysCommandUser
+ AuthorizedPrincipalsCommand
+ AuthorizedPrincipalsCommandUser
 ChrootDirectory
 
 Compression
