@@ -1,6 +1,6 @@
 #### Download latest source
   - git clone https://github.com/PowerShell/openssh-portable
-  - git checkout latestw_all_libressl
+  - git checkout latestw_all
 
 #### Building OpenSSH for Windows
 In Powershell:
