@@ -2,7 +2,6 @@
 
 * [Project Status](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Status)
 * [Project Scope](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Scope)
-* [Project Roadmap](https://github.com/PowerShell/Win32-OpenSSH/wiki/Win32-OpenSSH-RoadMap)
 * [Area Owners](https://github.com/PowerShell/Win32-OpenSSH/wiki/Area-Owners)
 * [Design Details](https://github.com/PowerShell/Win32-OpenSSH/wiki/About-Win32-OpenSSH-and-Design-Details)
 * [TTY PTY support](https://github.com/PowerShell/Win32-OpenSSH/wiki/TTY-PTY-support-in-Windows-OpenSSH)
