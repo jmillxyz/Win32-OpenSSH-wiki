@@ -8,6 +8,9 @@
 
 ## Documentation
 * [sshd_config](https://github.com/PowerShell/Win32-OpenSSH/wiki/sshd_config)
+* [sshd](https://github.com/PowerShell/Win32-OpenSSH/wiki/sshd)
+* [ssh_config](https://github.com/PowerShell/Win32-OpenSSH/wiki/ssh_config)
+* [ssh](https://github.com/PowerShell/Win32-OpenSSH/wiki/ssh)
 
 ## Installation
 
