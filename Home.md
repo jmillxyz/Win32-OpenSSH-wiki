@@ -11,15 +11,15 @@
 
 * [Install Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 * [Alternative installation using the universal installer](https://github.com/PowerShell/Win32-OpenSSH/wiki/Win32-OpenSSH-Automated-Install-and-Upgrade-using-Chocolatey)
+* [Retrieving download links for the latest packages](https://github.com/PowerShell/Win32-OpenSSH/wiki/How-to-retrieve-links-to-latest-packages)
 
 ## Usage
 * [SSH Usage Examples](https://github.com/PowerShell/Win32-OpenSSH/wiki/ssh.exe-examples)
-* [Fix SSH file permissions](https://github.com/PowerShell/Win32-OpenSSH/wiki/OpenSSH-utility-scripts-to-fix-file-permissions)
 * [SFTP Usage Examples](https://github.com/PowerShell/Win32-OpenSSH/wiki/sftp.exe-examples)
 * [Using Certificate Authentication](https://github.com/PowerShell/Win32-OpenSSH/wiki/Certificate-Authentication)
+* [Fix SSH file permissions](https://github.com/PowerShell/Win32-OpenSSH/wiki/OpenSSH-utility-scripts-to-fix-file-permissions)
 * [Info on SSH remote sessions on Windows](https://github.com/PowerShell/Win32-OpenSSH/wiki/SSH-remote-sessions-on-Windows)
 * [Troubleshooting](https://github.com/PowerShell/Win32-OpenSSH/wiki/Troubleshooting-Steps)
-* [Retrieving download links for the latest packages](https://github.com/PowerShell/Win32-OpenSSH/wiki/How-to-retrieve-links-to-latest-packages)
 
 ## Developing and Contributing to Win32-OpenSSH
 * [Building Win32-OpenSSH on Windows (w/ LibreSSL)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Building-OpenSSH-for-Windows-(using-LibreSSL-crypto))
