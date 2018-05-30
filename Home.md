@@ -5,7 +5,6 @@
 * [Area Owners](https://github.com/PowerShell/Win32-OpenSSH/wiki/Area-Owners)
 * [Design Details](https://github.com/PowerShell/Win32-OpenSSH/wiki/About-Win32-OpenSSH-and-Design-Details)
 * [TTY PTY support](https://github.com/PowerShell/Win32-OpenSSH/wiki/TTY-PTY-support-in-Windows-OpenSSH)
-* [Intro links for penetration testing](https://github.com/PowerShell/Win32-OpenSSH/wiki/Intro-Links-for-Penetration-Testing)
 
 ## Installation
 
