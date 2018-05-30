@@ -20,7 +20,7 @@ ______
 #### ChrootDirectory
 Support added in v7.7.0.0
 
-To setup a sftp-only chroot server, set ForceCommand to `internal-sftp`. You may also set up scp with chroot, by implementing a custom shell that would only allow scp. 
+To setup a sftp-only chroot server, set ForceCommand to `internal-sftp`. You may also set up scp with chroot, by implementing a custom shell that would only allow scp and sftp. 
 
 ______
 #### Not supported
