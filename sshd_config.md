@@ -20,8 +20,6 @@ ______
 #### ChrootDirectory
 Support added in v7.7.0.0
 
-This is implemented in Posix compat library, so do not expect it to work in a command shell. 
-
 To setup a sftp-only chroot server, set ForceCommand to `internal-sftp`. You may also set up scp with chroot, by implementing a custom shell that would only allow scp. 
 
 ______
