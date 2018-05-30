@@ -26,6 +26,8 @@ To setup a sftp-only chroot server, set ForceCommand to `internal-sftp`. You may
 
 ______
 #### Not supported
+AcceptEnv
+
 AllowStreamLocalForwarding
 
 AuthorizedKeysCommand
