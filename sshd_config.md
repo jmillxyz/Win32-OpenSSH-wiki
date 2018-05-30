@@ -17,7 +17,7 @@ ______
 #### AuthenticationMethods
 Available authentication methods are "password" and "publickey".
 ______
-#### Chroot
+#### ChrootDirectory
 Support added in v7.7.0.0
 
 This is implemented in Posix compat library, so do not expect it to work in a command shell. 
