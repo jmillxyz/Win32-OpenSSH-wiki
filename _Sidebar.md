@@ -1,11 +1,3 @@
-## Project
-
-* [Project Status](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Status)
-* [Project Scope](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Scope)
-* [Area Owners](https://github.com/PowerShell/Win32-OpenSSH/wiki/Area-Owners)
-* [Design Details](https://github.com/PowerShell/Win32-OpenSSH/wiki/About-Win32-OpenSSH-and-Design-Details)
-* [TTY PTY support](https://github.com/PowerShell/Win32-OpenSSH/wiki/TTY-PTY-support-in-Windows-OpenSSH)
-
 ## Manuals
 * [sshd_config](https://github.com/PowerShell/Win32-OpenSSH/wiki/sshd_config)
 * [sshd](https://man.openbsd.org/sshd)
@@ -27,7 +19,15 @@
 * [Using Certificate Authentication](https://github.com/PowerShell/Win32-OpenSSH/wiki/Certificate-Authentication)
 * [Fix SSH file permissions](https://github.com/PowerShell/Win32-OpenSSH/wiki/OpenSSH-utility-scripts-to-fix-file-permissions)
 * [Info on SSH remote sessions on Windows](https://github.com/PowerShell/Win32-OpenSSH/wiki/SSH-remote-sessions-on-Windows)
+* [TTY PTY support](https://github.com/PowerShell/Win32-OpenSSH/wiki/TTY-PTY-support-in-Windows-OpenSSH)
 * [Troubleshooting](https://github.com/PowerShell/Win32-OpenSSH/wiki/Troubleshooting-Steps)
+
+## Project
+* [Project Status](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Status)
+* [Project Scope](https://github.com/PowerShell/Win32-OpenSSH/wiki/Project-Scope)
+* [Area Owners](https://github.com/PowerShell/Win32-OpenSSH/wiki/Area-Owners)
+* [Design Details](https://github.com/PowerShell/Win32-OpenSSH/wiki/About-Win32-OpenSSH-and-Design-Details)
+
 
 ## Developing and Contributing to Win32-OpenSSH
 * [Building Win32-OpenSSH on Windows (w/ LibreSSL)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Building-OpenSSH-for-Windows-(using-LibreSSL-crypto))
