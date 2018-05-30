@@ -8,9 +8,12 @@
 
 ## Documentation
 * [sshd_config](https://github.com/PowerShell/Win32-OpenSSH/wiki/sshd_config)
-* [sshd](https://github.com/PowerShell/Win32-OpenSSH/wiki/sshd)
-* [ssh_config](https://github.com/PowerShell/Win32-OpenSSH/wiki/ssh_config)
-* [ssh](https://github.com/PowerShell/Win32-OpenSSH/wiki/ssh)
+* [sshd](https://man.openbsd.org/sshd)
+* [ssh_config](https://man.openbsd.org/ssh_config)
+* [ssh](https://man.openbsd.org/ssh)
+* [ssh-keygen](https://man.openbsd.org/ssh-keygen)
+* [ssh-keyscan](https://man.openbsd.org/ssh-keyscan)
+* [ssh-add](https://man.openbsd.org/ssh-add)
 
 ## Installation
 
