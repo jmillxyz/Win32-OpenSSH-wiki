@@ -3,10 +3,12 @@
 
 1. Workgroup users
      * `ssh user@host`
-2. Domain users: Domain needs to be explicitly specified. Any of the following formats work
+2. Domain users: Prior to v7.7.0.0, domain needs to be explicitly specified. Any of the following formats work
      * `ssh -l user@domain host`
      * `ssh domain\user@host`
      * `ssh user@domain@host`
+     * `ssh user@host` (works from v7.7.0.0 onwards provided `user` has no conflicts otherwise - ex. `user` exists both on local account data base and on domain)
+
 
 ## Login With SSH Keys
 
