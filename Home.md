@@ -23,7 +23,5 @@
 
 ## Developing and Contributing to Win32-OpenSSH
 * [Building Win32-OpenSSH on Windows (w/ LibreSSL)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Building-OpenSSH-for-Windows-(using-LibreSSL-crypto))
-* [Building Win32-OpenSSH on Linux](https://github.com/PowerShell/Win32-OpenSSH/wiki/Building-Win32-OpenSSH-on-Linux)
 * [VS 2015 Build Instructions](https://github.com/PowerShell/Win32-OpenSSH/wiki/Building-using-VS-2015)
 * [Running Pester tests](https://github.com/PowerShell/Win32-OpenSSH/wiki/Run-OpenSSH-Pester-Tests)
-* [Eclipse CDT and GDB setup to debug SSH tools](https://github.com/PowerShell/Win32-OpenSSH/wiki/Eclipse-CDT-and-GDB-setup-to-debug-SSH-tools)
