@@ -1,4 +1,6 @@
 Listed here are Windows specific details that supplement or override the original sshd configuration manual documented in [OpenBSD manual](https://man.openbsd.org/sshd_config). If you don't see a configuration entry here, the original man page reference holds true.
+
+On Windows, sshd(8) reads configuration data from %ProgramData%\ssh\sshd_config (or the file specified with -f on the command line)
 _______
 #### AllowGroups, AllowUsers, DenyGroups, DenyUsers
 The allow/deny directives are processed in the following order: **DenyUsers**, **AllowUsers**, **DenyGroups**, and finally **AllowGroups**. 
