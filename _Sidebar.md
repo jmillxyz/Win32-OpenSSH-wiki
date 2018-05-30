@@ -6,7 +6,7 @@
 * [Design Details](https://github.com/PowerShell/Win32-OpenSSH/wiki/About-Win32-OpenSSH-and-Design-Details)
 * [TTY PTY support](https://github.com/PowerShell/Win32-OpenSSH/wiki/TTY-PTY-support-in-Windows-OpenSSH)
 
-## Documentation
+## Manuals
 * [sshd_config](https://github.com/PowerShell/Win32-OpenSSH/wiki/sshd_config)
 * [sshd](https://man.openbsd.org/sshd)
 * [ssh_config](https://man.openbsd.org/ssh_config)
