@@ -17,8 +17,10 @@ From v7.7.0.0 on wards, work group users/groups and internet-connected accounts 
 
 - Ex. for domain users 
   - `DenyUsers contoso\admin@192.168.2.23` : blocks contoso\admin from 192.168.2.23
-  - `DenyUsers contoso\*@192.168.2.23` 
-- Ex. for local users  - `AllowUsers localuser@192.168.2.23`
+  - `DenyUsers contoso\*`  : blocks all users from contoso domain
+- Ex. for local users  
+  - `AllowUsers localuser@192.168.2.23`
+**Note that user names are in lower case**
 
 ______
 #### AuthenticationMethods
