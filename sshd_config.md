@@ -24,10 +24,10 @@ From v7.7.0.0 on wards, work group users/groups and internet-connected accounts 
 **Note that user names are in lower case**
 
 ______
-#### AuthenticationMethods
+#### [AuthenticationMethods](https://man.openbsd.org/sshd_config#AuthenticationMethods)
 Available authentication methods are "password" and "publickey".
 ______
-#### ChrootDirectory
+#### [ChrootDirectory](https://man.openbsd.org/sshd_config#ChrootDirectory)
 Support added in v7.7.0.0
 
 To setup a sftp-only chroot server, set ForceCommand to `internal-sftp`. You may also set up scp with chroot, by implementing a custom shell that would only allow scp and sftp. 
