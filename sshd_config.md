@@ -20,6 +20,7 @@ From v7.7.0.0 on wards, work group users/groups and internet-connected accounts 
   - `DenyUsers contoso\*`  : blocks all users from contoso domain
 - Ex. for local users  
   - `AllowUsers localuser@192.168.2.23`
+
 **Note that user names are in lower case**
 
 ______
