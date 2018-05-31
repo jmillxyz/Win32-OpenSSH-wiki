@@ -2,6 +2,8 @@ See [Logging Facilities](https://github.com/PowerShell/Win32-OpenSSH/wiki/Loggin
 
 Troubleshooting steps for typical service startup and connection issues:
 
+* If you see connection getting reset right after sending SSH2_MSG_KEXINIT, see if [this](https://github.com/PowerShell/Win32-OpenSSH/issues/1027) may help. 
+
 * Server side: run `sshd` in debug mode
   * `Stop-Service sshd` (if sshd service is running)
   * Open cmd as SYSTEM. Download psexec from [here](https://docs.microsoft.com/en-us/sysinternals/downloads/psexec).
