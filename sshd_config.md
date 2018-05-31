@@ -2,7 +2,7 @@ Listed here are Windows specific details that supplement or override the origina
 
 On Windows, [sshd](https://man.openbsd.org/sshd) reads configuration data from %ProgramData%\ssh\sshd_config (or the file specified with -f on the command line)
 _______
-#### AllowGroups, AllowUsers, DenyGroups, DenyUsers
+#### [AllowGroups](https://man.openbsd.org/sshd_config#AllowGroups), [AllowUsers](https://man.openbsd.org/sshd_config#AllowUsers), [DenyGroups](https://man.openbsd.org/sshd_config#DenyGroups), [DenyUsers](https://man.openbsd.org/sshd_config#DenyUsers)
 The allow/deny directives are processed in the following order: **DenyUsers**, **AllowUsers**, **DenyGroups**, and finally **AllowGroups**. 
 
 See PATTERNS in [ssh_config](http://man.openbsd.org/ssh_config.5#PATTERNS) for more information on patterns.
@@ -34,7 +34,7 @@ To setup a sftp-only chroot server, set ForceCommand to `internal-sftp`. You may
 
 ______
 #### [Match](https://man.openbsd.org/sshd_config#Match)
-
+Note that pattern rules in [this] section. User and group names should be in **lower* case.
 ______
 #### Not supported
 AcceptEnv
