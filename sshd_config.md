@@ -15,13 +15,15 @@ Prior to v7.7.0.0, there was no well defined way to specify domain principals (u
 
 From v7.7.0.0 on wards, work group users/groups and internet-connected accounts are strictly resolved to their local account name (no domain part, similar to standard Unix names). Domain users and groups are strictly resolved to NameSamCompatible format - domain_short_name\user_name. All user/group based configuration rules need to adhere to this format. 
 
-- Ex. for domain users 
+- Ex. for domain users and groups
   - `DenyUsers contoso\admin@192.168.2.23` : blocks contoso\admin from 192.168.2.23
   - `DenyUsers contoso\*`  : blocks all users from contoso domain
-- Ex. for local users  
+  - `AllowGroups contoso\sshusers` : only allow users from contoso\sshusers group
+- Ex. for local users and groups
   - `AllowUsers localuser@192.168.2.23`
+  - `AllowGroups sshusers`
 
-**Note that user names are in lower case**
+**Note that user and group names are in lower case**
 
 ______
 #### [AuthenticationMethods](https://man.openbsd.org/sshd_config#AuthenticationMethods)
@@ -34,7 +36,7 @@ To setup a sftp-only chroot server, set ForceCommand to `internal-sftp`. You may
 
 ______
 #### [Match](https://man.openbsd.org/sshd_config#Match)
-Note that pattern rules in [this] section. User and group names should be in **lower* case.
+Note that pattern rules in [this](https://github.com/PowerShell/Win32-OpenSSH/wiki/sshd_config#allowgroups-allowusers-denygroups-denyusers) section. User and group names should be in **lower* case.
 ______
 #### Not supported
 AcceptEnv
