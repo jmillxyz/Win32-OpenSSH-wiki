@@ -39,7 +39,9 @@ ______
 Note that pattern rules in [this](https://github.com/PowerShell/Win32-OpenSSH/wiki/sshd_config#allowgroups-allowusers-denygroups-denyusers) section. User and group names should be in **lower* case.
 ______
 #### [SyslogFacility](https://man.openbsd.org/sshd_config#SyslogFacility)
-If you file based logging, use LOCAL0. Any other value, including the default value AUTH direct logging to ETW. For more info see [Logging Facilities in Windows](https://github.com/PowerShell/Win32-OpenSSH/wiki/Logging-Facilities)
+If you need file based logging, use LOCAL0. Logs will be generated under %programdata%\ssh\logs
+
+Any other value, including the default value AUTH direct logging to ETW. For more info see [Logging Facilities in Windows](https://github.com/PowerShell/Win32-OpenSSH/wiki/Logging-Facilities).
 ______
 #### Not supported
 AcceptEnv
