@@ -56,13 +56,7 @@ AuthorizedPrincipalsCommand
 
 AuthorizedPrincipalsCommandUser
 
-ChrootDirectory
-
 Compression
-
-DenyGroups
-
-DenyUsers
 
 ExposeAuthInfo
 
