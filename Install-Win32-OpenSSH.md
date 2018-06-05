@@ -26,6 +26,8 @@ To get links to latest downloads [this wiki page](https://github.com/PowerShell/
 
 1. Configuring the default ssh shell (optional)
 
+If you configure a default shell, ensure that OpenSSH installation path is in system PATH. If not already present, amend system PATH and restart sshd service.
+
 On the server side, configure the default ssh shell in the windows registry. 
 
 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\OpenSSH\DefaultShell` - Full path (case sensitive) of the shell executable
