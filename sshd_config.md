@@ -1,6 +1,6 @@
 Listed here are Windows specific details that supplement or override the original sshd configuration manual documented in [OpenBSD manual](https://man.openbsd.org/sshd_config). If you don't see a configuration entry here, the original man page reference holds true.
 
-On Windows, [sshd](https://man.openbsd.org/sshd) reads configuration data from %programdata%\ssh\sshd_config (or the file specified with -f on the command line)
+On Windows, [sshd](https://man.openbsd.org/sshd) reads configuration data from %programdata%\ssh\sshd_config (or the file specified with -f on the command line). If this file is absent, sshd will generate one with the default configuration on a service start.
 _______
 #### [AllowGroups](https://man.openbsd.org/sshd_config#AllowGroups), [AllowUsers](https://man.openbsd.org/sshd_config#AllowUsers), [DenyGroups](https://man.openbsd.org/sshd_config#DenyGroups), [DenyUsers](https://man.openbsd.org/sshd_config#DenyUsers)
 The allow/deny directives are processed in the following order: **DenyUsers**, **AllowUsers**, **DenyGroups**, and finally **AllowGroups**. 
