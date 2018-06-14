@@ -29,11 +29,16 @@ ______
 #### [AuthenticationMethods](https://man.openbsd.org/sshd_config#AuthenticationMethods)
 Available authentication methods are "password" and "publickey".
 ______
+#### [AuthorizedKeysFile](https://man.openbsd.org/sshd_config#AuthorizedKeysFile)
+The default is “.ssh/authorized_keys .ssh/authorized_keys2”. If the path is not absolute, it is taken relative to user's home directory (or profile image path). Ex. c:\users\user.
+______
 #### [ChrootDirectory](https://man.openbsd.org/sshd_config#ChrootDirectory)
 Support added in v7.7.0.0
 
 To setup a sftp-only chroot server, set ForceCommand to `internal-sftp`. You may also set up scp with chroot, by implementing a custom shell that would only allow scp and sftp. 
-
+_____
+#### [HostKey](https://man.openbsd.org/sshd_config#HostKey)
+The defaults are %programdata%/ssh/ssh_host_ecdsa_key, %programdata%/ssh/ssh_host_ed25519_key and _%programdata%/ssh/ssh_host_rsa_key_. 
 ______
 #### [Match](https://man.openbsd.org/sshd_config#Match)
 Note that pattern rules in [this](https://github.com/PowerShell/Win32-OpenSSH/wiki/sshd_config#allowgroups-allowusers-denygroups-denyusers) section. User and group names should be in **lower* case.
