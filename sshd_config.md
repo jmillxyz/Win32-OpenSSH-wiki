@@ -41,7 +41,10 @@ _____
 The defaults are _%programdata%/ssh/ssh_host_ecdsa_key_, _%programdata%/ssh/ssh_host_ed25519_key_ and _%programdata%/ssh/ssh_host_rsa_key_. If the defaults are not present, sshd will automatically generate these on a service start.
 ______
 #### [Match](https://man.openbsd.org/sshd_config#Match)
-Note that pattern rules in [this](https://github.com/PowerShell/Win32-OpenSSH/wiki/sshd_config#allowgroups-allowusers-denygroups-denyusers) section. User and group names should be in **lower* case.
+Note that pattern rules in [this](https://github.com/PowerShell/Win32-OpenSSH/wiki/sshd_config#allowgroups-allowusers-denygroups-denyusers) section. User and group names should be in **lower** case.
+______
+#### [PermitRootLogin](https://man.openbsd.org/sshd_config#PermitRootLogin)
+Does not apply in Windows. To prevent administrator login, use _Administrators_ with DenyGroups directive.
 ______
 #### [SyslogFacility](https://man.openbsd.org/sshd_config#SyslogFacility)
 If you need file based logging, use LOCAL0. Logs will be generated under %programdata%\ssh\logs.
