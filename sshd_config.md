@@ -44,7 +44,7 @@ ______
 Note that pattern rules in [this](https://github.com/PowerShell/Win32-OpenSSH/wiki/sshd_config#allowgroups-allowusers-denygroups-denyusers) section. User and group names should be in **lower** case.
 ______
 #### [PermitRootLogin](https://man.openbsd.org/sshd_config#PermitRootLogin)
-Does not apply in Windows. To prevent administrator login, use _Administrators_ with DenyGroups directive.
+Not applicable in Windows. To prevent administrator login, use _Administrators_ with DenyGroups directive.
 ______
 #### [SyslogFacility](https://man.openbsd.org/sshd_config#SyslogFacility)
 If you need file based logging, use LOCAL0. Logs will be generated under %programdata%\ssh\logs.
