@@ -94,8 +94,6 @@ KerberosOrLocalPasswd
 
 KerberosTicketCleanup
 
-PermitRootLogin
-
 PermitTunnel
 
 PermitUserEnvironment
