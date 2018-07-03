@@ -10,7 +10,7 @@ In Powershell:
 
 #### Deploying OpenSSH for Windows
   - Start-OpenSSHPackage -Configuration <Release|Debug> -NativeHostArch <x64|x86>
-  - Above generates Zipped binary and symbols payload. Follow further installation instructions [here].
+  - Above generates Zipped binary and symbols payload. Follow further installation instructions [here](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH).
 
 #### Building using Visual Studio 2015
   - Download and Install VS 2015 [Community Edition](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx)  
