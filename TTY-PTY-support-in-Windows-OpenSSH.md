@@ -77,22 +77,22 @@ a) while executing an unknown command (abcdef) in the powershell, the last line 
 ## PTY
 Windows OS does not have inbuilt support for a [pseudoterminal](https://en.wikipedia.org/wiki/Pseudoterminal). 
 
-Windows version of OpenSSH server implements a VT100 PTY by intercepting [Windows Console](https://msdn.microsoft.com/en-us/library/windows/desktop/ms682055(v=vs.85).aspx) events. This is implemented in ssh-shellhost.exe, connected to sshd via [std i/o](https://en.wikipedia.org/wiki/Standard_streams). At a high level, ssh-shellhost.exe acts as an intermediary between sshd and a Windows console applications performing the following: 
+Windows version of OpenSSH server implements a [VT100](https://en.wikipedia.org/wiki/VT100) PTY by intercepting [Windows Console](https://msdn.microsoft.com/en-us/library/windows/desktop/ms682055(v=vs.85).aspx) events. This is implemented in ssh-shellhost.exe, connected to sshd via [std i/o](https://en.wikipedia.org/wiki/Standard_streams). At a high level, ssh-shellhost.exe acts as an intermediary between sshd and a Windows console applications performing the following: 
   - interprets incoming VT100, processes and calls Windows Console IO
-  - processes Windows Console (output) event queue, translates them to VT100 and spits out on stdout.
+  - processes Windows Console (output) event queue, translates them to [VT100](https://en.wikipedia.org/wiki/VT100) and spits out on stdout.
 
 ## TTY
 Windows console previously did not have the capability to process any incoming terminal control codes. Support for xterm is added in Windows 10. 
 
-To support downlevel platforms (down till Windows 7), a VT100 interpreter is implemented in Windows OpenSSH client (ssh.exe) to support typical TTY scenarios. Although this works well when talking to Windows targets, there are limitations and known issues when dealing with interactive applications on Unix like top, vi, etc. 
+To support downlevel platforms (down till Windows 7), a [VT100](https://en.wikipedia.org/wiki/VT100) interpreter is implemented in Windows OpenSSH client (ssh.exe) to support typical TTY scenarios. Although this works well when talking to Windows targets, there are limitations and known issues when dealing with interactive applications on Unix like top, vi, etc. 
 
 
 If you are using the openssh client,  
   a) Windows 10+ OS then windows console (cmd.exe/powershell) has the support to interpret the VT sequences received from the SSH server. We simply pass the raw VT sequences to the console (cmd.exe/powershell). If you are facing any issues then it should be fixed by the windows console team.   
 
-     If you want to use the inbuilt VT100 ANSI parser (that's part of the openssh client) then set the environment variable "SSH_TERM_CONHOST_PARSER" to 0.
+     If you want to use the inbuilt [VT100](https://en.wikipedia.org/wiki/VT100) ANSI parser (that's part of the openssh client) then set the environment variable "SSH_TERM_CONHOST_PARSER" to 0.
 
-  b) Prior versions of windows 10 OS, the raw VT sequences will be parsed by the inbuilt VT100 ANSI parser that's part of the ssh.exe. We have fixed most of the issues. We have no plans to extend to VT100+ sequences.   
+  b) Prior versions of windows 10 OS, the raw VT sequences will be parsed by the inbuilt [VT100](https://en.wikipedia.org/wiki/VT100) ANSI parser that's part of the ssh.exe. We have fixed most of the issues. We have no plans to extend to VT100+ sequences.   
 
      If you want support for the VT100+ sequences then please upgrade to windows 10+ OS or use the third party tools like putty, Cygwin, etc.
 
